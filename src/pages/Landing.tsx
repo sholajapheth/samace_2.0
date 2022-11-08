@@ -8,7 +8,7 @@ import NavTablet from "../globals/NavTablet";
 
 const Landing = () => {
   return (
-    <div className="md:p-[4rem] p-[1rem] h-screen w-full flex  text-pri">
+    <div className="md:p-[4rem] p-[1rem]  w-full flex  text-pri">
       <div className=" w-full">
         <p className="font-[700] md:text-right text-center mb-[2rem]">humanresource@sam-ace.com</p>
 
