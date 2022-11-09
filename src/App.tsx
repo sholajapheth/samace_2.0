@@ -1,13 +1,17 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./pages/Login";
-import Landing from "./pages/Landing";
+import { Routes, Route } from "react-router-dom";
+import { Landing, Login} from "./pages";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import { NoMatch } from "./globals";
 
-const router = createBrowserRouter([{ path: "/", element: <Landing /> }, 
-{ path: "/login", element: <Login /> }]);
 const App = () => {
   return (
-    <div className=" ">
-      <RouterProvider router={router} />
+    <div className="font-roboto">
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="login" element={<Login />} />
+        <Route path="dashboard/*" element={<Dashboard />} />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
     </div>
   );
 };

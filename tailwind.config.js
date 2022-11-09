@@ -25,7 +25,7 @@ module.exports = {
         sec: "#1F222A",
       },
       fontFamily: {
-        roboto: "'Roboto, sans-serif",
+        roboto: "Roboto, sans-serif",
         inter: "Inter, sans-serif",
       },
     },
