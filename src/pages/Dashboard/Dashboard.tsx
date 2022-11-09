@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { Topbar, Sidebar, DisplayArea } from "../../components";
+import { DecisionModal } from "../../globals";
 
 export const DashboardContext = createContext<any>({});
 
@@ -18,6 +19,7 @@ const Dashboard = () => {
     >
       <div className="flex w-full">
         <Sidebar />
+        <DecisionModal />
         <div className="w-full  pl-[1.5em] pr-[2em] flex items-start gap-4 py-[1.5em] ">
           <div className="w-full">
             <Topbar />
