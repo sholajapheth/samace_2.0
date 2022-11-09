@@ -5,7 +5,7 @@ const DisplayArea = () => {
   return (
     <div>
       <Routes>
-        <Route path="hr" element={<HR />} />
+        <Route path="hr/*" element={<HR />} />
         <Route path="qc" element={<QC />} />
         <Route path="qa" element={<QA />} />
         <Route path="maintenance" element={<Maintenance />} />

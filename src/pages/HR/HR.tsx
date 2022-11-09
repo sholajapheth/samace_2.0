@@ -1,23 +1,18 @@
-import { DashboardContext } from "../Dashboard/Dashboard";
-import { useContext } from "react";
-
-// type sidebar_nav_type = Array<{
-//   name: string;
-//   img: string;
-//   link: string;
-// }>;
-
-// const data: sidebar_nav_type = [
-//   { name: "Human Resources", img: hr, link: "/dashboard/hr" },
-// ];
+import { Routes, Route } from "react-router-dom";
+import HRNav from "./HRNav";
+import PersonelList from "./PersonelList/PersonelList";
+import PersonelRecord from "./PersonelRecord/PersonelRecord";
 
 const HR = () => {
-  const { set_topbar_value } =
-    useContext(DashboardContext);
-  set_topbar_value("Human Resource Department");
-  // set_sidebar_nav_data(data);
-
-  return <div>HR</div>;
+  return (
+    <div>
+      <Routes>
+        <Route path={"/"} element={<HRNav />} />
+        <Route path={"pl"} element={<PersonelList />} />
+        <Route path={"pr"} element={<PersonelRecord />} />
+      </Routes>
+    </div>
+  );
 };
 
 export default HR;
