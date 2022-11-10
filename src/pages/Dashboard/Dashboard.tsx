@@ -23,7 +23,9 @@ const Dashboard = () => {
 
   //this section allows to dynamically set the topbar actions routes
   const [topbar_actions_links, set_topbar_actions_links] = useState({add:"", edit:"" });
-  
+
+  const [show_topbar_actions, set_show_topbar_actions] = useState(false);
+
 
   const context = {
     topbar_value,
@@ -36,6 +38,8 @@ const Dashboard = () => {
     set_decision_modal_value,
     topbar_actions_links,
     set_topbar_actions_links,
+    show_topbar_actions,
+    set_show_topbar_actions,
   };
 
   return (
@@ -43,7 +47,7 @@ const Dashboard = () => {
       <div className="lg:flex w-full ">
         {show_decision_modal && <DecisionModal />}
         <Sidebar />
-        <div className="w-full  pl-[1.5em] pr-[2em] flex  items-start gap-4 py-[1.5em] ">
+        <div className="w-full  flex  items-start gap-4 py-[1.5em] ">
           <div className="w-full">
             <Topbar />
             <DisplayArea />
