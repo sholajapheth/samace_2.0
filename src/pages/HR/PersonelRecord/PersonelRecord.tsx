@@ -19,7 +19,7 @@ const PersonelRecord = () => {
   }, [set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions]);
 
   return (
-    <div className="w-full  flex flex-col lg:gap-[6em] md:gap-[4em] gap-[2em]">
+    <div className="w-full  flex flex-col lg:gap-[6em] md:gap-[4em] gap-[2em] px-[2em]">
       <span className="md:text-hm text-tm text-pri font-[700]">
         Select Task
       </span>

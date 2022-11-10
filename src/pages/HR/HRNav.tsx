@@ -15,7 +15,7 @@ const HRNav = () => {
   }, [set_sidebar_nav_data, set_topbar_value]);
 
   return (
-    <div className="w-full  flex flex-col gap-[6em]">
+    <div className="w-full  flex flex-col gap-[6em] px-[4em]">
       <span className="text-hm text-pri font-[700]">Select Task</span>
       <div className="flex gap-[5em] m-auto">
         <NavTablet name="Personel List" img={personel_list} link={"pl"} />
