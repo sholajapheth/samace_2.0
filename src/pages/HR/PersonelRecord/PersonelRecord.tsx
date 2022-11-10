@@ -15,9 +15,9 @@ const PersonelRecord = () => {
   set_sidebar_nav_data(hr_nav);
 
   return (
-    <div className="w-full  flex flex-col gap-[6em]">
-      <span className="text-hm text-pri font-[700]">Select Task</span>
-      <div className="flex gap-[5em] m-auto">
+    <div className="w-full  flex flex-col lg:gap-[6em] md:gap-[4em] gap-[2em]">
+      <span className="md:text-hm text-tm text-pri font-[700]">Select Task</span>
+      <div className="grid md:grid-cols-3 grid-cols-2 md:gap-[5em] gap-[3em] m-auto">
         <NavTablet name="Training" img={training} link={"training"} />
         <NavTablet name="Assessment" img={assessment} link={"assessment"} />
         <NavTablet name="Pay" img={pay} link={"pay"} />

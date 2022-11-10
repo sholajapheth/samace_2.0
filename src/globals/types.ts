@@ -1,4 +1,5 @@
 export type sidebar_nav_type = Array<{
+  id: number
   name: string;
   img: string;
   link: string;

@@ -3,7 +3,7 @@ import { HR, QC, QA, Maintenance, Production } from "../pages";
 
 const DisplayArea = () => {
   return (
-    <div>
+    <div className="lg:pb-0 pb-[4rem]">
       <Routes>
         <Route path="hr/*" element={<HR />} />
         <Route path="qc" element={<QC />} />

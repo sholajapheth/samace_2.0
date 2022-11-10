@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {TopbarActions} from '../globals';
 
 const Topbar = () => {
-  console.log("topbar rendered");
+ 
   const { topbar_value } = useContext(DashboardContext);
   const navigate = useNavigate();
 

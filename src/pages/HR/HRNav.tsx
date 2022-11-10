@@ -11,7 +11,6 @@ const HRNav = () => {
   set_sidebar_nav_data(main_nav);
   set_topbar_value("Human Resource Department");
 
-
   return (
     <div className="w-full  flex flex-col gap-[6em]">
       <span className="text-hm text-pri font-[700]">Select Task</span>

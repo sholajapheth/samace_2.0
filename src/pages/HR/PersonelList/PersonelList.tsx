@@ -5,8 +5,8 @@ import personel_list from "../assets/personel_list.svg";
 import personel_record from "../assets/personel_record.svg";
 
 const data: sidebar_nav_type = [
-  { name: "Personel List", img: personel_list, link: "hr/pl" },
-  { name: "Personel Record", img: personel_record, link: "hr/pr" },
+  {id: 0, name: "Personel List", img: personel_list, link: "hr/pl" },
+  {id: 1,  name: "Personel Record", img: personel_record, link: "hr/pr" },
 ];
 
 

@@ -7,7 +7,12 @@ type sideBarProps = {
 };
 const SidebarButton = ({ img, name, link }: sideBarProps) => {
   return (
-    <NavLink to={link}>
+    <NavLink
+      to={link}
+      className={({ isActive }) =>
+        isActive ? "bg-[#040a17] w-full" : "bg-none w-full"
+      }
+    >
       <button className="flex flex-col gap-1 text-lm font-[700] items-center text-white  hover:bg-[#283E6C] w-full p-[1em] ">
         <img className="md:w-[24px] w-[20px] " src={img} alt={name} />
         <span>{name}</span>
