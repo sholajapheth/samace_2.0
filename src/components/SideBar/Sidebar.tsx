@@ -27,7 +27,7 @@ const Sidebar = () => {
             src={logout}
             alt="logout"
           />
-          <button className="text-lm font-[700] text-[#FF5552] ">Logout</button>
+          <span className="text-lm font-[700] text-[#FF5552] ">Logout</span>
         </button>
       </div>
     </div>
