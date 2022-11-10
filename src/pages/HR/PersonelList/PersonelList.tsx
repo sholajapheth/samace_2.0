@@ -15,9 +15,9 @@ const data: sidebar_nav_type = [
 const PersonelList = () => {
     const { set_topbar_value, set_sidebar_nav_data } =
       useContext(DashboardContext);
-       set_topbar_value("Personnel List");
+       set_topbar_value("Personnel List (BioData)");
        set_sidebar_nav_data(data);
-  return <div>personal list</div>;
+  return <div>personal </div>;
 };
 
 export default PersonelList;

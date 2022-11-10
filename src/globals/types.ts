@@ -3,3 +3,8 @@ export type sidebar_nav_type = Array<{
   img: string;
   link: string;
 }>
+
+export type top_action_button = {
+  name: string;
+  icon: any;
+};

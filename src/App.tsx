@@ -5,7 +5,7 @@ import { NoMatch } from "./globals";
 
 const App = () => {
   return (
-    <div className="font-roboto">
+    <div className="font-roboto scrollbar-style">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="login" element={<Login />} />
