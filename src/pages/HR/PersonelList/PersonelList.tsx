@@ -4,6 +4,7 @@ import { sidebar_nav_type } from "../../../globals/types";
 import personel_list from "../assets/personel_list.svg";
 import personel_record from "../assets/personel_record.svg";
 import SearchBar from "../../../globals/SearchBar";
+import { TableComponent } from "../../../components";
 
 const data: sidebar_nav_type = [
   { id: 0, name: "Personel List", img: personel_list, link: "hr/pl" },
@@ -21,8 +22,12 @@ const PersonelList = () => {
   }, [set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions]);
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <SearchBar />
+
+      <div className="">
+        <TableComponent />
+      </div>
     </div>
   );
 };

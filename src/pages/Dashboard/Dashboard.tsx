@@ -26,6 +26,8 @@ const Dashboard = () => {
 
   const [show_topbar_actions, set_show_topbar_actions] = useState(false);
 
+  
+
 
   const context = {
     topbar_value,
@@ -44,11 +46,11 @@ const Dashboard = () => {
 
   return (
     <DashboardContext.Provider value={context}>
-      <div className="lg:flex w-full ">
+      <div className="lg:flex  ">
         {show_decision_modal && <DecisionModal />}
         <Sidebar />
-        <div className="w-full  flex  items-start gap-4 py-[1.5em] ">
-          <div className="w-full">
+        <div className={`py-[1.5em] lg:w-[100%] ${show_topbar_actions === true && 'overflow-auto h-screen'}`}>
+          <div className=" lg:ml-[122px]">
             <Topbar />
             <DisplayArea />
           </div>

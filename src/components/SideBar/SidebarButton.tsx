@@ -10,10 +10,10 @@ const SidebarButton = ({ img, name, link }: sideBarProps) => {
     <NavLink
       to={link}
       className={({ isActive }) =>
-        isActive ? "bg-[#040a17] w-full" : "bg-none w-full"
+        isActive ? "bg-[#040a17] w-full h-full" : "bg-none w-full h-full"
       }
     >
-      <button className="flex flex-col gap-1 text-lm font-[700] items-center text-white  hover:bg-[#283E6C] w-full p-[1em] ">
+      <button className="flex flex-col gap-1 text-lm font-[700] items-center text-white  hover:bg-[#283E6C] h-full w-full p-[1em] ">
         <img className="md:w-[24px] w-[20px] " src={img} alt={name} />
         <span>{name}</span>
       </button>

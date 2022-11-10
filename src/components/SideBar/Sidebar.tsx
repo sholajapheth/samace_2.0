@@ -9,9 +9,9 @@ const Sidebar = () => {
   const { sidebar_nav_data } = useContext(DashboardContext);
 
   return (
-    <div className="lg:w-[120px] w-full lg:h-screen lg:sticky  lg:inset-0 bg-pri lg:py-[2em] flex lg:flex-col flex-row items-center  justify-between lg:px-0 px-[1em] lg:overflow-auto overflow-scroll scrollbar-hide  fixed bottom-0 z-[555] right-0  left-0 ">
+    <div className="lg:w-[8%] w-full lg:h-screen fixed  lg:inset-0 bg-pri lg:py-[2em] flex lg:flex-col flex-row items-center  justify-between lg:px-0 px-[1em] lg:overflow-auto overflow-scroll scrollbar-hide  bottom-0 z-[555] right-0  left-0 ">
       <img className="lg:inline hidden min-w-[3em]" src={logo} alt="megabox_logo" />
-      <div className="flex lg:flex-col flex-row lg:items-center items-end ">
+      <div className="flex lg:flex-col flex-row lg:items-center items-start  ">
         {sidebar_nav_data?.map(( data: any) => (
           <SidebarButton key={data.id} name={data.name} img={data.img} link={data.link} />
         ))}

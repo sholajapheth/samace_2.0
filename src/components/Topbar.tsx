@@ -9,7 +9,7 @@ const Topbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center mb-[1em]  gap-4 pl-[1.5em] ">
+    <div className="flex items-center mb-[1em]  gap-4 px-[1.5em] w-full ">
       <button
         onClick={() => navigate(-1)}
         className="hover:bg-[#283E6C] rounded-full h-[1.8rem] w-[1.8rem]  flex items-center "
