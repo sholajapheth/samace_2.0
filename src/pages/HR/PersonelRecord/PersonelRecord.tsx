@@ -8,6 +8,7 @@ import assessment from "../assets/assessment.svg";
 import training from "../assets/training.svg";
 import { hr_nav } from "../utils/sidebar_nav_data";
 
+
 const PersonelRecord = () => {
   const { set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions } =
     useContext(DashboardContext);
@@ -28,7 +29,7 @@ const PersonelRecord = () => {
         <NavTablet name="Assessment" img={assessment} link={"assessment"} />
         <NavTablet name="Pay" img={pay} link={"pay"} />
         <NavTablet
-          name="Diciplinary"
+          name="Disciplinary"
           img={disciplinary}
           link={"disciplinary"}
         />

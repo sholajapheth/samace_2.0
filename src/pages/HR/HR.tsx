@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import HRNav from "./HRNav";
-import PersonelRecord from "./PersonelRecord/PersonelRecord";
 import PersonelListIndex from "./PersonelList/PersonelListIndex";
+import PRIndex from './PersonelRecord/PRIndex';
 
 const HR = () => {
   return (
@@ -9,7 +9,7 @@ const HR = () => {
       <Routes>
         <Route path={"/"} element={<HRNav />} />
         <Route path={"pl/*"} element={<PersonelListIndex />} />
-        <Route path={"pr"} element={<PersonelRecord />} />
+        <Route path={"pr/*"} element={<PRIndex />} />
       </Routes>
     </div>
   );

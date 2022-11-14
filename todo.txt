@@ -1,3 +1,14 @@
 implement search bar
 
-fix navigation on refresh 
+navigate back button 
+
+
+
+
+
+
+
+
+----------------------------
+
+fix navigation on refresh -- done use a component to resolve 
