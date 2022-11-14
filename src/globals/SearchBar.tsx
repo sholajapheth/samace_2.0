@@ -1,7 +1,7 @@
 import { RiSearch2Line } from "react-icons/ri";
 import { IoIosArrowDown } from "react-icons/io";
 
-const SearchBar = () => {
+const SearchBar = (searchData:any) => {
   return (
     <div className=" w-full flex items-center">
       <div className="m-auto rounded-md border border-[#282828] py-2 px-[1em] flex md:flex-row flex-col gap-2 justify-between md:w-[80%] w-[90%]">

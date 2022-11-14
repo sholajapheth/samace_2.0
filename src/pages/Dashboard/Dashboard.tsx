@@ -3,7 +3,7 @@ import { Topbar, Sidebar, DisplayArea } from "../../components";
 import { DecisionModal } from "../../globals";
 
 
-
+console.log(window.location.pathname);
 
 export const DashboardContext = createContext<any>({});
 
@@ -16,15 +16,14 @@ const Dashboard = () => {
   const [sidebar_nav_data, set_sidebar_nav_data] = useState();
 
   //toggles the decision modal
-  const [show_decision_modal, set_show_decision_modal] = useState(false);
+  const [show_decision_modal, set_show_decision_modal] = useState();
 
   //returns 1 or 0 depending on the decision made
   const [decision_modal_value, set_decision_modal_value] = useState();
 
   //this section allows to dynamically set the topbar actions routes
-  const [topbar_actions_links, set_topbar_actions_links] = useState({add:"", edit:"" });
 
-  const [show_topbar_actions, set_show_topbar_actions] = useState(false);
+  const [show_topbar_actions, set_show_topbar_actions] = useState();
 
   
 
@@ -38,8 +37,6 @@ const Dashboard = () => {
     set_show_decision_modal,
     decision_modal_value,
     set_decision_modal_value,
-    topbar_actions_links,
-    set_topbar_actions_links,
     show_topbar_actions,
     set_show_topbar_actions,
   };
