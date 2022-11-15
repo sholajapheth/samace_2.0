@@ -1,6 +1,4 @@
-implement search bar
 
-navigate back button 
 
 
 
@@ -10,5 +8,8 @@ navigate back button
 
 
 ----------------------------
+navigate back button 
+
+implement search bar ---- am the GOAT
 
 fix navigation on refresh -- done use a component to resolve 

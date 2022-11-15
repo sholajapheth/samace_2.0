@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { useContext, memo } from "react";
 import { DashboardContext } from "../pages/Dashboard/Dashboard";
 import { HiOutlineArrowLeft } from "react-icons/hi";
@@ -7,11 +8,18 @@ import { TopbarActions } from "../globals";
 const Topbar = () => {
   const { topbar_value, show_topbar_actions } = useContext(DashboardContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const index = location.pathname.lastIndexOf("/");
+  let locat =
+    location.pathname.split("/").length - 1 > 2
+      ? location.pathname.slice(0, index)
+      : "/";
+  console.log(index, locat);
 
   return (
     <div className="flex items-center mb-[1em]  gap-4 px-[1.5em] w-full ">
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(locat)}
         className="hover:bg-[#283E6C] rounded-full h-[1.8rem] w-[1.8rem]  flex items-center "
       >
         <HiOutlineArrowLeft className="text-2xl" />

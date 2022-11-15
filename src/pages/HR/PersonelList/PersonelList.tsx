@@ -1,3 +1,4 @@
+
 import { useContext, useState, useEffect, useMemo, memo } from "react";
 import { DashboardContext } from "../../Dashboard/Dashboard";
 import { sidebar_nav_type } from "../../../globals/types";
@@ -29,8 +30,8 @@ type resolveProps = {
 };
 export const PLNavResolve = ({ name }: resolveProps) => {
   const { set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions } =
-    useContext(DashboardContext);
-
+  useContext(DashboardContext);
+  
   const data: sidebar_nav_type = useMemo(
     () => [
       { id: 0, name: "Personel List", img: personel_list, link: "hr/pl" },
@@ -50,7 +51,7 @@ export const PLNavResolve = ({ name }: resolveProps) => {
     name,
     data,
   ]);
-
+  
   return (
     <div className="hidden">
       <h1>Personel List</h1>
@@ -59,6 +60,8 @@ export const PLNavResolve = ({ name }: resolveProps) => {
 };
 
 const PersonelList = () => {
+
+  
   const { set_show_topbar_actions } = useContext(DashboardContext);
 
   const [personel_data, set_personel_data] = useState<any>(mock_data);
