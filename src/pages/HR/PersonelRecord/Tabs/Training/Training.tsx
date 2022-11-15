@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, memo } from "react";
+import { useContext, useEffect, useMemo, memo, useState } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
 import { sidebar_nav_type } from "../../../../../globals/types";
 import SearchBar from "../../../../../globals/SearchBar";
@@ -10,7 +10,6 @@ import pay from "../../../assets/pay.svg";
 import assessment from "../../../assets/assessment.svg";
 import training from "../../../assets/training.svg";
 
-
 const header_data = [
   { id: 0, name: "Date" },
   { id: 1, name: "Name" },
@@ -18,9 +17,7 @@ const header_data = [
   { id: 4, name: "GMP" },
   { id: 3, name: "GK" },
   { id: 5, name: "EH" },
-]
-
-
+];
 
 // one time component here to configure naaviation
 type resolveProps = {
@@ -73,6 +70,10 @@ export const PRNavResolve = ({ name }: resolveProps) => {
 const Training = () => {
   const { set_show_topbar_actions } = useContext(DashboardContext);
 
+  const [training_data, set_training_data ] = useState<any>(mock_data);
+
+  console.log(training_data);
+
   useEffect(() => {
     set_show_topbar_actions({
       add: "hr/pr/training/add",
@@ -82,10 +83,15 @@ const Training = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <SearchBar searchData={mock_data} />
+      <SearchBar
+        searchData={mock_data}
+        header_data={header_data}
+        set_body_data={set_training_data}
+        default_data={mock_data}
+      />
       <PRNavResolve name="Training Record" />
       <div className="">
-        <TableComponent header_data={header_data} body_data={mock_data} />
+        <TableComponent header_data={header_data} body_data={training_data} />
       </div>
     </div>
   );

@@ -1,28 +1,102 @@
+import { useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
-import { IoIosArrowDown } from "react-icons/io";
 
-const SearchBar = (searchData:any) => {
+type SearchBarProps = {
+  searchData: any[];
+  header_data: any[];
+  set_body_data: any;
+  default_data: any[];
+};
+
+const SearchBar = ({
+  searchData,
+  header_data,
+  set_body_data,
+  default_data,
+}: SearchBarProps) => {
+  const [search, set_search] = useState("name");
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
+  const handleSelectedData = (event: any) => {
+    set_search((search) =>search = event.target.value.toLowerCase().replace("/", "_"));
+  };
+
+  const handleFilter = (event: any) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter: any = searchData.filter((value: any) => {
+      return value[search].toLowerCase().includes(searchWord.toLowerCase());
+    });
+    console.log("Search: ", search);
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+    // console.log(filteredData);
+  };
+
+  const handleFilterMainData = () => {
+    set_body_data(filteredData);
+    setFilteredData([]);
+  };
+
   return (
     <div className=" w-full flex items-center">
-      <div className="m-auto rounded-md border border-[#282828] py-2 px-[1em] flex md:flex-row flex-col gap-2 justify-between md:w-[80%] w-[90%]">
-        <div className="flex gap-1 items-center bg-[#CDCDCD] text-[#282828] p-2 rounded-md md:w-[50%] w-full md:text-[14px] text-[12px]">
-          <RiSearch2Line className="text-[20px]" />
-          <input
-            className="w-full focus:border-none bg-transparent outline-none"
-            type="search"
-            placeholder="search"
-          />
-        </div>
+      <div className="md:w-[80%] w-[90%] ">
+        <div className="m-auto rounded-md border border-[#282828] py-2 px-[1em] flex md:flex-row flex-col gap-2 justify-between w-full ">
+          <div className="flex gap-1 items-center bg-[#CDCDCD] text-[#282828] p-2 rounded-md md:w-[50%] w-full md:text-[14px] text-[12px]">
+            {wordEntered.length === 0 && (
+              <RiSearch2Line className="text-[20px]" />
+            )}
+            <input
+              className="w-full focus:border-none bg-transparent outline-none"
+              type="search"
+              placeholder="search"
+              onChange={handleFilter}
+              value={wordEntered}
+            />
+          </div>
 
-        <div className="flex gap-[2em]">
-          <button className="rounded-md p-2 px-[1em] bg-[#CDCDCD] flex md:gap-1  justify-between items-center text-pri w-full">
-            <span>Browse by</span>
-            <IoIosArrowDown />
-          </button>
-          <button className="rounded-md p-2 px-[2em] bg-pri flex gap-1 items-center text-[#CDCDCD] ">
-            <span>Search</span>
-          </button>
+          <div className="flex gap-[2em]">
+            <select
+              placeholder="Browse by"
+              className="rounded-md p-2 px-[1em] bg-[#CDCDCD]  text-pri w-full"
+              // value={searc/}
+              onChange={handleSelectedData}
+            >
+              {header_data?.map((item: any, index: number) => (
+                <option key={index} value={item.name}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+            <button className="rounded-md p-2 px-[2em] bg-pri flex gap-1 items-center text-[#CDCDCD] ">
+              <span>Search</span>
+            </button>
+          </div>
         </div>
+        {/* <button
+          className="p-5 rounded-md bg-pri font-[700] text-white"
+          onClick={() => set_body_data(default_data)}
+        >
+          Reset
+        </button> */}
+        {filteredData.length !== 0 && (
+          <div className="shadow-md py-4 overflow-scroll scrollbar-hide  backdrop-blur-md lg:w-[33%] md:w-[50%] w-full h-[10em] absolute z-[550] mt-1">
+            {filteredData?.map((item: any, index: number) => (
+              <button
+                onClick={handleFilterMainData}
+                className="w-full p-4 border "
+                key={index}
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
