@@ -19,7 +19,7 @@ const TableComponent = ({header_data, body_data}:any ) => {
         </thead>
 
         <tbody style={{ whiteSpace: "nowrap" }}>
-          {body_data?.map((row: any, index:any) => {
+          {body_data.length !== 0 ?body_data?.map((row: any, index:any) => {
             return (
               <tr key={index} className=" border">
                 {header_data?.map((item: any) => (
@@ -36,7 +36,9 @@ const TableComponent = ({header_data, body_data}:any ) => {
                 ))}
               </tr>
             );
-          })}
+          }) : <tr className="border">
+            <td className="p-4 text-center" colSpan={header_data.length}>No Data Found</td>
+          </tr>}
         </tbody>
       </table>
     </div>
