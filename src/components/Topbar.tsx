@@ -14,7 +14,7 @@ const Topbar = () => {
     location.pathname.split("/").length - 1 > 2
       ? location.pathname.slice(0, index)
       : "/";
-  console.log(index, locat);
+ 
 
   return (
     <div className="flex items-center mb-[1em]  gap-4 px-[1.5em] w-full ">

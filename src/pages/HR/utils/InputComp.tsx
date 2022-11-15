@@ -16,8 +16,8 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
         focus:outline-none md:w-[18em] w-full"
           id={name}
         >
-          {optionList?.map((option) => (
-            <option value={option}>{option}</option>
+          {optionList?.map((option, index) => (
+            <option key={index} value={option}>{option}</option>
           ))}
         </select>
       ) : (

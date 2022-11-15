@@ -23,6 +23,7 @@ const header_data = [
 type resolveProps = {
   name: string;
 };
+
 export const PRNavResolve = ({ name }: resolveProps) => {
   const { set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions } =
     useContext(DashboardContext);
@@ -31,19 +32,19 @@ export const PRNavResolve = ({ name }: resolveProps) => {
     () => [
       { id: 0, name: "Tranining", img: training, link: "hr/pr/training" },
       {
+        id: 4,
+        name: "Assessment",
+        img: assessment,
+        link: "hr/pr/assessment",
+      },
+      { id: 3, name: "Pay", img: pay, link: "hr/pr/pay" },
+      {
         id: 1,
         name: "Disciplinary",
         img: disciplinary,
         link: "hr/pr/disciplinary",
       },
       { id: 2, name: "Medical", img: medical, link: "hr/pr/medical" },
-      { id: 3, name: "Pay", img: pay, link: "hr/pr/pay" },
-      {
-        id: 4,
-        name: "Assessment",
-        img: assessment,
-        link: "hr/pr/assessment",
-      },
     ],
     []
   );
@@ -71,8 +72,6 @@ const Training = () => {
   const { set_show_topbar_actions } = useContext(DashboardContext);
 
   const [training_data, set_training_data ] = useState<any>(mock_data);
-
-  console.log(training_data);
 
   useEffect(() => {
     set_show_topbar_actions({

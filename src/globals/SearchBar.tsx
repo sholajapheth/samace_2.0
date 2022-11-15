@@ -22,13 +22,15 @@ const SearchBar = ({
     set_search(
       (search) => (search = event.target.value.toLowerCase().replace("/", "_"))
     );
+    set_body_data(default_data);
+    setWordEntered("");
   };
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter: any = searchData.filter((value: any) => {
-      return value[search].toLowerCase().includes(searchWord.toLowerCase());
+      return value[search]?.toLowerCase().includes(searchWord.toLowerCase());
     });
     console.log("Search: ", search);
 
