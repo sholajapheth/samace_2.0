@@ -6,3 +6,4 @@ export {default as QA} from "./QA/QA";
 export {default as QC} from "./QC/QC";
 export {default as Production} from "./Production/Production";
 export {default as Maintenance} from "./Maintenance/Maintenance";
+export {default as Settings} from "./Settings/Settings";

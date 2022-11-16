@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { HR, QC, QA, Maintenance, Production } from "../pages";
+import { HR, QC, QA, Maintenance, Production, Settings } from "../pages";
 
 const DisplayArea = () => {
   return (
@@ -8,8 +8,9 @@ const DisplayArea = () => {
         <Route path="hr/*" element={<HR />} />
         <Route path="qc" element={<QC />} />
         <Route path="qa" element={<QA />} />
-        <Route path="maintenance" element={<Maintenance />} />
+        <Route path="maintenance/*" element={<Maintenance />} />
         <Route path="production" element={<Production />} />
+        <Route path="settings/*" element={<Settings />} />
       </Routes>
     </div>
   );

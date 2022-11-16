@@ -1,5 +1,5 @@
-import {sidebar_nav_type } from "../../../globals/types"
-import { hr, qa, qc, maintenance, production } from "../../../assets/svgs";
+import {sidebar_nav_type } from "../../globals/types"
+import { hr, qa, qc, maintenance, production } from "../../assets/svgs";
 import personel_list from "../assets/personel_list.svg"
 import personel_record from "../assets/personel_record.svg";
 

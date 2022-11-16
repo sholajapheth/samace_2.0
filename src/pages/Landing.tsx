@@ -20,11 +20,11 @@ const Landing = () => {
 
           <div className="flex gap-[4rem] md:mt-[3rem] mt-[2rem] justify-center items-center flex-wrap lg:w-[50%] md:w-[70%] w-[90%] m-auto">
             <NavTablet name="Human Resource" img={hr} link={"dashboard/hr"} />
-            <NavTablet name="Quality Assurance" img={qa} link={"/"} />
-            <NavTablet name="Quality Control" img={qc} link={"/"} />
+            <NavTablet name="Quality Assurance" img={qa} link={"dashboard/qa"} />
+            <NavTablet name="Quality Control" img={qc} link={"dashboard/qc"} />
 
-            <NavTablet name="Production" img={production} link={"/"} />
-            <NavTablet name="Maintenance" img={maintenance} link={"/"} />
+            <NavTablet name="Production" img={production} link={"dashboard/production"} />
+            <NavTablet name="Maintenance" img={maintenance} link={"dashboard/maintenance"} />
           </div>
         </div>
       </div>

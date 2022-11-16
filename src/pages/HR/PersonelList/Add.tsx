@@ -1,7 +1,7 @@
 import { DashboardContext } from "../../Dashboard/Dashboard";
 import { useContext } from "react";
-import InputComp from "../utils/InputComp";
-import { PLNavResolve } from './PersonelList';
+import InputComp from "../../utils/InputComp";
+import { PLNavResolve } from "./PersonelList";
 
 const Add = () => {
   const { set_show_decision_modal } = useContext(DashboardContext);
@@ -13,7 +13,7 @@ const Add = () => {
   return (
     <div className="">
       <PLNavResolve name="Add Personnel List (BioData)" />
-      
+
       <div className="w-full mt-[2em]  ">
         <div className="bg-pri m-auto rounded-md lg:w-[65%] md:w-[80%] w-[90%]  py-[2em] md:px-[5em] px-[2em]">
           <InputComp name="ID" type="number" placeholder="Enter ID" />

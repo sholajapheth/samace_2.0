@@ -1,6 +1,6 @@
 import { DashboardContext } from "../../Dashboard/Dashboard";
 import { useContext } from "react";
-import InputComp from "../utils/InputComp";
+import InputComp from "../../utils/InputComp";
 import { PLNavResolve } from "./PersonelList";
 
 const Edit = () => {
@@ -13,7 +13,7 @@ const Edit = () => {
   return (
     <div>
       <PLNavResolve name="Edit" />
-     
+
       <div className="w-full mt-[2em]  ">
         <div className="bg-pri m-auto rounded-md lg:w-[65%] md:w-[80%] w-[90%]  py-[2em] md:px-[5em] px-[2em]">
           <InputComp name="ID" type="number" placeholder="Enter ID" />

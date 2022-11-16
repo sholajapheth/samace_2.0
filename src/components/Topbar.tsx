@@ -1,8 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import { useContext, memo } from "react";
 import { DashboardContext } from "../pages/Dashboard/Dashboard";
 import { HiOutlineArrowLeft } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
 import { TopbarActions } from "../globals";
 
 const Topbar = () => {
@@ -36,7 +35,13 @@ const Topbar = () => {
           <span className="md:hidden inline absolute top-2 right-2">
             humanresource@sam-ace.com
           </span>
-          <span className="md:inline hidden ">humanresource@sam-ace.com</span>
+          <span className="md:inline hidden ">
+            {location.pathname.includes("hr") && " humanresource@sam-ace.com"}
+            {location.pathname.includes("qc") && " qualitycontrol@sam-ace.com"}
+            {location.pathname.includes("qa") && " qualityassurance@sam-ace.com"}
+            {location.pathname.includes("maintenance") && "maintenance@sam-ace.com"}
+            {location.pathname.includes("production") && "production@sam-ace.com"}
+          </span>
         </div>
       </div>
     </div>

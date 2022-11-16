@@ -1,4 +1,4 @@
-import InputComp from "../../../utils/InputComp";
+import InputComp from "../../../../utils/InputComp";
 import { PRNavResolve } from "../Training/Training";
 import { useContext } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";

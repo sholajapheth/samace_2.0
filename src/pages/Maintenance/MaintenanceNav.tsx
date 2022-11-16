@@ -1,28 +1,30 @@
 import { DashboardContext } from "../Dashboard/Dashboard";
 import { useContext, useEffect } from "react";
 import { NavTablet } from "../../globals";
-import personel_list from "./assets/personel_list.svg";
-import personel_record from "./assets/personel_record.svg";
 import { main_nav } from "../utils/sidebar_nav_data";
+import facility from "./assets/facility.svg";
+import ict from "./assets/ict.svg";
+import me from "./assets/me.svg";
 
-const HRNav = () => {
+const MaintenanceNav = () => {
   const { set_topbar_value, set_sidebar_nav_data } =
     useContext(DashboardContext);
 
   useEffect(() => {
     set_sidebar_nav_data(main_nav);
-    set_topbar_value("Human Resource Department");
+    set_topbar_value("Maintenance Department");
   }, [set_sidebar_nav_data, set_topbar_value]);
 
   return (
     <div className="w-full  flex flex-col gap-[6em] px-[4em]">
       <span className="text-hm text-pri font-[700]">Select Task</span>
       <div className="flex gap-[5em] m-auto">
-        <NavTablet name="Personel List" img={personel_list} link={"pl"} />
-        <NavTablet name="Personel Record" img={personel_record} link={"pr"} />
+        <NavTablet name="Mechanical & Electrical" img={me} link={"me"} />
+        <NavTablet name="ICT" img={ict} link={"ict"} />
+        <NavTablet name="Facility" img={facility} link={"facility"} />
       </div>
     </div>
   );
 };
 
-export default HRNav;
+export default MaintenanceNav;
