@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import SettingsNav from "./SettingsNav";
-import ME from "./ME/ME";
-import PE from "./PE/PE";
+import MEIndex from "./ME/MEIndex";
+import PEIndex from "./PE/PEIndex";
 
 const Settings = () => {
   return (
     <div>
       <Routes>
         <Route path={"/"} element={<SettingsNav />} />
-        <Route path={"ict/*"} element={<ME />} />
-        <Route path={"me/*"} element={<PE />} />
+        <Route path={"me/*"} element={<MEIndex />} />
+        <Route path={"pe/*"} element={<PEIndex />} />
       </Routes>
     </div>
   );
