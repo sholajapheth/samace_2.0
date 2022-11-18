@@ -16,6 +16,7 @@ const Sidebar = () => {
           <SidebarButton key={data.id} name={data.name} img={data.img} link={data.link} />
         ))}
       </div>
+      
       <div className="text-tm font-[700] text-white flex lg:flex-col flex-row w-full  gap-4 ">
       
         <SidebarButton name="Settings" img={settings} link="settings" />

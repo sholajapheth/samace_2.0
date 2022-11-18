@@ -1,7 +1,7 @@
 import { DashboardContext } from "../Dashboard/Dashboard";
 import { useContext, useEffect } from "react";
 import { NavTablet } from "../../globals";
-import { maintenance_nav, main_nav } from "../utils/sidebar_nav_data";
+import { main_nav } from "../utils/sidebar_nav_data";
 import facility from "./assets/facility.svg";
 import ict from "./assets/ict.svg";
 import me from "./assets/me.svg";
@@ -11,7 +11,7 @@ const MaintenanceNav = () => {
     useContext(DashboardContext);
 
   useEffect(() => {
-    set_sidebar_nav_data(maintenance_nav);
+    set_sidebar_nav_data(main_nav);
     set_topbar_value("Maintenance Department");
   }, [set_sidebar_nav_data, set_topbar_value]);
 

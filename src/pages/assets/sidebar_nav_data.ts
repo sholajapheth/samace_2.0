@@ -6,9 +6,9 @@ import dmrr from "../assets/dmrr.svg";
 import pu from "../assets/pu.svg";
 import mr from "../assets/mr.svg";
 import sr from "../assets/sr.svg";
+import me from "../assets/me.svg";
 import ict from "../assets/ict.svg";
 import facility from "../assets/facility.svg";
-import me from "../assets/me.svg";
 
 
 
@@ -26,7 +26,6 @@ export const hr_nav: sidebar_nav_type = [
   { id: 1,  name: "Personel Record", img: personel_record, link: "hr/pr" },
 ];
 
-// Mechanical and electricl 
 export const me_nav: sidebar_nav_type = [
   {
     id: 0,
@@ -47,5 +46,5 @@ export const maintenance_nav: sidebar_nav_type = [
     link: "maintenance/me",
   },
   { id: 1, name: "ICT", img: ict, link: "maintenance/ict" },
-  { id: 2, name: "Facility", img: facility, link: "maintenance/facility" },
+  { id: 2, name: "Facility", img: facility, link: "maintenance/facility" }
 ];
