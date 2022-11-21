@@ -36,10 +36,10 @@ const TableComponent = ({ header_data, body_data }: any) => {
                         row[
                           item.name
                             .toLowerCase()
-                            .replace(" ", "_")
-                            .replace("/", "_")
-                            .replace("-", "_")
-                            .replace("&", "_")
+                            .replaceAll(" ", "_")
+                            .replaceAll("/", "_")
+                            .replaceAll("-", "_")
+                            .replaceAll("&", "_")
                         ]
                       }
                     </TableData>

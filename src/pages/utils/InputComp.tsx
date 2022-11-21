@@ -17,9 +17,18 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
           id={name}
         >
           {optionList?.map((option, index) => (
-            <option key={index} value={option}>{option}</option>
+            <option key={index} value={option}>
+              {option}
+            </option>
           ))}
         </select>
+      ) : type === "textarea" ? (
+        <textarea
+          placeholder={placeholder}
+          className="  bg-white rounded-md text-pri text-[16px] p-2 
+        focus:outline-none md:w-[18em] w-full h-[10em]"
+        
+        />
       ) : (
         <input
           type={type}
