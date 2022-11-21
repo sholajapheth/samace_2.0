@@ -7,6 +7,8 @@ fix maintenance nav
 fix mobile repsoive nav 
 
 
+ad edit dynami rouing
+
 
 
 ----------------------------

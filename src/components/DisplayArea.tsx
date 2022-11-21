@@ -9,7 +9,7 @@ const DisplayArea = () => {
         <Route path="qc" element={<QC />} />
         <Route path="qa" element={<QA />} />
         <Route path="maintenance/*" element={<Maintenance />} />
-        <Route path="production" element={<Production />} />
+        <Route path="production/*" element={<Production />} />
         <Route path="settings/*" element={<Settings />} />
       </Routes>
     </div>

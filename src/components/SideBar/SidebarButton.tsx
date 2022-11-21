@@ -14,8 +14,8 @@ const SidebarButton = ({ img, name, link }: sideBarProps) => {
       }
     >
       <button className="flex flex-col gap-1 text-lm font-[700] items-center text-white  hover:bg-[#283E6C] h-full w-full  p-[1em] ">
-        <img className="md:w-[24px] min-w-[20px]  " src={img} alt={name} />
-        <span>{name}</span>
+        <img className="lg:w-[3em] md:w-[2.5em] w-[2em] " src={img} alt={name} />
+        <span className="md:text-[12px] md:inline hidden">{name}</span>
       </button>
     </NavLink>
   );
