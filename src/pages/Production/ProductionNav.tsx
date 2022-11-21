@@ -18,7 +18,7 @@ const ProductionNav = () => {
   return (
     <div className="w-full  flex flex-col gap-[6em] px-[4em]">
       <span className="text-hm text-pri font-[700]">Select Task</span>
-      <div className="flex gap-[5em] m-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-[5em] gap-[3em] m-auto">
         <NavTablet name="Records" img={records} link={"records"} />
         <NavTablet name="SOPS" img={sops} link={"sops"} />
         <NavTablet name="Diary" img={diary} link={"diary"} />
