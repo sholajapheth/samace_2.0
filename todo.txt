@@ -2,9 +2,7 @@
 fix nav rsponsiveness
 
 
-fix maintenance nav
 
-fix mobile repsoive nav 
 
 
 ad edit dynami rouing
@@ -12,6 +10,8 @@ ad edit dynami rouing
 
 
 ----------------------------
+fix maintenance nav
+fix mobile repsoive nav 
 add checking feature to table data
 navigate back button 
 
