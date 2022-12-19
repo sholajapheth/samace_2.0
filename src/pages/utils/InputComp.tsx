@@ -36,6 +36,7 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
         <select
           value={value ? value : defaultValue}
           onChange={handleChanges}
+          
           // defaultValue={optionList? optionList[0]: ""}
 
           className="bg-white rounded-md text-pri text-[16px] p-2 
