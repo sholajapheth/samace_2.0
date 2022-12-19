@@ -1,15 +1,14 @@
 import { DashboardContext } from "../../Dashboard/Dashboard";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import InputComp from "../../utils/InputComp";
 import { PLNavResolve } from "./PersonelList";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleData, updateData } from "../../../store/slices/hr";
 import Loading from "../../../components/Loading";
-import { useNavigate } from "react-router-dom";
 import { currentUser } from "../../../globals/HelperFunctions";
 
 const Edit = () => {
-  const { set_show_decision_modal, inputValue, selectedItem, setSelectedItem  } = useContext(DashboardContext);
+  const { set_show_decision_modal, inputValue, selectedItem  } = useContext(DashboardContext);
   const dispatch = useDispatch<any>();
   // const navigate = useNavigate();
   const {data, loading} = useSelector((state: any) => state.hr);
@@ -32,13 +31,13 @@ useEffect(() => {
       add: "hr/pl/add",
       edit: "hr/pl/edit",
     }));
-  }, [set_show_topbar_actions, dispatch]);
+  }, [set_show_topbar_actions,selectedItem, dispatch]);
 
   useEffect(() => {
     setEditData(() => data);
     console.log("edit: ", editData);
     console.log("sd: ", selectedItem[0])
-  }, [data]);
+  }, [data, editData, setEditData, selectedItem]);
 
 
   const handleSend = (url: string) => {

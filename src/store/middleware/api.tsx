@@ -17,7 +17,7 @@ const api =
         method,
         baseURL: "https://pharm-app-api.herokuapp.com/api/",
         url,
-        params: {},
+        params: params,
         data,
         headers: {
           "content-type": "application/json",

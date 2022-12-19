@@ -1,9 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
-import mock_data from "./MOCK_DATA.json";
 import { PRNavResolve } from "../Training/Training";
 import SearchBar from "../../../../../globals/SearchBar";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { getData } from "../../../../../store/slices/hr";
+import Loading from "../../../../../components/Loading";
 
 const header_data = [
   { id: 0, name: "Date" },
@@ -14,28 +16,60 @@ const header_data = [
 ];
 
 const Disciplinary = () => {
-  const [disciplinary_data, set_disciplinary_data] = useState<any>(mock_data);
+  const [disciplinary_data, set_disciplinary_data] = useState<any>([]);
+  const { set_show_topbar_actions, selectedItem } =
+  useContext(DashboardContext);
+const dispatch = useDispatch<any>();
+const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
+const { loading, data } = useSelector((state: any) => state.hr);
 
-  const { set_show_topbar_actions } = useContext(DashboardContext);
+
 
   useEffect(() => {
+    dispatch(getData("humanResources_personnelRecord_disciplinary"));
     set_show_topbar_actions({
       add: "hr/pr/disciplinary/add",
       edit: "hr/pr/disciplinary/edit",
+      delete: {
+        selectedId: selectedItem,
+        url: "humanResources_personnelRecord_disciplinary",
+      },
     });
-  }, [set_show_topbar_actions]);
+  }, [set_show_topbar_actions, dispatch, selectedItem]);
+
+
+  useEffect(() => {
+    set_disciplinary_data(() => data);
+  }, [data]);
+
   return (
     <div>
       <PRNavResolve name="Disciplinary Record" />
       <SearchBar
-        searchData={mock_data}
+        searchData={disciplinary_data.docs}
         header_data={header_data}
         set_body_data={set_disciplinary_data}
-        default_data={mock_data}
+        default_data={
+          fillteredBodyData.length !== 0
+            ? fillteredBodyData
+            : disciplinary_data.docs
+        }
       />
-      <div className="">
-        <TableComponent header_data={header_data} body_data={disciplinary_data} />
-      </div>
+    {loading ? (
+        <Loading />
+      ) : (
+        <div className="">
+          <TableComponent
+            header_data={header_data}
+            body_data={
+              fillteredBodyData.length !== 0
+                ? fillteredBodyData
+                : disciplinary_data.docs
+            }
+            setFillteredBodyData={setFillteredBodyData}
+          />
+        </div>
+      )}
     </div>
   );
 };

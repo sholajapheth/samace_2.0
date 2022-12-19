@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const App = () => {
 
-  const { loading, isLoggedIn } = useSelector((state: any) => state.login);
+  const { isLoggedIn } = useSelector((state: any) => state.login);
 
   return (
     <div className="font-roboto scrollbar-style">

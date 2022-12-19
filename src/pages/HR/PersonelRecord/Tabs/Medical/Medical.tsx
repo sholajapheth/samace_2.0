@@ -1,9 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
-import mock_data from "./MOCK_DATA.json";
 import { PRNavResolve } from "../Training/Training";
 import SearchBar from "../../../../../globals/SearchBar";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { getData } from "../../../../../store/slices/hr";
+import Loading from "../../../../../components/Loading";
 
 const header_data = [
   { id: 0, name: "ID" },
@@ -29,31 +31,56 @@ const header_data = [
 ];
 
 const Medical = () => {
-  const [medical_data, set_disciplinary_data] = useState<any>(mock_data);
+  const [medical_data, set_medical_data] = useState<any>([]);
 
-  const { set_show_topbar_actions } = useContext(DashboardContext);
-
+  const { set_show_topbar_actions, selectedItem } =
+    useContext(DashboardContext);
+  const dispatch = useDispatch<any>();
+  const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
+  const { loading, data } = useSelector((state: any) => state.hr);
+  
   useEffect(() => {
+    dispatch(getData("humanResources_personnelRecord_medical"));
     set_show_topbar_actions({
       add: "hr/pr/medical/add",
       edit: "hr/pr/medical/edit",
+      delete: {
+        selectedId: selectedItem,
+        url: "humanResources_personnelRecord_medical",
+      },
     });
-  }, [set_show_topbar_actions]);
+  }, [set_show_topbar_actions, dispatch, selectedItem]);
+
+  useEffect(() => {
+    set_medical_data(() => data);
+  }, [data]);
+
   return (
     <div>
       <PRNavResolve name="Medical Records" />
       <SearchBar
-        searchData={mock_data}
+        searchData={medical_data.docs}
         header_data={header_data}
-        set_body_data={set_disciplinary_data}
-        default_data={mock_data}
+        set_body_data={set_medical_data}
+        default_data={
+          fillteredBodyData.length !== 0 ? fillteredBodyData : medical_data.docs
+        }
       />
-      <div className="">
-        <TableComponent
-          header_data={header_data}
-          body_data={medical_data}
-        />
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="">
+          <TableComponent
+            header_data={header_data}
+            body_data={
+              fillteredBodyData.length !== 0
+                ? fillteredBodyData
+                : medical_data.docs
+            }
+            setFillteredBodyData={setFillteredBodyData}
+          />
+        </div>
+      )}
     </div>
   );
 };

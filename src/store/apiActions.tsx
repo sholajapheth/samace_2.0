@@ -1,4 +1,4 @@
-import { PayloadActionCreator, createAction } from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 
 export const apiCallBegan = createAction<any>("api/CallBegan")
 export const apiCallSuccess = createAction<any>("api/CallSuccess")

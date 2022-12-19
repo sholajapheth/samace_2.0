@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { DashboardContext } from "../../pages/Dashboard/Dashboard";
 
 // reuseable function camelize to convert string to camelcase
