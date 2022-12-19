@@ -1,0 +1,10 @@
+[{"date":"11/10/2022","power_source":"core","start_time":"Buick","stop_time":1,"run_time":1999, "operator": "staff"},
+{"date":"6/9/2022","power_source":"well-modulated","start_time":"Mercury","stop_time":1,"run_time":1992, "operator": "staff"},
+{"date":"5/21/2022","power_source":"fresh-thinking","start_time":"Chrysler","stop_time":1,"run_time":2008, "operator": "staff"},
+{"date":"2/5/2022","power_source":"Cross-group","start_time":"Lexus","stop_time":0,"run_time":2000, "operator": "staff"},
+{"date":"1/13/2022","power_source":"collaboration","start_time":"Toyota","stop_time":1,"run_time":1993, "operator": "staff"},
+{"date":"8/22/2022","power_source":"initiative","start_time":"Volkswagen","stop_time":1,"run_time":2004, "operator": "staff"},
+{"date":"11/12/2022","power_source":"Virtual","start_time":"Geo","stop_time":1,"run_time":1992, "operator": "staff"},
+{"date":"3/14/2022","power_source":"grid-enabled","start_time":"Audi","stop_time":0,"run_time":2005, "operator": "staff"},
+{"date":"7/30/2022","power_source":"tangible","start_time":"Chevrolet","stop_time":0,"run_time":1969, "operator": "staff"},
+{"date":"2/28/2022","power_source":"intranet","start_time":"Mercedes-Benz","stop_time":1,"run_time":2011, "operator": "staff"}]
