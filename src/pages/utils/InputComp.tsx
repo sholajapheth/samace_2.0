@@ -1,3 +1,5 @@
+
+
 import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../Dashboard/Dashboard";
 import { camelize } from "../../components/TableComponent/TableComponent";
@@ -10,22 +12,36 @@ type inputType = {
 };
 
 const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
-  const { inputValue, setInputValue } = useContext(DashboardContext);
+  const { inputValue, setInputValue, editData, setEditData } =
+    useContext(DashboardContext);
   const [value, setValue] = useState("");
-
   let defaultValue = optionList ? optionList[0] : "";
+
+  const location = window.location.pathname.split("/").slice(-1).join("");
 
   useEffect(() => {
     inputValue[camelize(name)] = "";
-    if (type === "drop") {
+    if (location === "edit") {
+      inputValue[camelize(name)] = editData?.properties?.[camelize(name)];
+      setValue(editData?.properties?.[camelize(name)]);
+      console.log("edit f: ", editData?.properties?.name);
+    } else if (type === "drop") {
       inputValue[camelize(name)] = optionList ? optionList[0] : "";
     }
   }, []);
 
   const handleChanges = (e: any) => {
     setValue(e.target.value);
-    setInputValue({ ...inputValue, [camelize(name)]: e.target.value });
-    console.log(inputValue);
+    if (location === "edit") {
+      setEditData({
+        ...editData,
+        properties: { ...editData.properties, [camelize(name)]: e.target.value },
+      });
+    } else;
+    {
+      setInputValue({ ...inputValue, [camelize(name)]: e.target.value });
+    }
+    console.log("edit prop: ", editData);
   };
 
   return (
@@ -34,11 +50,12 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
 
       {type === "drop" ? (
         <select
-          value={value ? value : defaultValue}
+          value={
+            editData?.properties?.[camelize(name)]
+              ? editData?.properties?.[camelize(name)]
+              : defaultValue
+          }
           onChange={handleChanges}
-          
-          // defaultValue={optionList? optionList[0]: ""}
-
           className="bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full"
           id={name}
@@ -51,7 +68,13 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
         </select>
       ) : type === "textarea" ? (
         <textarea
-          value={value}
+          value={
+            location === "edit"
+              ? editData?.properties?.[camelize(name)]
+                ? editData?.properties?.[camelize(name)]
+                : value
+              : value
+          }
           onChange={handleChanges}
           placeholder={placeholder}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
@@ -59,7 +82,13 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
         />
       ) : (
         <input
-          value={value}
+          value={
+            location === "edit"
+              ? editData?.properties?.[camelize(name)]
+                ? editData?.properties?.[camelize(name)]
+                : value
+              : value
+          }
           onChange={handleChanges}
           type={type}
           placeholder={placeholder}

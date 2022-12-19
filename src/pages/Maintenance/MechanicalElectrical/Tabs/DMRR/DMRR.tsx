@@ -8,6 +8,9 @@ import dmrr from "../../../assets/dmrr.svg";
 import mr from "../../../assets/mr.svg";
 import pu from "../../../assets/pu.svg";
 import sr from "../../../assets/sr.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { getData } from "../../../../../store/slices/maintenance";
+import Loading from "../../../../../components/Loading";
 
 const header_data = [
   { id: 0, name: "Date" },
@@ -72,29 +75,61 @@ export const MENavResolve = ({ name }: resolveProps) => {
 };
 
 const DMRR = () => {
-  const [assessment_data, set_assessment_data] = useState<any>(mock_data);
+  const [dmrr_data, set_dmrr_data] = useState<any>([]);
 
-  const { set_show_topbar_actions } = useContext(DashboardContext);
+  const { set_show_topbar_actions, selectedItem } =
+    useContext(DashboardContext);
+  const dispatch = useDispatch<any>();
+  const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
+  const { loading, data } = useSelector((state: any) => state.maintenance);
 
+  
   useEffect(() => {
+    dispatch(getData("maintenance_maintenanceAndElectrical_dieselAndMeterReadingRecord"));
     set_show_topbar_actions({
       add: "maintenance/me/dmrr/add",
       edit: "maintenance/me/dmrr/edit",
+      delete: {
+        selectedId: selectedItem,
+        url: "maintenance_maintenanceAndElectrical_dieselAndMeterReadingRecord",
+      },
     });
-  }, [set_show_topbar_actions]);
+  }, [set_show_topbar_actions, dispatch, selectedItem]);
+
+
+  useEffect(() => {
+    set_dmrr_data(() => data);
+  }, [data]);
+
 
   return (
     <div>
       <MENavResolve name="Diesel & Meter Record" />
       <SearchBar
-        searchData={mock_data}
+        searchData={dmrr_data.docs}
         header_data={header_data}
-        set_body_data={set_assessment_data}
-        default_data={mock_data}
+        set_body_data={dmrr_data}
+        default_data={
+          fillteredBodyData.length !== 0
+            ? fillteredBodyData
+            : dmrr_data.docs
+        }
       />
-      <div className="">
-        <TableComponent header_data={header_data} body_data={assessment_data} />
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="">
+          <TableComponent
+            header_data={header_data}
+            body_data={
+              fillteredBodyData.length !== 0
+                ? fillteredBodyData
+                : dmrr_data.docs
+            }
+            setFillteredBodyData={setFillteredBodyData}
+          />
+        </div>
+      )}
     </div>
   );
 };

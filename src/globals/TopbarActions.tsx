@@ -60,7 +60,7 @@ const token:any = localStorage.getItem("currentUser");
         <TopbarActionButton name="Add" icon={<MdOutlineAdd />} />
       </Link>
     
-        <Link to={show_topbar_actions?.edit}>
+        <Link to={selectedItem.length !==0 && show_topbar_actions?.edit}>
         <TopbarActionButton name="Edit" icon={<FiEdit2 />} />
       </Link>
       <div className="cursor:pointer" onClick={handleDelete}>

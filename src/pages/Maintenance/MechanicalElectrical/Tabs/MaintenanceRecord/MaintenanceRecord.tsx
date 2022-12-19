@@ -5,6 +5,9 @@ import SearchBar from "../../../../../globals/SearchBar";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
 
 import { MENavResolve } from "../DMRR/DMRR";
+import { useDispatch, useSelector } from "react-redux";
+import { getData } from "../../../../../store/slices/maintenance";
+import Loading from "../../../../../components/Loading";
 
 const header_data = [
   { id: 0, name: "Date" },
@@ -16,14 +19,27 @@ const header_data = [
 
 
 const MaintenanceRecord = () => {
-  const [assessment_data, set_assessment_data] = useState<any>(mock_data);
+  const [mr_data, set_mr_data] = useState<any>([]);
 
-  const { set_show_topbar_actions } = useContext(DashboardContext);
+
+  const { set_show_topbar_actions, selectedItem } =
+    useContext(DashboardContext);
+  const dispatch = useDispatch<any>();
+  const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
+  const { loading, data } = useSelector((state: any) => state.maintenance);
+
+
 
   useEffect(() => {
+    dispatch(getData("maintenance_maintenanceAndElectrical_maintenanceRecord"));
+
     set_show_topbar_actions({
       add: "maintenance/me/mr/add",
       edit: "maintenance/me/mr/edit",
+      delete: {
+        selectedId: selectedItem,
+        url: "maintenance_maintenanceAndElectrical_maintenanceRecord",
+      },
     });
   }, [set_show_topbar_actions]);
 
@@ -31,14 +47,30 @@ const MaintenanceRecord = () => {
     <div>
       <MENavResolve name="Maintenance Record" />
       <SearchBar
-        searchData={mock_data}
+        searchData={mr_data.docs}
         header_data={header_data}
-        set_body_data={set_assessment_data}
-        default_data={mock_data}
+        set_body_data={mr_data}
+        default_data={
+          fillteredBodyData.length !== 0
+            ? fillteredBodyData
+            : mr_data.docs
+        }
       />
-      <div className="">
-        <TableComponent header_data={header_data} body_data={assessment_data} />
-      </div>
+    {loading ? (
+        <Loading />
+      ) : (
+        <div className="">
+          <TableComponent
+            header_data={header_data}
+            body_data={
+              fillteredBodyData.length !== 0
+                ? fillteredBodyData
+                : mr_data.docs
+            }
+            setFillteredBodyData={setFillteredBodyData}
+          />
+        </div>
+      )}
     </div>
   );
 };
