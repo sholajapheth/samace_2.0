@@ -1,9 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
-import mock_data from "./MOCK_DATA.json";
 import SearchBar from "../../../../../globals/SearchBar";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
-
 import { MENavResolve } from "../DMRR/DMRR";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/maintenance";
@@ -41,7 +39,13 @@ const MaintenanceRecord = () => {
         url: "maintenance_maintenanceAndElectrical_maintenanceRecord",
       },
     });
-  }, [set_show_topbar_actions]);
+  }, [set_show_topbar_actions, dispatch, selectedItem]);
+
+
+  useEffect(() => {
+    set_mr_data(() => data);
+  }, [data]);
+
 
   return (
     <div>

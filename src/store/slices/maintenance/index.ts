@@ -22,7 +22,7 @@ const hrSlice = createSlice({
         // console.log("state: ", state.data);
       },
       dataFectchFailed: (state, action) => {
-        alert(action.payload.message);
+        alert(action.payload.response.data.message);
         state.loading = false;
       },
       deleteSuccessType: (state, action) => {

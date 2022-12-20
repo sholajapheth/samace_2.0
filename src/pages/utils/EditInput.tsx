@@ -9,23 +9,30 @@ type inputType = {
   optionList?: string[];
 };
 
-const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
-  const { inputValue, setInputValue, editData, setEditData } =
+const EditInput = ({ name, type, placeholder, optionList }: inputType) => {
+  const { inputValue, editData, setEditData } =
     useContext(DashboardContext);
   const [value, setValue] = useState("");
   let defaultValue = optionList ? optionList[0] : "";
 
   useEffect(() => {
     inputValue[camelize(name)] = "";
-    if (type === "drop") {
-      inputValue[camelize(name)] = optionList ? optionList[0] : "";
-    }
+    inputValue[camelize(name)] = editData?.properties?.[camelize(name)];
+    // setValue(editData?.properties?.[camelize(name)]);
+    // console.log("edit f: ", editData?.properties?.name);
   }, []);
 
   const handleChanges = (e: any) => {
     setValue(e.target.value);
+    setEditData({
+      ...editData,
+      properties: {
+        ...editData.properties,
+        [camelize(name)]: e.target.value,
+      },
+    });
 
-    setInputValue({ ...inputValue, [camelize(name)]: e.target.value });
+    console.log("edit prop: ", editData);
   };
 
   return (
@@ -80,4 +87,4 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
   );
 };
 
-export default InputComp;
+export default EditInput;

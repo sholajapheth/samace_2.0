@@ -21,7 +21,8 @@ const hrSlice = createSlice({
       // console.log("state: ", state.data);
     },
     dataFectchFailed: (state, action) => {
-      alert(action.payload.message);
+      alert(action.payload.response.data.message);
+      console.log("actoin: ", action.payload);
       state.loading = false;
     },
     deleteSuccessType: (state, action) => {
@@ -88,7 +89,7 @@ export const getData =
   };
 
 export const updateData =
-  (url: string, id:string, data?: any, extraheaders?: any) =>
+  (url: string, id:string, data: any, extraheaders?: any) =>
   (dispatch: AppDispatch, getState: any) => {
     dispatch(
       apiCallBegan({
