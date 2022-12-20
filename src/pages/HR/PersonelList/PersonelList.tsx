@@ -67,14 +67,15 @@ const PersonelList = () => {
   const { set_show_topbar_actions, selectedItem } = useContext(DashboardContext);
   const [personel_data, set_personel_data] = useState<any>([]);
  const [fillteredBodyData, setFillteredBodyData] = useState<any>([])
-
+const url = "humanResources_personnelList"
 
   useEffect(() => {
-    dispatch(getData("humanResources_personnelList"));
+    dispatch(getData(url));
     set_show_topbar_actions(() => ({
       add: "hr/pl/add",
       edit: "hr/pl/edit",
-      delete: { selectedId: selectedItem, url: "humanResources_personnelList" },
+      delete: { selectedId: selectedItem, url: url },
+      type: url
     }));
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

@@ -23,17 +23,19 @@ const Assessment = () => {
   const [assessment_data, set_assessment_data] = useState<any>([]);
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
   const { loading, data } = useSelector((state: any) => state.hr);
+  const url = "humanResources_personnelRecord_assessment"
 
   useEffect(() => {
-    dispatch(getData("humanResources_personnelRecord_assessment"));
+    dispatch(getData(url));
 
     set_show_topbar_actions({
       add: "hr/pr/assessment/add",
       edit: "hr/pr/assessment/edit",
       delete: {
         selectedId: selectedItem,
-        url: "humanResources_personnelRecord_assessment",
+        url: url,
       },
+      type: url
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

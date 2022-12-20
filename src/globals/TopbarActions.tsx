@@ -7,7 +7,7 @@ import { top_action_button } from "../globals/types";
 import { useContext } from "react";
 import { DashboardContext } from "../pages/Dashboard/Dashboard";
 import { useDispatch } from "react-redux";
-import { deleteData } from "../store/slices/hr";
+import { deleteData, exportToExcel } from "../store/slices/hr";
 
 const TopbarActionButton = ({ name, icon }: top_action_button) => {
   const { selectedItem  } = useContext(DashboardContext);
@@ -54,6 +54,12 @@ const token:any = localStorage.getItem("currentUser");
   } else alert("Select item(s) to delete")
   };
 
+  const handleExport = () => {
+    dispatch(
+      exportToExcel(show_topbar_actions?.type, JSON.parse(token).token)
+    );
+  };
+
   return (
     <div className="flex gap-4 items-center">
       <Link to={show_topbar_actions?.add}>
@@ -66,10 +72,12 @@ const token:any = localStorage.getItem("currentUser");
       <div className="cursor:pointer" onClick={handleDelete}>
         <TopbarActionButton name="Delete" icon={<RiDeleteBin5Line />} />
       </div>
+      <div className="cursor:pointer" onClick={handleExport}>
       <TopbarActionButton
         name="Export"
         icon={<RiFileExcel2Fill className="text-[#107C41]" />}
-      />
+      />      </div>
+      
     </div>
   );
 };

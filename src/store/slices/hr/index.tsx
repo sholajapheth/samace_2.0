@@ -74,7 +74,7 @@ export const getData =
 
   export const addData =
   (url: string, data?: any, extraheaders?: any) =>
-  (dispatch: AppDispatch, getState: any) => {
+  (dispatch: AppDispatch) => {
     dispatch(
       apiCallBegan({
         onStart: dataRequested.type,
@@ -90,7 +90,7 @@ export const getData =
 
 export const updateData =
   (url: string, id:string, data: any, extraheaders?: any) =>
-  (dispatch: AppDispatch, getState: any) => {
+  (dispatch: AppDispatch) => {
     dispatch(
       apiCallBegan({
         onStart: dataRequested.type,
@@ -105,9 +105,27 @@ export const updateData =
   };
 
 
+  export const exportToExcel =
+  (url: string, extraheaders?: any) =>
+  (dispatch: AppDispatch, ) => {
+    dispatch(
+      apiCallBegan({
+        onStart: dataRequested.type,
+        onSuccess: dataGotten.type,
+        onError: dataFectchFailed.type,
+        url: "data/exportToExcel/" + url,
+        method: "GET",
+        // data,
+        extraheaders,
+      })
+    );
+  };
+
+
+
   export const deleteData =
   (url: string, ids: string[], extraheaders: any) =>
-  (dispatch: AppDispatch, getState: any) => {
+  (dispatch: AppDispatch, ) => {
     dispatch(
       apiCallBegan({
         onStart: dataRequested.type,
