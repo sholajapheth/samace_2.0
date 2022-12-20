@@ -86,7 +86,7 @@ const TableComponent = ({ header_data, body_data}: any) => {
                 {header_data?.map((item: any) => {
                   return (
                     <TableData key={item.id} className="">
-                      {row.properties[camelize(item.name)]}
+                      {row?.properties[camelize(item.name)]}
                     </TableData>
                   );
                 })}

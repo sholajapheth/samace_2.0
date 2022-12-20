@@ -25,19 +25,21 @@ const MaintenanceRecord = () => {
   const dispatch = useDispatch<any>();
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
   const { loading, data } = useSelector((state: any) => state.maintenance);
+  const url = "maintenance_maintenanceAndElectrical_maintenanceRecord";
 
 
 
   useEffect(() => {
-    dispatch(getData("maintenance_maintenanceAndElectrical_maintenanceRecord"));
+    dispatch(getData(url));
 
     set_show_topbar_actions({
       add: "maintenance/me/mr/add",
       edit: "maintenance/me/mr/edit",
       delete: {
         selectedId: selectedItem,
-        url: "maintenance_maintenanceAndElectrical_maintenanceRecord",
+        url: url
       },
+      url: url
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

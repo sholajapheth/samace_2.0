@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect, useMemo } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
-import mock_data from "./MOCK_DATA.json";
 import SearchBar from "../../../../../globals/SearchBar";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
 import { sidebar_nav_type } from "../../../../../globals/types";
@@ -82,17 +81,19 @@ const DMRR = () => {
   const dispatch = useDispatch<any>();
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
   const { loading, data } = useSelector((state: any) => state.maintenance);
+  const url = "maintenance_maintenanceAndElectrical_dieselAndMeterReadingRecord";
 
   
   useEffect(() => {
-    dispatch(getData("maintenance_maintenanceAndElectrical_dieselAndMeterReadingRecord"));
+    dispatch(getData(url));
     set_show_topbar_actions({
       add: "maintenance/me/dmrr/add",
       edit: "maintenance/me/dmrr/edit",
       delete: {
         selectedId: selectedItem,
-        url: "maintenance_maintenanceAndElectrical_dieselAndMeterReadingRecord",
+        url: url,
       },
+      url: url,
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

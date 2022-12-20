@@ -6,12 +6,13 @@ import personel_record from "./assets/personel_record.svg";
 import { main_nav } from "../utils/sidebar_nav_data";
 
 const HRNav = () => {
-  const { set_topbar_value, set_sidebar_nav_data } =
+  const { set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions} =
     useContext(DashboardContext);
 
   useEffect(() => {
     set_sidebar_nav_data(main_nav);
     set_topbar_value("Human Resource Department");
+    set_show_topbar_actions("");
   }, [set_sidebar_nav_data, set_topbar_value]);
 
   return (
