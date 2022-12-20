@@ -75,7 +75,7 @@ const url = "humanResources_personnelList"
       add: "hr/pl/add",
       edit: "hr/pl/edit",
       delete: { selectedId: selectedItem, url: url },
-      type: url
+      url: url
     }));
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

@@ -12,7 +12,7 @@ const header_data = [
   { id: 1, name: "Name" },
   { id: 2, name: "Weight" },
   { id: 3, name: "Height" },
-  { id: 4, name: "Hepatitis B&C" },
+  { id: 4, name: "Hepatitis BC" },
   { id: 5, name: "HIV" },
   { id: 6, name: "VDRL" },
   { id: 7, name: "Malaria Parasite" },
@@ -23,7 +23,7 @@ const header_data = [
   { id: 12, name: "Cerebrospinal Meningitis" },
   { id: 13, name: "Hearing" },
   { id: 14, name: "Urinalysis" },
-  { id: 15, name: "Chest X-ray" },
+  { id: 15, name: "Chest X Ray" },
   { id: 16, name: "ENT" },
   { id: 17, name: "Alergies" },
   { id: 18, name: "Sick Leave" },
@@ -38,16 +38,19 @@ const Medical = () => {
   const dispatch = useDispatch<any>();
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
   const { loading, data } = useSelector((state: any) => state.hr);
+  const url = "humanResources_personnelRecord_medical";
   
   useEffect(() => {
-    dispatch(getData("humanResources_personnelRecord_medical"));
+    dispatch(getData(url));
     set_show_topbar_actions({
       add: "hr/pr/medical/add",
       edit: "hr/pr/medical/edit",
       delete: {
         selectedId: selectedItem,
-        url: "humanResources_personnelRecord_medical",
+        url: url, // url to delete data
       },
+      url: url, // url to export data
+
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

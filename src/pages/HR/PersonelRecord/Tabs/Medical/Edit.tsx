@@ -75,7 +75,7 @@ const Edit = () => {
             <EditInput name="Weight" type="text" placeholder="Enter Weight" />
             <EditInput name="Height" type="text" placeholder="Enter Height" />
             <EditInput
-              name="Hepatitis B&C"
+              name="Hepatitis BC"
               type="text"
               placeholder="Enter Hepatitis B&C"
             />
@@ -114,7 +114,7 @@ const Edit = () => {
               placeholder="Enter Urinalysis"
             />
             <EditInput
-              name="Chest X-ray"
+              name="Chest X Ray"
               type="text"
               placeholder="Enter Chest X-ray"
             />

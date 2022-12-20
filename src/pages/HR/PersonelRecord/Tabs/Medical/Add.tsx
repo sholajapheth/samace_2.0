@@ -36,7 +36,7 @@ const Add = () => {
             <InputComp name="Weight" type="text" placeholder="Enter Weight" />
             <InputComp name="Height" type="text" placeholder="Enter Height" />
             <InputComp
-              name="Hepatitis B&C"
+              name="Hepatitis BC"
               type="text"
               placeholder="Enter Hepatitis B&C"
             />
@@ -75,7 +75,7 @@ const Add = () => {
               placeholder="Enter Urinalysis"
             />
             <InputComp
-              name="Chest X-ray"
+              name="Chest X Ray"
               type="text"
               placeholder="Enter Chest X-ray"
             />

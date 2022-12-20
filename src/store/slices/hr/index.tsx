@@ -105,21 +105,6 @@ export const updateData =
   };
 
 
-  export const exportToExcel =
-  (url: string, extraheaders?: any) =>
-  (dispatch: AppDispatch, ) => {
-    dispatch(
-      apiCallBegan({
-        onStart: dataRequested.type,
-        onSuccess: dataGotten.type,
-        onError: dataFectchFailed.type,
-        url: "data/exportToExcel/" + url,
-        method: "GET",
-        // data,
-        extraheaders,
-      })
-    );
-  };
 
 
 

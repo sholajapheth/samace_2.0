@@ -35,7 +35,7 @@ const Assessment = () => {
         selectedId: selectedItem,
         url: url,
       },
-      type: url
+      url: url
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

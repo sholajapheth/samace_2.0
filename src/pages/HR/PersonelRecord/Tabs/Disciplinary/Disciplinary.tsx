@@ -22,18 +22,20 @@ const Disciplinary = () => {
 const dispatch = useDispatch<any>();
 const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
 const { loading, data } = useSelector((state: any) => state.hr);
+const url = "humanResources_personnelRecord_disciplinary"
 
 
 
   useEffect(() => {
-    dispatch(getData("humanResources_personnelRecord_disciplinary"));
+    dispatch(getData(url));
     set_show_topbar_actions({
       add: "hr/pr/disciplinary/add",
       edit: "hr/pr/disciplinary/edit",
       delete: {
         selectedId: selectedItem,
-        url: "humanResources_personnelRecord_disciplinary",
+        url: url,
       },
+      url: url
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

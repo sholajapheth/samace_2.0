@@ -82,14 +82,15 @@ const Training = () => {
   const dispatch = useDispatch<any>();
   const { loading, data } = useSelector((state: any) => state.hr);
  const [fillteredBodyData, setFillteredBodyData] = useState<any>([])
+ const url = "humanResources_personnelRecord_training"
   
   useEffect(() => {
-    dispatch(getData("humanResources_personnelRecord_training"));
+    dispatch(getData(url));
     set_show_topbar_actions({
       add: "hr/pr/training/add",
       edit: "hr/pr/training/edit",
-      delete: { selectedId: selectedItem, url: "humanResources_personnelRecord_training" },
-
+      delete: { selectedId: selectedItem, url: url },
+      url: url
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

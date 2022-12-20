@@ -22,16 +22,18 @@ const Pay = () => {
   const dispatch = useDispatch<any>();
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
   const { loading, data } = useSelector((state: any) => state.hr);
+  const url = "humanResources_personnelRecord_pay"
 
   useEffect(() => {
-    dispatch(getData("humanResources_personnelRecord_pay"));
+    dispatch(getData(url));
     set_show_topbar_actions({
       add: "hr/pr/pay/add",
       edit: "hr/pr/pay/edit",
       delete: {
         selectedId: selectedItem,
-        url: "humanResources_personnelRecord_pay",
+        url: url,   // url to delete
       },
+      url: url  // url to export data
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 
