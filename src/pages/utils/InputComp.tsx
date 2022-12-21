@@ -67,6 +67,20 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full h-[10em]"
         />
+      ): type === "number" ? (
+        <input
+          value={
+            editData?.properties?.[camelize(name)]
+              ? editData?.properties?.[camelize(name)]
+              : value
+          }
+          style={{appearance: "none", WebkitAppearance: "none", }}
+          type="number"
+          onChange={handleChanges}
+          placeholder={placeholder}
+          className="  bg-white rounded-md text-pri text-[16px] p-2 
+        focus:outline-none md:w-[18em] w-full"
+        />
       ) : (
         <input
           value={
