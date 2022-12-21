@@ -1,11 +1,23 @@
-import React from 'react'
+import React from "react";
+import { Oval } from "react-loader-spinner";
 
 const Loading = () => {
   return (
     <div className="flex justify-center items-center h-screen">
-          <div className="animate-spin rounded-~full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
-        </div>
-  )
-}
+      <Oval
+        height={80}
+        width={80}
+        color="#08193E"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="oval-loading"
+        secondaryColor="#08193E"
+        strokeWidth={2}
+        strokeWidthSecondary={2}
+      />{" "}
+    </div>
+  );
+};
 
-export default Loading
+export default Loading;

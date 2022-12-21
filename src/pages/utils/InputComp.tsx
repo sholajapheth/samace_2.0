@@ -23,6 +23,11 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
   }, []);
 
   const handleChanges = (e: any) => {
+    if (type ==="number"){
+      if (e.target.value.length > 10) {
+        return;
+      }
+    }
     setValue(e.target.value);
 
     setInputValue({ ...inputValue, [camelize(name)]: e.target.value });
@@ -37,7 +42,7 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
           value={
             editData?.properties?.[camelize(name)]
               ? editData?.properties?.[camelize(name)]
-              : defaultValue
+              : value
           }
           onChange={handleChanges}
           className="bg-white rounded-md text-pri text-[16px] p-2 

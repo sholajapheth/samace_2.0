@@ -16,12 +16,21 @@ export function camelize(str: string) {
 
 
 const TableData = (props: any) => {
+  if (props?.children?.toString().length > 25) {
+  return <td className="px-3 py-4 ">{props.children.substring(0, 25)}...</td>;
+} else {
   return <td className="px-3 py-4 ">{props.children}</td>;
+}
+  // return <td className="px-3 py-4 ">{props.children}</td>;
 };
 
+// if (props.children.length > 25) {
+//   return <td className="px-3 py-4 ">{props.children.substring(0, 25)}...</td>;
+// } else {
+//   return <td className="px-3 py-4 ">{props.children}</td>;
+// }
 
-// table component here
-
+// table component 
 
 
 const TableComponent = ({ header_data, body_data}: any) => {
