@@ -5,13 +5,17 @@ import { logout } from "../../assets/svgs";
 import { DashboardContext } from "../../pages/Dashboard/Dashboard";
 import SidebarButton from "./SidebarButton";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../store/slices/auth/loginSlice";
 
 const Sidebar = () => {
   const { sidebar_nav_data } = useContext(DashboardContext);
+  const dispatch = useDispatch<any>()
 
   return (
-    <div className="lg:w-[110px] w-full lg:h-screen fixed  lg:inset-0 bg-pri lg:py-[2em] flex lg:flex-col flex-row items-center lg:px-0 px-[1em] lg:overflow-auto overflow-scroll scrollbar-hide  bottom-0 z-[555] right-0  left-0 ">
-      <Link to={"/"}>
+    <div className="lg:w-[110px] w-full lg:h-screen fixed  lg:inset-0 bg-pri lg:py-[2em] flex lg:flex-col flex-row items-center lg:px-0 px-[1em] lg:overflow-auto overflow-scroll scrollbar-hide  bottom-0 z-[555] right-0  left-0 justify-between">
+    <div className="">
+    <Link to={"/"}>
         <img
           className="lg:inline hidden min-w-[3em]"
           src={logo}
@@ -28,9 +32,10 @@ const Sidebar = () => {
           />
         ))}
       </div>
+    </div>
 
 
-      <div className="flex lg:flex-col flex-row lg:items-center items-center  mt-[1em] ">
+      <div className="flex lg:flex-col flex-row lg:items-center items-center  mt-[1em] mb-0  ">
       <SidebarButton name="Settings" img={settings} link="settings" />
         <button className="flex flex-col gap-1 items-center">
           <img
@@ -38,7 +43,7 @@ const Sidebar = () => {
             src={logout}
             alt="logout"
           />
-          <span className="text-lm font-[700] text-[#FF5552] ">Logout</span>
+          <button onClick={()=> dispatch(logOut())} className="text-lm font-[700] text-[#FF5552] ">Logout</button>
           </button>
       </div>
 

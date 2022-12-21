@@ -34,7 +34,7 @@ const loginSlice = createSlice({
     },
     logUserOut: () => {
       localStorage.clear();
-      window.location.reload()
+      window.location.replace("/")
     },
 
     resetPasswordType: (action:any)=>{
@@ -69,7 +69,6 @@ export const logIn = (data:any, url?:any, extraheaders?:any) => (dispatch:AppDis
 
 export const logOut = () => (dispatch:AppDispatch) => {
   dispatch({ type: logUserOut.type });
-  console.log("hihi");
 
 };
 

@@ -1,6 +1,6 @@
 import { FaUserAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
-import { BiHide } from "react-icons/bi";
+import { BiHide, BiShow } from "react-icons/bi";
 import logo from "../assets/svgs/logo.svg";
 import { useEffect, useState } from "react";
 import { logIn, resetPassword } from "../store/slices/auth/loginSlice";
@@ -11,6 +11,7 @@ import Loading from "../components/Loading";
 const Login = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch<any>();
   const { loading, isLoggedIn } = useSelector((state: any) => state.login);
   const navigate = useNavigate();
@@ -87,13 +88,19 @@ const Login = () => {
                     <input
                       className="h-[2rem] focus:outline-none w-full"
                       name="password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       placeholder="Enter Your Password"
                       onChange={handleChange}
                       value={password}
                     />
-                    <button>
-                      <BiHide />
+                    <button onClick={()=>setShowPassword(!showPassword)}>
+                      {
+                        showPassword ? (
+                          <BiShow />
+                        ) : (
+                          <BiHide />
+                        )
+                      }
                     </button>
                   </div>
                   <div className="text-lm flex justify-between">
