@@ -19,7 +19,7 @@ const Topbar = () => {
     <div className="flex items-center mb-[1em]  gap-4 px-[1.5em] w-full ">
       <button
         onClick={() => navigate(locat)}
-        className="hover:bg-[#283E6C] rounded-full h-[1.8rem] w-[1.8rem]  flex items-center "
+        className="hover:bg-[#283E6C] hover:text-white hover:font-[600] rounded-full h-[2rem] w-[2rem]  flex items-center "
       >
         <HiOutlineArrowLeft className="text-2xl" />
       </button>

@@ -91,7 +91,7 @@ const url = "humanResources_personnelList"
         set_body_data={setFillteredBodyData}
         default_data={fillteredBodyData.length !== 0 ? fillteredBodyData :personel_data.docs}
       />
-      <PLNavResolve name="Personnel List (BioData)" />
+      <PLNavResolve name="Personnel List " />
       <div className="">
         {loading ? (
           <Loading />

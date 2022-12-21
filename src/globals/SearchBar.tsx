@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 import { camelize } from "../components/TableComponent/TableComponent";
+import { BiChevronDown } from "react-icons/bi";
 
 type SearchBarProps = {
   searchData: any;
@@ -19,11 +20,8 @@ const SearchBar = ({
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
-
   const handleSelectedData = (event: any) => {
-    set_search(
-      (search) => (search = camelize(event.target.value))
-    );
+    set_search((search) => (search = camelize(event.target.value)));
     set_body_data(default_data);
     setWordEntered("");
   };
@@ -32,7 +30,9 @@ const SearchBar = ({
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter: any = searchData?.filter((value: any) => {
-      return value?.properties[search]?.toLowerCase().includes(searchWord.toLowerCase());
+      return value?.properties[search]
+        ?.toLowerCase()
+        .includes(searchWord.toLowerCase());
     });
     console.log("Searchs: ", filteredData);
 
@@ -44,12 +44,11 @@ const SearchBar = ({
   };
 
   const handleFilterMainData = () => {
-
     set_body_data(filteredData);
     setFilteredData([]);
-    console.log("fd: ", filteredData)
-    console.log("bd: ", filteredData)
-
+    // setWordEntered("");
+    console.log("fd: ", filteredData);
+    console.log("bd: ", filteredData);
   };
 
   return (
@@ -70,22 +69,34 @@ const SearchBar = ({
           </div>
 
           <div className="flex gap-[2em]">
-            <select
-              placeholder="Browse by"
-              className="rounded-md p-2 px-[1em] bg-[#CDCDCD]  text-pri w-full"
-              onChange={handleSelectedData}
-            >
-              {header_data?.filter(item => item.name !== "ID").map((item: any, index: number) => (
-                <option key={index} value={item.name}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
+            <div className="rounded-md p-2 px-[1em]  bg-[#CDCDCD]  text-pri w-full flex items-center">
+              <select
+                placeholder="Browse by"
+                onChange={handleSelectedData}
+                style={{ appearance: "none" }}
+                className="w-full focus:border-none bg-transparent outline-none"
+              >
+                {header_data
+                  ?.filter((item) => item.name !== "ID")
+                  .map((item: any, index: number) => (
+                    <option key={index} value={item.name}>
+                      {item.name}
+                    </option>
+                  ))}
+              </select>
+              <BiChevronDown className="text-[16px]" />
+            </div>
             <button
               onClick={handleFilterMainData}
               className="rounded-md p-2 px-[2em] bg-pri flex gap-1 items-center text-[#CDCDCD] "
             >
-              <span>Search</span>
+              <span>
+                {/* {filteredData?.length > 0 && "Search"}
+                {wordEntered.length > 0 && "Filter"}
+                {wordEntered === "" && "Reset"} */}
+                {/* { filteredData.length === 0 && "Search"} */}
+                Search
+              </span>
             </button>
           </div>
         </div>
