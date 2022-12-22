@@ -48,7 +48,7 @@ export const getData =
         onStart: dataRequested.type,
         onSuccess: dataGotten.type,
         onError: dataFectchFailed.type,
-        url: "data/" + url,
+        url: "data/" + url+"?page=1&limit=0",
         method: "GET",
         data,
         extraheaders,

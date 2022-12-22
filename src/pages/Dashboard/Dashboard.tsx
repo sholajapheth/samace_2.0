@@ -2,18 +2,13 @@ import { createContext, useState } from "react";
 import { Topbar, Sidebar, DisplayArea } from "../../components";
 import { DecisionModal } from "../../globals";
 
-
 console.log(window.location.pathname);
 
 export const DashboardContext = createContext<any>({});
 
 const Dashboard = () => {
-
-
- 
   const [editData, setEditData] = useState<any>([]);
 
-  
   const [topbar_value, set_topbar_value] = useState();
 
   // topbar actions links
@@ -29,15 +24,21 @@ const Dashboard = () => {
 
   const [show_topbar_actions, set_show_topbar_actions] = useState();
   const [inputValue, setInputValue] = useState<any>({});
-  
+
   const [selectedItem, setSelectedItem] = useState<any>([]);
 
+  // this sets data needed by the searchbar
+  const [searchDatas, setSearchDatas] = useState<any>();
 
-  
 
+// for table pagination
+  const [prevNext, setPrevNext] = useState<any>({ prev: 0, next: 10 });
 
   const context = {
-    editData, setEditData,
+    editData,
+    setEditData,
+    prevNext,
+    setPrevNext,
     topbar_value,
     set_topbar_value,
     sidebar_nav_data,
@@ -50,7 +51,10 @@ const Dashboard = () => {
     set_show_topbar_actions,
     inputValue,
     setInputValue,
-    selectedItem, setSelectedItem
+    selectedItem,
+    setSelectedItem,
+    searchDatas,
+    setSearchDatas,
   };
 
   return (
@@ -58,7 +62,11 @@ const Dashboard = () => {
       <div className="lg:flex  ">
         {show_decision_modal && <DecisionModal />}
         <Sidebar />
-        <div className={`py-[1.5em] lg:w-[100%] ${show_topbar_actions === true && 'overflow-auto h-screen'}`}>
+        <div
+          className={`py-[1.5em] lg:w-[100%] ${
+            show_topbar_actions === true && " h-screen"
+          }`}
+        >
           <div className=" lg:ml-[122px]">
             <Topbar />
             <DisplayArea />

@@ -34,7 +34,7 @@ const TableData = (props: any) => {
 
 
 const TableComponent = ({ header_data, body_data}: any) => {
-  let { selectedItem, setSelectedItem } = useContext(DashboardContext);
+  let { selectedItem, setSelectedItem, prevNext } = useContext(DashboardContext);
 
 
 
@@ -56,7 +56,7 @@ const TableComponent = ({ header_data, body_data}: any) => {
   return (
     <div
       className="
-     w-full h-full  overflow-scroll p-4"
+     w-full h-full overflow-auto   p-4 lg:mb-0 md:mb-[5rem]"
     >
       <table className=" w-full">
         <thead style={{ whiteSpace: "nowrap" }} className="w-full font-[700]">
@@ -71,7 +71,7 @@ const TableComponent = ({ header_data, body_data}: any) => {
         </thead>
 
         <tbody style={{ whiteSpace: "nowrap" }}>
-          {body_data?.length !== 0 &&body_data?.map((row: any, index: any) => {
+          {body_data?.length !== 0 &&body_data?.slice(prevNext.prev, prevNext.next).map((row: any, index: any) => {
             return (
               <tr key={index} className=" border">
                 <TableData className="w-10">

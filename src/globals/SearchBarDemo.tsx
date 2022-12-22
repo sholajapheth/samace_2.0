@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 import { camelize } from "../components/TableComponent/TableComponent";
 import { BiChevronDown } from "react-icons/bi";
@@ -11,21 +11,27 @@ type SearchBarProps = {
   default_data?: any[];
 };
 
-const SearchBar = ({
-  searchData,
-  header_data,
-  set_body_data,
-  default_data,
-}: SearchBarProps) => {
+const SearchBarDemo = () => {
   const [search, set_search] = useState("name");
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
-  const { searchDatas } = useContext(DashboardContext);
+  const { searchDatas, setSearchDatas } = useContext(DashboardContext);
 
-  const searchData_1:any = searchDatas?.searchData
-  const header_data_1:any = searchDatas?.header_data
-  const set_body_data_1:any = searchDatas?.set_body_data
-  const default_data_1:any = searchDatas?.default_data
+  const searchData = searchDatas?.searchData;
+  const header_data = searchDatas?.header_data;
+  const set_body_data = searchDatas?.set_body_data;
+  const default_data = searchDatas?.default_data;
+
+  useEffect(() => {
+    setSearchDatas((prev: any) => ({
+      ...prev,
+      searchData: filteredData,
+      header_data: searchDatas?.header_data,
+      set_body_data: searchDatas?.set_body_data,
+      default_data: searchDatas?.default_data,
+    }));
+
+  }, []);
 
 
   const handleSelectedData = (event: any) => {
@@ -85,7 +91,7 @@ const SearchBar = ({
                 className="w-full focus:border-none bg-transparent outline-none"
               >
                 {header_data
-                  ?.filter((item) => item.name !== "ID")
+                  ?.filter((item: any) => item.name !== "ID")
                   .map((item: any, index: number) => (
                     <option key={index} value={item.name}>
                       {item.name}
@@ -132,4 +138,4 @@ const SearchBar = ({
   );
 };
 
-export default SearchBar;
+export default SearchBarDemo;

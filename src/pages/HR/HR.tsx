@@ -10,7 +10,7 @@ const HR = () => {
 
 
   return (
-    <div>
+    <div className="">
       <Routes>
         <Route path={"/"} element={<HRNav />} />
         <Route path={"pl/*"} element={<PersonelListIndex />} />

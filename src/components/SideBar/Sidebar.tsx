@@ -13,7 +13,7 @@ const Sidebar = () => {
   const dispatch = useDispatch<any>()
 
   return (
-    <div className="lg:w-[110px] w-full lg:h-screen fixed  lg:inset-0 bg-pri lg:py-[2em] flex lg:flex-col flex-row items-center lg:px-0 px-[1em] lg:overflow-auto overflow-scroll scrollbar-hide  bottom-0 z-[555] right-0  left-0 justify-between">
+    <div className="lg:w-[110px]  w-full lg:h-screen fixed  lg:inset-0 bg-pri lg:py-[2em] flex lg:flex-col flex-row items-center lg:px-0 px-[1em]  lg:overflow-auto overflow-scroll scrollbar-hide  bottom-0 z-[555] right-0  left-0 justify-between">
     <div className="">
     <Link to={"/"}>
         <img
@@ -37,13 +37,13 @@ const Sidebar = () => {
 
       <div className="flex lg:flex-col flex-row lg:items-center items-center  mt-[1em] mb-0  ">
       <SidebarButton name="Settings" img={settings} link="settings" />
-        <button className="flex flex-col gap-1 items-center">
+        <button onClick={()=> dispatch(logOut())}  className="flex flex-col gap-1 items-center">
           <img
-            className="md:w-[1.5em] min-w-[1em]  "
+            className="md:w-[1.5em] w-[16px]  "
             src={logout}
             alt="logout"
           />
-          <button onClick={()=> dispatch(logOut())} className="text-lm font-[700] text-[#FF5552] ">Logout</button>
+          <span className="text-lm font-[700] text-[#FF5552] lg:inline hidden">Logout</span>
           </button>
       </div>
 

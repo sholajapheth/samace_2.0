@@ -30,7 +30,6 @@ type resolveProps = {
   name: string;
 };
 export const PLNavResolve = ({ name }: resolveProps) => {
-
   const { set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions } =
     useContext(DashboardContext);
 
@@ -64,10 +63,11 @@ export const PLNavResolve = ({ name }: resolveProps) => {
 const PersonelList = () => {
   const dispatch = useDispatch<any>();
   const { loading, data } = useSelector((state: any) => state.hr);
-  const { set_show_topbar_actions, selectedItem } = useContext(DashboardContext);
+  const { set_show_topbar_actions, selectedItem,searchDatas, setSearchDatas } =
+    useContext(DashboardContext);
   const [personel_data, set_personel_data] = useState<any>([]);
- const [fillteredBodyData, setFillteredBodyData] = useState<any>([])
-const url = "humanResources_personnelList"
+  const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
+  const url = "humanResources_personnelList";
 
   useEffect(() => {
     dispatch(getData(url));
@@ -75,22 +75,31 @@ const url = "humanResources_personnelList"
       add: "hr/pl/add",
       edit: "hr/pl/edit",
       delete: { selectedId: selectedItem, url: url },
-      url: url
+      url: url,
     }));
+
+    console.log("search data", searchDatas);
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 
   useEffect(() => {
     set_personel_data(() => data);
+    setSearchDatas({
+      searchData: personel_data.docs,
+      header_data: header_data,
+      set_body_data: setFillteredBodyData,
+      default_data:
+        fillteredBodyData.length !== 0 ? fillteredBodyData : personel_data.docs,
+    });
   }, [data]);
 
   return (
     <div className="flex flex-col gap-4">
-      <SearchBar
+      {/* <SearchBar
         searchData={personel_data.docs}
         header_data={header_data}
         set_body_data={setFillteredBodyData}
         default_data={fillteredBodyData.length !== 0 ? fillteredBodyData :personel_data.docs}
-      />
+      /> */}
       <PLNavResolve name="Personnel List " />
       <div className="">
         {loading ? (
@@ -98,8 +107,11 @@ const url = "humanResources_personnelList"
         ) : (
           <TableComponent
             header_data={header_data}
-            body_data={fillteredBodyData.length !== 0 ? fillteredBodyData :personel_data.docs}
-            
+            body_data={
+              fillteredBodyData.length !== 0
+                ? fillteredBodyData
+                : personel_data.docs
+            }
           />
         )}
       </div>
@@ -108,4 +120,3 @@ const url = "humanResources_personnelList"
 };
 
 export default memo(PersonelList);
-

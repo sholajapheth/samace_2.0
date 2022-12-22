@@ -5,7 +5,7 @@ import Edit from "./Edit";
 
 const PersonelListIndex = () => {
   return (
-    <div className="w-full lg:px-[4em] md:px-[2em] px-[1em]">
+    <div className="w-full px-[1em]">
       <Routes>
         <Route path="/" element={<PersonelList />} />
         <Route path="add" element={<Add />} />
