@@ -5,14 +5,14 @@ import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../pages/Dashboard/Dashboard";
 
 const DisplayArea = () => {
-  const { searchDatas, setSearchDatas, prevNext, set_topbar_value, topbar_value, setPrevNext } =
+  const { searchDatas, setSearchDatas, prevNext, set_show_topbar_actions, show_topbar_actions, topbar_actions, setPrevNext, sidebar_nav_data } =
     useContext(DashboardContext);
   const searchData = searchDatas?.searchData;
   const set_body_data = searchDatas?.set_body_data;
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    set_topbar_value((topbar_value:any) => (topbar_value = ""));
+    // set_show_topbar_actions(()=> "");
     setSearchDatas((prev: any) => ({
       ...prev,
       searchData: searchDatas?.searchData,
@@ -20,7 +20,7 @@ const DisplayArea = () => {
       set_body_data: searchDatas?.set_body_data,
     }));
     // console.log("Searchs: ", searchData);
-  }, []);
+  }, [topbar_actions]);
 
   const handlePagination = (direction: string) => {
     const availablePages = Math.ceil(searchData?.length / 10);
@@ -50,8 +50,8 @@ const DisplayArea = () => {
   };
 
   return (
-    <div className="lg:pb-0 ">
-      {topbar_value !== "" && (
+    <div className="lg:pb-0 relative">
+      {show_topbar_actions  && (
         <div className="w-full flex py-[1em]">
           <div className="m-auto flex items-center gap-x-[2em] ">
             <button

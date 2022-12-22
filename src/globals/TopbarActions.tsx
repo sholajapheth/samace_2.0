@@ -25,9 +25,9 @@ const TopbarActionButton = ({ name, icon }: top_action_button) => {
       <span
         className={` ${
           name.toLocaleLowerCase() === "delete"
-            ? "text-red-500 hover:bg-red-300"
-            : "hover:bg-pri"
-        }  group-hover:text-red-700 text-[30px] font-[900]`}
+            ? "text-red-500  group-hover:text-red-700"
+            : "hover:bg-pri group-hover:text-white "
+        }   text-[30px] font-[900]`}
       >
         {icon}
       </span>

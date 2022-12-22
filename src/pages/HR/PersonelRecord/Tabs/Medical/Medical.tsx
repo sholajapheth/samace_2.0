@@ -33,7 +33,7 @@ const header_data = [
 const Medical = () => {
   const [medical_data, set_medical_data] = useState<any>([]);
 
-  const { set_show_topbar_actions, selectedItem } =
+  const { set_show_topbar_actions, selectedItem, setSearchDatas } =
     useContext(DashboardContext);
   const dispatch = useDispatch<any>();
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
@@ -56,19 +56,19 @@ const Medical = () => {
 
   useEffect(() => {
     set_medical_data(() => data);
+    setSearchDatas({
+      searchData: medical_data.docs,
+      header_data: header_data,
+      set_body_data: setFillteredBodyData,
+      default_data:
+        fillteredBodyData.length !== 0 ? fillteredBodyData : medical_data.docs,
+    });
   }, [data]);
 
   return (
     <div>
       <PRNavResolve name="Medical Records" />
-      <SearchBar
-        searchData={medical_data.docs}
-        header_data={header_data}
-        set_body_data={set_medical_data}
-        default_data={
-          fillteredBodyData.length !== 0 ? fillteredBodyData : medical_data.docs
-        }
-      />
+
       {loading ? (
         <Loading />
       ) : (

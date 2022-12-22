@@ -6,7 +6,6 @@ import { useContext, useEffect } from "react";
 import { DashboardContext } from "../Dashboard/Dashboard";
 
 const HR = () => {
-  const { set_show_topbar_actions } = useContext(DashboardContext);
 
 
   return (

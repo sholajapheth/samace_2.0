@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
 import { PRNavResolve } from "../Training/Training";
-import SearchBar from "../../../../../globals/SearchBar";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/hr";
@@ -17,7 +16,7 @@ const header_data = [
 
 const Disciplinary = () => {
   const [disciplinary_data, set_disciplinary_data] = useState<any>([]);
-  const { set_show_topbar_actions, selectedItem } =
+  const { set_show_topbar_actions, selectedItem, setSearchDatas } =
   useContext(DashboardContext);
 const dispatch = useDispatch<any>();
 const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
@@ -42,21 +41,19 @@ const url = "humanResources_personnelRecord_disciplinary"
 
   useEffect(() => {
     set_disciplinary_data(() => data);
+        setSearchDatas({
+      searchData: disciplinary_data.docs,
+      header_data: header_data,
+      set_body_data: setFillteredBodyData,
+      default_data:
+        fillteredBodyData.length !== 0 ? fillteredBodyData : disciplinary_data.docs,
+    });
   }, [data]);
 
   return (
     <div>
       <PRNavResolve name="Disciplinary Record" />
-      <SearchBar
-        searchData={disciplinary_data.docs}
-        header_data={header_data}
-        set_body_data={set_disciplinary_data}
-        default_data={
-          fillteredBodyData.length !== 0
-            ? fillteredBodyData
-            : disciplinary_data.docs
-        }
-      />
+      
     {loading ? (
         <Loading />
       ) : (

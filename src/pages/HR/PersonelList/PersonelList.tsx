@@ -3,7 +3,6 @@ import { DashboardContext } from "../../Dashboard/Dashboard";
 import { sidebar_nav_type } from "../../../globals/types";
 import personel_list from "../assets/personel_list.svg";
 import personel_record from "../assets/personel_record.svg";
-import SearchBar from "../../../globals/SearchBar";
 import { TableComponent } from "../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../store/slices/hr";

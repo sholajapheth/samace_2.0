@@ -14,7 +14,7 @@ const DecisionModal = () => {
   };
 
   return (
-    <div className="absolute font-inter inset-0 z-[500] w-full flex items-center h-screen  ">
+    <div className="absolute font-inter inset-0 z-[500] w-full flex items-center h-screen  backdrop-blur-md">
       <div className="m-auto  rounded-md lg:w-[30%] md:w-[40%] w-[70%] overflow-hidden bg-white shadow-xl ">
         <div className="flex justify-between items-center p-[1em] bg-[#F46767]">
           <span className="font-[700] text-tl text-white ">Confirm</span>

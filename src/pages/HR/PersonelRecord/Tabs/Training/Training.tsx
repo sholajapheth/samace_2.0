@@ -76,7 +76,7 @@ export const PRNavResolve = ({ name }: resolveProps) => {
 
 const Training = () => {
   
-  const { set_show_topbar_actions, selectedItem } = useContext(DashboardContext);
+  const { set_show_topbar_actions, selectedItem, setSearchDatas } = useContext(DashboardContext);
   
   const [training_data, set_training_data ] = useState<any>([]);
   const dispatch = useDispatch<any>();
@@ -96,16 +96,18 @@ const Training = () => {
 
   useEffect(() => {
     set_training_data(() => data);
+    setSearchDatas({
+      searchData: training_data.docs,
+      header_data: header_data,
+      set_body_data: setFillteredBodyData,
+      default_data:
+        fillteredBodyData.length !== 0 ? fillteredBodyData : training_data.docs,
+    });
   }, [data]);
 
   return (
     <div className="flex flex-col gap-4">
-      <SearchBar
-        searchData={training_data.docs}
-        header_data={header_data}
-        set_body_data={set_training_data}
-        default_data={fillteredBodyData.length !== 0 ? fillteredBodyData :training_data.docs}
-      />
+    
       <PRNavResolve name="Training Record" />
      {
       loading ?(

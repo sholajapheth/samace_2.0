@@ -18,7 +18,7 @@ const header_data = [
 
 const Pay = () => {
   const [pay_data, set_pay_data] = useState<any>([]);
-  const { set_show_topbar_actions, selectedItem } = useContext(DashboardContext);
+  const { set_show_topbar_actions, selectedItem, setSearchDatas } = useContext(DashboardContext);
   const dispatch = useDispatch<any>();
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
   const { loading, data } = useSelector((state: any) => state.hr);
@@ -39,21 +39,19 @@ const Pay = () => {
 
   useEffect(() => {
     set_pay_data(() => data);
+    setSearchDatas({
+      searchData: pay_data.docs,
+      header_data: header_data,
+      set_body_data: setFillteredBodyData,
+      default_data:
+        fillteredBodyData.length !== 0 ? fillteredBodyData : pay_data.docs,
+    });
   }, [data]);
   
   return (
     <div>
       <PRNavResolve name="Payment Record" />
-      <SearchBar
-        searchData={pay_data.docs}
-        header_data={header_data}
-        set_body_data={set_pay_data}
-        default_data={
-          fillteredBodyData.length !== 0
-            ? fillteredBodyData
-            : pay_data.docs
-        }
-      />
+     
       {loading ? (
         <Loading />
       ) : (
