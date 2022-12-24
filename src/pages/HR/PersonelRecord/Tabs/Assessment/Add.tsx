@@ -18,9 +18,15 @@ const Add = () => {
     set_show_decision_modal(true);
   };
 
-  const handleSend = (url: string) => {
-    dispatch(addData(url, inputValue, JSON.parse(currentUser).token));
+ const handleSend = (url: string) => {
+    dispatch(addData(url, inputValue, "nill", JSON.parse(currentUser).token));
   };
+  const handleSendNew = (url: string) => {
+    dispatch(addData(url, inputValue, "new", JSON.parse(currentUser).token));
+  };
+  
+
+
   return (
     <div>
       <PRNavResolve name="Add" />
@@ -54,6 +60,14 @@ const Add = () => {
               className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
             >
               Save
+            </button>
+            <button
+              onClick={() =>
+                handleSendNew("humanResources_personnelRecord_assessment")
+              }
+              className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
+            >
+              Save & New
             </button>
             <button
               onClick={handleCancel}

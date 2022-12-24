@@ -17,9 +17,7 @@ const Dashboard = () => {
   //toggles the decision modal
   const [show_decision_modal, set_show_decision_modal] = useState();
 
-  //returns 1 or 0 depending on the decision made
-  const [decision_modal_value, set_decision_modal_value] = useState();
-
+ 
   //this section allows to dynamically set the topbar actions routes
 
   const [show_topbar_actions, set_show_topbar_actions] = useState();
@@ -45,8 +43,6 @@ const Dashboard = () => {
     set_sidebar_nav_data,
     show_decision_modal,
     set_show_decision_modal,
-    decision_modal_value,
-    set_decision_modal_value,
     show_topbar_actions,
     set_show_topbar_actions,
     inputValue,
@@ -59,7 +55,7 @@ const Dashboard = () => {
 
   return (
     <DashboardContext.Provider value={context}>
-      <div className="lg:flex  ">
+      <div className="lg:flex relative ">
         {show_decision_modal && <DecisionModal />}
         <Sidebar />
         <div
@@ -67,7 +63,7 @@ const Dashboard = () => {
             show_topbar_actions === true && " h-screen"
           }`}
         >
-          <div className=" lg:ml-[122px]">
+          <div className=" lg:ml-[122px] ">
             <Topbar />
             <DisplayArea />
           </div>

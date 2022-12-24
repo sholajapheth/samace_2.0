@@ -11,15 +11,20 @@ const Add = () => {
   const { set_show_decision_modal, inputValue } = useContext(DashboardContext);
   const dispatch = useDispatch<any>();
   const { loading } = useSelector((state: any) => state.hr);
-
-  const handleSend = (url: string) => {
-    dispatch(addData(url, inputValue, JSON.parse(currentUser).token));
-  };
-  
   const handleCancel = () => {
     window.scrollTo(0, 0);
     set_show_decision_modal(true);
   };
+
+  const handleSend = (url: string) => {
+    dispatch(addData(url, inputValue, "nill", JSON.parse(currentUser).token));
+  };
+  const handleSendNew = (url: string) => {
+    dispatch(addData(url, inputValue, "new", JSON.parse(currentUser).token));
+  };
+  
+
+  
   return (
     <div>
       <PRNavResolve name="Add Disciplinary Record Form" />
@@ -50,6 +55,13 @@ const Add = () => {
               }
               className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full">
                 Save
+              </button>
+              <button 
+              onClick={() =>
+                handleSendNew("humanResources_personnelRecord_disciplinary")
+              }
+              className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full">
+                Save & New
               </button>
               <button
                 onClick={handleCancel}

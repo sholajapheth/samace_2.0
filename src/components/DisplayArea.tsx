@@ -50,7 +50,7 @@ const DisplayArea = () => {
   };
 
   return (
-    <div className="lg:pb-0 relative">
+    <div className="lg:pb-0 h-[85vh] overflow-auto">
       {show_topbar_actions  && (
         <div className="w-full flex py-[1em]">
           <div className="m-auto flex items-center gap-x-[2em] ">

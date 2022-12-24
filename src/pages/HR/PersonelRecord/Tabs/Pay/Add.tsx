@@ -17,9 +17,17 @@ const Add = () => {
     window.scrollTo(0, 0);
     set_show_decision_modal(true);
   };
+ 
+  
   const handleSend = (url: string) => {
-    dispatch(addData(url, inputValue, JSON.parse(currentUser).token));
+    dispatch(addData(url, inputValue, "nill", JSON.parse(currentUser).token));
   };
+  const handleSendNew = (url: string) => {
+    dispatch(addData(url, inputValue, "new", JSON.parse(currentUser).token));
+  };
+  
+
+
 
   return (
     <div>
@@ -50,6 +58,11 @@ const Add = () => {
               onClick={() => handleSend("humanResources_personnelRecord_pay")}
               className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full">
                 Save
+              </button>
+              <button 
+              onClick={() => handleSendNew("humanResources_personnelRecord_pay")}
+              className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full">
+                Save & New
               </button>
               <button
                 onClick={handleCancel}

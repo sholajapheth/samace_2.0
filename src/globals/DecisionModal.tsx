@@ -1,15 +1,29 @@
 import { AiOutlineClose } from "react-icons/ai";
 import caution from "./assets/caution.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DashboardContext } from "../pages/Dashboard/Dashboard";
+import { useNavigate } from "react-router-dom";
 
 const DecisionModal = () => {
-  const { set_show_decision_modal, set_decision_modal_value } =
+  const navigate = useNavigate()
+  const { set_show_decision_modal } =
     useContext(DashboardContext);
+   //returns 1 or 0 depending on the decision made
+  //  const [decision_modal_value, set_decision_modal_value] = useState<number>();
+
+
 
   const handle_decision_modal = (decision:number) => {
     set_show_decision_modal(false);
-    set_decision_modal_value(decision);
+    // set_decision_modal_value(decision);
+    if (decision === 1) {
+      console.log("yes");
+      navigate(-1)
+
+    }
+    if (decision === 0) {
+      console.log("no");
+    }
     console.log(decision);
   };
 
