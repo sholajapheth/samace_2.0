@@ -2,6 +2,46 @@ import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../Dashboard/Dashboard";
 import { camelize } from "../../components/TableComponent/TableComponent";
 
+const states = [
+  "Abia",
+  "Adamawa",
+  "Akwa Ibom",
+  "Anambra",
+  "Bauchi",
+  "Bayelsa",
+  "Benue",
+  "Borno",
+  "Cross River",
+  "Delta",
+  "Ebonyi",
+  "Edo",
+  "Ekiti",
+  "Enugu",
+  "FCT - Abuja",
+  "Gombe",
+  "Imo",
+  "Jigawa",
+  "Kaduna",
+  "Kano",
+  "Katsina",
+  "Kebbi",
+  "Kogi",
+  "Kwara",
+  "Lagos",
+  "Nasarawa",
+  "Niger",
+  "Ogun",
+  "Ondo",
+  "Osun",
+  "Oyo",
+  "Plateau",
+  "Rivers",
+  "Sokoto",
+  "Taraba",
+  "Yobe",
+  "Zamfara",
+];
+
 type inputType = {
   name: string;
   type: string;
@@ -10,8 +50,7 @@ type inputType = {
 };
 
 const EditInput = ({ name, type, placeholder, optionList }: inputType) => {
-  const { inputValue, editData, setEditData } =
-    useContext(DashboardContext);
+  const { inputValue, editData, setEditData } = useContext(DashboardContext);
   const [value, setValue] = useState("");
   let defaultValue = optionList ? optionList[0] : "";
 
@@ -39,7 +78,25 @@ const EditInput = ({ name, type, placeholder, optionList }: inputType) => {
     <div className="flex md:flex-row flex-col gap-2   md:justify-between md:items-center w-full my-[2em] ">
       <label className="text-white text-[16px] font-[700] ">{name}</label>
 
-      {type === "drop" ? (
+      {type === ("text" || "drop") && name.toLowerCase().includes("state") ? (
+        <select
+          value={
+            editData?.properties?.[camelize(name)]
+              ? editData?.properties?.[camelize(name)]
+              : defaultValue
+          }
+          onChange={handleChanges}
+          className="bg-white rounded-md text-pri text-[16px] p-2 
+        focus:outline-none md:w-[18em] w-full"
+          id={name}
+        >
+          {states?.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      ) : type === "drop" ? (
         <select
           value={
             editData?.properties?.[camelize(name)]

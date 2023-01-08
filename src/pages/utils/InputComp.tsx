@@ -2,6 +2,46 @@ import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../Dashboard/Dashboard";
 import { camelize } from "../../components/TableComponent/TableComponent";
 
+const states = [
+  "Abia",
+  "Adamawa",
+  "Akwa Ibom",
+  "Anambra",
+  "Bauchi",
+  "Bayelsa",
+  "Benue",
+  "Borno",
+  "Cross River",
+  "Delta",
+  "Ebonyi",
+  "Edo",
+  "Ekiti",
+  "Enugu",
+  "FCT - Abuja",
+  "Gombe",
+  "Imo",
+  "Jigawa",
+  "Kaduna",
+  "Kano",
+  "Katsina",
+  "Kebbi",
+  "Kogi",
+  "Kwara",
+  "Lagos",
+  "Nasarawa",
+  "Niger",
+  "Ogun",
+  "Ondo",
+  "Osun",
+  "Oyo",
+  "Plateau",
+  "Rivers",
+  "Sokoto",
+  "Taraba",
+  "Yobe",
+  "Zamfara",
+];
+
 type inputType = {
   name: string;
   type: string;
@@ -23,7 +63,7 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
   }, []);
 
   const handleChanges = (e: any) => {
-    if (type ==="number"){
+    if (type === "number") {
       if (e.target.value.length > 10) {
         return;
       }
@@ -35,9 +75,27 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
 
   return (
     <div className="flex md:flex-row flex-col gap-2   md:justify-between md:items-center w-full my-[2em] ">
-      <label className="text-white text-[16px] font-[700] ">{name}</label>
+      <label className="text-white text-[16px] font-[700] ">{name} </label>
 
-      {type === "drop" ? (
+      {type === ("text" || "drop") && name.toLowerCase().includes("state") ? (
+        <select
+          value={
+            editData?.properties?.[camelize(name)]
+              ? editData?.properties?.[camelize(name)]
+              : value
+          }
+          onChange={handleChanges}
+          className="bg-white rounded-md text-pri text-[16px] p-2 
+        focus:outline-none md:w-[18em] w-full"
+          id={name}
+        >
+          {states?.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      ) : type === "drop" ? (
         <select
           value={
             editData?.properties?.[camelize(name)]
@@ -67,14 +125,14 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full h-[10em]"
         />
-      ): type === "number" ? (
+      ) : type === "number" ? (
         <input
           value={
             editData?.properties?.[camelize(name)]
               ? editData?.properties?.[camelize(name)]
               : value
           }
-          style={{appearance: "none", WebkitAppearance: "none", }}
+          style={{ appearance: "none", WebkitAppearance: "none" }}
           type="number"
           onChange={handleChanges}
           placeholder={placeholder}
