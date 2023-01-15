@@ -7,6 +7,7 @@ import { TableComponent } from "../../../../../components";
 import disciplinary from "../../../assets/disciplinary.svg";
 import medical from "../../../assets/medical.svg";
 import pay from "../../../assets/pay.svg";
+import leave from "../../../assets/leave.svg";
 import assessment from "../../../assets/assessment.svg";
 import training from "../../../assets/training.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,8 +28,6 @@ const header_data = [
 type resolveProps = {
   name: string;
 };
-
-
 
 export const PRNavResolve = ({ name }: resolveProps) => {
   const { set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions } =
@@ -51,6 +50,7 @@ export const PRNavResolve = ({ name }: resolveProps) => {
         link: "hr/pr/disciplinary",
       },
       { id: 2, name: "Medical", img: medical, link: "hr/pr/medical" },
+      { id: 2, name: "Leave", img: leave, link: "hr/pr/leave" },
     ],
     []
   );
@@ -75,22 +75,22 @@ export const PRNavResolve = ({ name }: resolveProps) => {
 };
 
 const Training = () => {
-  
-  const { set_show_topbar_actions, selectedItem, setSearchDatas } = useContext(DashboardContext);
-  
-  const [training_data, set_training_data ] = useState<any>([]);
+  const { set_show_topbar_actions, selectedItem, setSearchDatas } =
+    useContext(DashboardContext);
+
+  const [training_data, set_training_data] = useState<any>([]);
   const dispatch = useDispatch<any>();
   const { loading, data } = useSelector((state: any) => state.hr);
- const [fillteredBodyData, setFillteredBodyData] = useState<any>([])
- const url = "humanResources_personnelRecord_training"
-  
+  const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
+  const url = "humanResources_personnelRecord_training";
+
   useEffect(() => {
     dispatch(getData(url));
     set_show_topbar_actions({
       add: "hr/pr/training/add",
       edit: "hr/pr/training/edit",
       delete: { selectedId: selectedItem, url: url },
-      url: url
+      url: url,
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 
@@ -107,17 +107,22 @@ const Training = () => {
 
   return (
     <div className="flex flex-col gap-4">
-    
       <PRNavResolve name="Training Record" />
-     {
-      loading ?(
+      {loading ? (
         <Loading />
-      ):(
+      ) : (
         <div className="">
-        <TableComponent header_data={header_data}  body_data={fillteredBodyData.length !== 0 ? fillteredBodyData :training_data.docs} setFillteredBodyData={setFillteredBodyData}/>
-      </div>
-      )
-     }
+          <TableComponent
+            header_data={header_data}
+            body_data={
+              fillteredBodyData.length !== 0
+                ? fillteredBodyData
+                : training_data.docs
+            }
+            setFillteredBodyData={setFillteredBodyData}
+          />
+        </div>
+      )}
     </div>
   );
 };

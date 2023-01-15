@@ -3,6 +3,7 @@ import { DashboardContext } from "../../Dashboard/Dashboard";
 import { NavTablet } from "../../../globals";
 import disciplinary from "../assets/disciplinary.svg";
 import medical from "../assets/medical.svg";
+import leave from "../assets/leave.svg";
 import pay from "../assets/pay.svg";
 import assessment from "../assets/assessment.svg";
 import training from "../assets/training.svg";
@@ -33,6 +34,7 @@ const PersonelRecord = () => {
           link={"disciplinary"}
         />
         <NavTablet name="Medcial" img={medical} link={"medical"} />
+        <NavTablet name="Leave" img={leave} link={"Leave"} />
       </div>
     </div>
   );
