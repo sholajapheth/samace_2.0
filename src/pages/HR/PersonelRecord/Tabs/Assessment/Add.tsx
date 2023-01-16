@@ -6,80 +6,138 @@ import { addData } from "../../../../../store/slices/hr";
 import { useDispatch, useSelector } from "react-redux";
 import { currentUser } from "../../../../../globals/HelperFunctions";
 import Loading from "../../../../../components/Loading";
+import { FormContainer } from "../../../../utils/FormContainer";
 
 const Add = () => {
   const { set_show_decision_modal, inputValue } = useContext(DashboardContext);
   const dispatch = useDispatch<any>();
   const { loading } = useSelector((state: any) => state.hr);
 
-
   const handleCancel = () => {
     window.scrollTo(0, 0);
     set_show_decision_modal(true);
   };
 
- const handleSend = (url: string) => {
+  const handleSend = (url: string) => {
     dispatch(addData(url, inputValue, "nill", JSON.parse(currentUser).token));
   };
   const handleSendNew = (url: string) => {
     dispatch(addData(url, inputValue, "new", JSON.parse(currentUser).token));
   };
-  
 
+  const formData = [
+    {
+      name: "Date",
+      type: "date",
+      placeholder: "Enter Date",
+    },
+    {
+      name: "ID Number",
+      type: "number",
+      placeholder: "Enter ID",
+    },
+    {
+      name: "Surname",
+      type: "text",
+      placeholder: "Surname",
+    },
+    {
+      name: "First Name",
+      type: "text",
+      placeholder: "First Name",
+    },
+    {
+      name: "Other Name",
+      type: "text",
+      placeholder: "Other Name",
+    },
+    {
+      name: "Session",
+      type: "drop",
+      optionList: ["session1", "session2", "session3", "session4", "session5"],
+    },
+  ];
 
   return (
     <div>
       <PRNavResolve name="Add" />
-      {
-        loading ? (
-          <Loading />
-        ) : (
-          <div className="w-full mt-[2em]  ">
-        <div className="bg-pri m-auto rounded-md lg:w-[65%] md:w-[80%] w-[90%]  py-[2em] md:px-[5em] px-[2em]">
-          <InputComp name="Date" type="date" />
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="w-full mt-[2em]  ">
+          <FormContainer>
+            <InputComp name="Date" type="date" />
+            <InputComp name="ID Number" type="number" placeholder="Enter ID" />
 
-          <InputComp name="Name" type="text" placeholder="Enter Name" />
-          <InputComp
-            name="JD SOP"
-            type="drop"
-            optionList={["Present", "Absent"]}
-          />
-          <InputComp
-            name="GMP"
-            type="drop"
-            optionList={["Present", "Absent"]}
-          />
-          <InputComp name="GK" type="drop" optionList={["Present", "Absent"]} />
-          <InputComp name="EH" type="drop" optionList={["Present", "Absent"]} />
+            <InputComp name="Surname" type="text" placeholder="Surname" />
 
-          <div className="text-white flex md:gap-[3em] gap-[2em] mt-[4em]">
-            <button
-              onClick={() =>
-                handleSend("humanResources_personnelRecord_assessment")
-              }
-              className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
-            >
-              Save
-            </button>
-            <button
-              onClick={() =>
-                handleSendNew("humanResources_personnelRecord_assessment")
-              }
-              className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
-            >
-              Save & New
-            </button>
-            <button
-              onClick={handleCancel}
-              className="rounded-md bg-[#FF5552] font-[700]  py-[1em] w-full"
-            >
-              Cancel
-            </button>
-          </div>
+            <InputComp name="First Name" type="text" placeholder="First Name" />
+            <InputComp name="Other Name" type="text" placeholder="Other Name" />
+            <InputComp
+              name="Session"
+              type="drop"
+              optionList={[
+                "session1",
+                "session2",
+                "session3",
+                "session4",
+                "session5",
+              ]}
+            />
+            <InputComp
+              name="Employee Handbook"
+              type="text"
+              placeholder="Enter Score"
+            />
+
+            <InputComp
+              name="Job Decription"
+              type="drop"
+              optionList={["Present", "Absent"]}
+            />
+            <InputComp
+              name="GMP"
+              type="drop"
+              optionList={["Present", "Absent"]}
+            />
+            <InputComp
+              name="GK"
+              type="drop"
+              optionList={["Present", "Absent"]}
+            />
+            <InputComp
+              name="EH"
+              type="drop"
+              optionList={["Present", "Absent"]}
+            />
+
+            <div className="text-white flex md:gap-[3em] gap-[2em] mt-[4em]">
+              <button
+                onClick={() =>
+                  handleSend("humanResources_personnelRecord_assessment")
+                }
+                className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
+              >
+                Save
+              </button>
+              <button
+                onClick={() =>
+                  handleSendNew("humanResources_personnelRecord_assessment")
+                }
+                className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
+              >
+                Save & New
+              </button>
+              <button
+                onClick={handleCancel}
+                className="rounded-md bg-[#FF5552] font-[700]  py-[1em] w-full"
+              >
+                Cancel
+              </button>
+            </div>
+          </FormContainer>
         </div>
-      </div>
-        )
-      }
+      )}
     </div>
   );
 };

@@ -5,8 +5,16 @@ import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../pages/Dashboard/Dashboard";
 
 const DisplayArea = () => {
-  const { searchDatas, setSearchDatas, prevNext, set_show_topbar_actions, show_topbar_actions, topbar_actions, setPrevNext, sidebar_nav_data } =
-    useContext(DashboardContext);
+  const {
+    searchDatas,
+    setSearchDatas,
+    prevNext,
+    set_show_topbar_actions,
+    show_topbar_actions,
+    topbar_actions,
+    setPrevNext,
+    sidebar_nav_data,
+  } = useContext(DashboardContext);
   const searchData = searchDatas?.searchData;
   const set_body_data = searchDatas?.set_body_data;
   const [page, setPage] = useState(1);
@@ -22,8 +30,8 @@ const DisplayArea = () => {
     // console.log("Searchs: ", searchData);
   }, [topbar_actions]);
 
+  const availablePages = Math.ceil(searchData?.length / 10);
   const handlePagination = (direction: string) => {
-    const availablePages = Math.ceil(searchData?.length / 10);
     console.log("Clicked: ", prevNext, direction);
     if (direction === "next") {
       if (Math.round(prevNext?.next / 10) < availablePages) {
@@ -51,7 +59,7 @@ const DisplayArea = () => {
 
   return (
     <div className="lg:pb-0 h-[85vh] overflow-auto">
-      {show_topbar_actions  && (
+      {show_topbar_actions && (
         <div className="w-full flex py-[1em]">
           <div className="m-auto flex items-center gap-x-[2em] ">
             <button
@@ -60,7 +68,9 @@ const DisplayArea = () => {
             >
               <BiChevronLeftCircle />
             </button>
-            <span className="text-[11px]">PAGE {page}</span>
+            <span className="text-[11px]">
+              PAGE {page} of {availablePages}
+            </span>
             <button
               onClick={() => handlePagination("next")}
               className="text-[20px]"

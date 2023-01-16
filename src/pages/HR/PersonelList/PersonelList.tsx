@@ -9,7 +9,7 @@ import { getData } from "../../../store/slices/hr";
 import Loading from "../../../components/Loading";
 
 const header_data = [
-  { id: 0, name: "ID Number" },
+  { id: 0, name: "ID" },
   { id: 9, name: "Start Date" },
   { id: 1, name: "Surname" },
   { id: 13, name: "First Name" },

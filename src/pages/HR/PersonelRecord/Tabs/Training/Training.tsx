@@ -50,7 +50,7 @@ export const PRNavResolve = ({ name }: resolveProps) => {
         link: "hr/pr/disciplinary",
       },
       { id: 2, name: "Medical", img: medical, link: "hr/pr/medical" },
-      { id: 2, name: "Leave", img: leave, link: "hr/pr/leave" },
+      { id: 5, name: "Leave", img: leave, link: "hr/pr/leave" },
     ],
     []
   );

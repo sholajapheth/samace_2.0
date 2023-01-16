@@ -9,12 +9,7 @@ import { currentUser } from "../../../globals/HelperFunctions";
 import Loading from "../../../components/Loading";
 import { states } from "../../../assets/datas/data";
 import { Oval } from "react-loader-spinner";
-
-const Container = ({ children }: any) => (
-  <div className="bg-pri m-auto rounded-md lg:w-[65%] md:w-[80%] w-[90%]  py-[2em] md:px-[5em] px-[2em] mb-8">
-    {children}
-  </div>
-);
+import { FormContainer } from "../../utils/FormContainer";
 
 const Add = () => {
   const { set_show_decision_modal, inputValue } = useContext(DashboardContext);
@@ -41,7 +36,7 @@ const Add = () => {
       {loading && <Loading />}
 
       <div className="w-full mt-[2em]  ">
-        <Container>
+        <FormContainer>
           <p className="md:text-[24px] text-[16px] text-white font-[700]">
             Personal Information
           </p>
@@ -63,7 +58,7 @@ const Add = () => {
           <InputComp name="DOB" type="date" />
           <InputComp name="Place of Birth" type="drop" optionList={states} />
           <InputComp name="State of Origin" type="drop" optionList={states} />
-          <InputComp name="LGA" type="drop" optionList={["LGA"]} />
+          <InputComp name="LGA" type="text" placeholder="Enter LGA" />
           <InputComp
             name="Nationality"
             type="drop"
@@ -93,9 +88,9 @@ const Add = () => {
             type="drop"
             optionList={["National ID", "Voters Card", "Others"]}
           />
-        </Container>
+        </FormContainer>
 
-        <Container>
+        <FormContainer>
           <p className="md:text-[24px] text-[16px] text-white font-[700]">
             Contact Information
           </p>
@@ -151,9 +146,9 @@ const Add = () => {
             type="email"
             placeholder="Next of Kin Email Address"
           />
-        </Container>
+        </FormContainer>
 
-        <Container>
+        <FormContainer>
           <p className="md:text-[24px] text-[16px] text-white font-[700]">
             Job Information
           </p>
@@ -179,9 +174,9 @@ const Add = () => {
           />
 
           <InputComp name="Step" type="text" placeholder="Enter Step" />
-        </Container>
+        </FormContainer>
 
-        <Container>
+        <FormContainer>
           <p className="md:text-[24px] text-[16px] text-white font-[700]">
             Account Information
           </p>
@@ -202,9 +197,9 @@ const Add = () => {
             type="number"
             placeholder="Enter Position Number"
           />
-        </Container>
+        </FormContainer>
 
-        <Container>
+        <FormContainer>
           <p className="md:text-[24px] text-[16px] text-white font-[700]">
             Uniform Information
           </p>
@@ -225,15 +220,30 @@ const Add = () => {
             type="drop"
             optionList={["XS", "S", "M", "L", "XL", "XXL", "XXXL"]}
           />
-        </Container>
+        </FormContainer>
 
-        <Container>
+        <FormContainer>
           <div className="text-white flex md:gap-[3em] gap-[2em] ">
             <button
               onClick={(e) => handleSend(e, "humanResources_personnelList")}
               className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
             >
-              Save
+              {loading ? (
+                <Oval
+                  height={40}
+                  width={40}
+                  color="#08193E"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  ariaLabel="oval-loading"
+                  secondaryColor="#08193E"
+                  strokeWidth={2}
+                  strokeWidthSecondary={2}
+                />
+              ) : (
+                "Save"
+              )}
             </button>
 
             <button
@@ -264,7 +274,7 @@ const Add = () => {
               Cancel
             </button>
           </div>
-        </Container>
+        </FormContainer>
       </div>
     </div>
   );
