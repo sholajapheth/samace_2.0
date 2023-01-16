@@ -9,19 +9,43 @@ import { getData } from "../../../store/slices/hr";
 import Loading from "../../../components/Loading";
 
 const header_data = [
-  { id: 0, name: "ID" },
-  { id: 1, name: "Name" },
-  { id: 2, name: "Home Address" },
-  { id: 4, name: "Email Address" },
-  { id: 3, name: "Phone Number" },
-  { id: 5, name: "Marital Status" },
-  { id: 6, name: "Religion" },
+  { id: 0, name: "ID Number" },
+  { id: 9, name: "Start Date" },
+  { id: 1, name: "Surname" },
+  { id: 13, name: "First Name" },
+  { id: 14, name: "Other Name" },
+  { id: 15, name: "Gender" },
+  { id: 16, name: "DOB" },
+  { id: 17, name: "Place of Birth" },
   { id: 7, name: "State of Origin " },
   { id: 8, name: "LGA" },
-  { id: 9, name: "Start Date" },
-  { id: 10, name: "Job Type" },
+  { id: 18, name: "Nationality" },
+  { id: 5, name: "Marital Status" },
+  { id: 19, name: "Number of Children" },
+  { id: 6, name: "Religion" },
+  { id: 20, name: "Means of Identification" },
+
+  { id: 2, name: "Home Address" },
+  { id: 3, name: "Phone Number" },
+  { id: 4, name: "Email Address" },
+  { id: 22, name: "Next of Kin's Name" },
+  { id: 23, name: "Relationship" },
+  { id: 21, name: "Next of Kin's Gender" },
+  { id: 22, name: "Next of Kin's Address" },
+  { id: 24, name: "Next of Kin's Phone Number" },
+  { id: 25, name: "Next of Kin's Email Address" },
+  { id: 10, name: "Type of Employment" },
   { id: 11, name: "Department" },
-  { id: 12, name: "Grade Level" },
+  { id: 12, name: "Job Role" },
+  { id: 26, name: "Grade Level" },
+  { id: 27, name: "Step" },
+  { id: 28, name: "Bank Name" },
+  { id: 29, name: "Account Number" },
+  { id: 30, name: "PFA Name" },
+  { id: 31, name: "Pension Number" },
+  { id: 32, name: "Top" },
+  { id: 33, name: "Bottom" },
+  { id: 34, name: "Shoe" },
 ];
 
 // one time component here to configure naaviation
@@ -62,7 +86,7 @@ export const PLNavResolve = ({ name }: resolveProps) => {
 const PersonelList = () => {
   const dispatch = useDispatch<any>();
   const { loading, data } = useSelector((state: any) => state.hr);
-  const { set_show_topbar_actions, selectedItem,searchDatas, setSearchDatas } =
+  const { set_show_topbar_actions, selectedItem, searchDatas, setSearchDatas } =
     useContext(DashboardContext);
   const [personel_data, set_personel_data] = useState<any>([]);
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);

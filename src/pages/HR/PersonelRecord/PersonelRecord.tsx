@@ -34,7 +34,7 @@ const PersonelRecord = () => {
           link={"disciplinary"}
         />
         <NavTablet name="Medcial" img={medical} link={"medical"} />
-        <NavTablet name="Leave" img={leave} link={"Leave"} />
+        <NavTablet name="Leave" img={leave} link={"leave"} />
       </div>
     </div>
   );

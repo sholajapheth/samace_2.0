@@ -5,10 +5,12 @@ import { HiOutlineArrowLeft } from "react-icons/hi";
 import { TopbarActions } from "../globals";
 // import SearchBar from "../globals/SearchBar";
 import SearchBarDemo from "../globals/SearchBarDemo";
+import { useSelector } from "react-redux";
 
 const Topbar = () => {
   const { topbar_value, show_topbar_actions } = useContext(DashboardContext);
   const navigate = useNavigate();
+  const { loading } = useSelector((state: any) => state.hr);
   const location = useLocation();
   const index = location.pathname.lastIndexOf("/");
   let locat =
@@ -20,6 +22,7 @@ const Topbar = () => {
     <div className="">
       <div className="flex items-center mb-[1em]  gap-4 px-[1.5em] w-full ">
         <button
+          disabled={loading}
           onClick={() => navigate(locat)}
           className="hover:bg-[#283E6C] hover:text-white hover:font-[600] rounded-full h-[2rem] w-[2rem]  flex items-center "
         >
