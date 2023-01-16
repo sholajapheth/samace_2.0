@@ -6,6 +6,7 @@ import PayIndex from "./Tabs/Pay/PayIndex";
 import DisciplinaryIndex from './Tabs/Disciplinary/DisciplinaryIndex';
 import MedicalIndex from './Tabs/Medical/MedicalIndex';
 import Leave from "./Tabs/Leave/Leave";
+import LeaveIndex from "./Tabs/Leave/LeaveIndex";
 
 const PRIndex = () => {
   return (
@@ -17,7 +18,7 @@ const PRIndex = () => {
         <Route path="disciplinary/*" element={<DisciplinaryIndex />} />
         <Route path="assessment/*" element={<AssessmentIndex />} />
         <Route path="medical/*" element={<MedicalIndex />} />
-        <Route path="leave/*" element={<Leave />} />
+        <Route path="leave/*" element={<LeaveIndex />} />
       </Routes>
     </div>
   );

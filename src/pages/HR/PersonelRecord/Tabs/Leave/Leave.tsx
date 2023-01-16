@@ -31,7 +31,7 @@ const Leave = () => {
   const dispatch = useDispatch<any>();
   const { loading, data } = useSelector((state: any) => state.hr);
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
-  const url = "humanResources_personnelRecord_training";
+  const url = "production_record_leave";
 
   useEffect(() => {
     dispatch(getData(url));

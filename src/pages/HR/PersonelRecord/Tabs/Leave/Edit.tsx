@@ -45,12 +45,7 @@ const Edit = () => {
   // hooks ===>
   useEffect(() => {
     if (selectedItem.length !== 0) {
-      dispatch(
-        getSingleData(
-          "humanResources_personnelRecord_training",
-          selectedItem[0]
-        )
-      );
+      dispatch(getSingleData("production_record_leave", selectedItem[0]));
     } else {
       navigate("/dashboard/hr/pr/training");
     }
@@ -89,9 +84,7 @@ const Edit = () => {
 
           <div className="text-white flex md:gap-[3em] gap-[2em] mt-[4em]">
             <button
-              onClick={() =>
-                handleSend("humanResources_personnelRecord_training")
-              }
+              onClick={() => handleSend("production_record_leave")}
               className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
             >
               Save

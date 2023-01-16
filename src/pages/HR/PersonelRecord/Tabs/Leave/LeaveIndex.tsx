@@ -3,7 +3,7 @@ import Leave from "./Leave";
 import Add from "./Add";
 import Edit from "./Edit";
 
-const TrainingIndex = () => {
+const LeaveIndex = () => {
   return (
     <div className="w-full lg:px-[4em] md:px-[2em] px-[1em]">
       <Routes>
@@ -15,4 +15,4 @@ const TrainingIndex = () => {
   );
 };
 
-export default TrainingIndex;
+export default LeaveIndex;

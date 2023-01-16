@@ -61,18 +61,14 @@ const Add = () => {
 
             <div className="text-white flex md:gap-[3em] gap-[2em] mt-[4em]">
               <button
-                onClick={() =>
-                  handleSend("humanResources_personnelRecord_training")
-                }
+                onClick={() => handleSend("production_record_leave")}
                 className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
               >
                 Save
               </button>
 
               <button
-                onClick={() =>
-                  handleSendNew("humanResources_personnelRecord_training")
-                }
+                onClick={() => handleSendNew("production_record_leave")}
                 className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
               >
                 Save & New
