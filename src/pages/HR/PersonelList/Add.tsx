@@ -36,7 +36,7 @@ const Add = () => {
       <div className="w-full mt-[2em]  ">
         {formData.map((item, index) => {
           return (
-            <FormContainer section_name={item.section}>
+            <FormContainer key={index} section_name={item.section}>
               {item.data.map((item, index) => {
                 return (
                   <InputComp
