@@ -7,9 +7,9 @@ import { addData } from "../../../store/slices/hr";
 // import { useNavigate, useNavigation } from "react-router-dom";
 import { currentUser } from "../../../globals/HelperFunctions";
 import Loading from "../../../components/Loading";
-import { states } from "../../../assets/datas/data";
 import { Oval } from "react-loader-spinner";
 import { FormContainer } from "../../utils/FormContainer";
+import { formData } from "./personel_list_data";
 
 const Add = () => {
   const { set_show_decision_modal, inputValue } = useContext(DashboardContext);
@@ -36,191 +36,26 @@ const Add = () => {
       {loading && <Loading />}
 
       <div className="w-full mt-[2em]  ">
-        <FormContainer>
-          <p className="md:text-[24px] text-[16px] text-white font-[700]">
-            Personal Information
-          </p>
-          <InputComp name="ID" type="number" placeholder="Enter ID" />
-          <InputComp
-            name="Start Date"
-            type="date"
-            placeholder="Enter Start Date"
-          />
-          <InputComp name="Surname" type="text" placeholder="Surname" />
-
-          <InputComp name="First Name" type="text" placeholder="First Name" />
-          <InputComp name="Other Name" type="text" placeholder="Other Name" />
-          <InputComp
-            name="Gender"
-            type="drop"
-            optionList={["Male", "Female"]}
-          />
-          <InputComp name="DOB" type="date" />
-          <InputComp name="Place of Birth" type="drop" optionList={states} />
-          <InputComp name="State of Origin" type="drop" optionList={states} />
-          <InputComp name="LGA" type="text" placeholder="Enter LGA" />
-          <InputComp
-            name="Nationality"
-            type="drop"
-            optionList={["Nigerian", "Others"]}
-          />
-
-          <InputComp
-            name="Marital Status"
-            type="drop"
-            optionList={["Single", "Married", "Divorced"]}
-          />
-
-          <InputComp
-            name="Number of Children"
-            type="drop"
-            optionList={["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]}
-          />
-
-          <InputComp
-            name="Religion"
-            type="drop"
-            optionList={["Christianity", "Islam", "Others"]}
-          />
-
-          <InputComp
-            name="Means of Identification"
-            type="drop"
-            optionList={["National ID", "Voters Card", "Others"]}
-          />
-        </FormContainer>
-
-        <FormContainer>
-          <p className="md:text-[24px] text-[16px] text-white font-[700]">
-            Contact Information
-          </p>
-
-          <InputComp
-            name="Home Address"
-            type="textarea"
-            placeholder="Enter Home Address"
-          />
-          <InputComp
-            name="Phone Number"
-            type="phone"
-            placeholder="Enter Phone Number"
-          />
-          <InputComp
-            name="Email Address"
-            type="email"
-            placeholder="Enter Email Address"
-          />
-
-          <InputComp
-            name="Next of Kin Name"
-            type="text"
-            placeholder="Enter Next of Kin Name"
-          />
-
-          <InputComp
-            name="Relationship"
-            type="text"
-            placeholder="Enter Relationship"
-          />
-
-          <InputComp
-            name="Next of Kin Gender"
-            type="drop"
-            optionList={["Male", "Female"]}
-          />
-
-          <InputComp
-            name="Next of Kin Home Address"
-            type="textarea"
-            placeholder="Enter Next of Kin Home Address"
-          />
-
-          <InputComp
-            name="Next of Kin Phone Number"
-            type="phone"
-            placeholder="Next of Kin Phone Number"
-          />
-
-          <InputComp
-            name="Next of Kin Email Address"
-            type="email"
-            placeholder="Next of Kin Email Address"
-          />
-        </FormContainer>
-
-        <FormContainer>
-          <p className="md:text-[24px] text-[16px] text-white font-[700]">
-            Job Information
-          </p>
-
-          <InputComp
-            name="Type of Employment"
-            type="drop"
-            optionList={["Permanent Staff", "IT Placement"]}
-          />
-
-          <InputComp
-            name="Department"
-            type="text"
-            placeholder="Enter Department"
-          />
-
-          <InputComp name="Job Role" type="text" placeholder="Enter Job Role" />
-
-          <InputComp
-            name="Grade Level"
-            type="number"
-            placeholder="Enter Grade Level"
-          />
-
-          <InputComp name="Step" type="text" placeholder="Enter Step" />
-        </FormContainer>
-
-        <FormContainer>
-          <p className="md:text-[24px] text-[16px] text-white font-[700]">
-            Account Information
-          </p>
-
-          <InputComp
-            name="Bank Name"
-            type="text"
-            placeholder="Enter Bank Name"
-          />
-          <InputComp
-            name="Account Number"
-            type="number"
-            placeholder="Enter Account Number"
-          />
-          <InputComp name="PFA Name" type="text" placeholder="Enter PFA Name" />
-          <InputComp
-            name="Pension Number"
-            type="number"
-            placeholder="Enter Position Number"
-          />
-        </FormContainer>
-
-        <FormContainer>
-          <p className="md:text-[24px] text-[16px] text-white font-[700]">
-            Uniform Information
-          </p>
-
-          <InputComp
-            name="Top"
-            type="drop"
-            optionList={["XS", "S", "M", "L", "XL", "XXL", "XXXL"]}
-          />
-          <InputComp
-            name="Bottom"
-            type="drop"
-            optionList={["XS", "S", "M", "L", "XL", "XXL", "XXXL"]}
-          />
-
-          <InputComp
-            name="Shoe"
-            type="drop"
-            optionList={["XS", "S", "M", "L", "XL", "XXL", "XXXL"]}
-          />
-        </FormContainer>
+        {formData.map((item, index) => {
+          return (
+            <FormContainer>
+              <p className="md:text-[24px] text-[16px] text-white font-[700]">
+                {item.section}
+              </p>
+              {item.data.map((item, index) => {
+                return (
+                  <InputComp
+                    key={index}
+                    name={item.name}
+                    type={item.type}
+                    placeholder={item.placeholder}
+                    optionList={item.optionList}
+                  />
+                );
+              })}
+            </FormContainer>
+          );
+        })}
 
         <FormContainer>
           <div className="text-white flex md:gap-[3em] gap-[2em] ">

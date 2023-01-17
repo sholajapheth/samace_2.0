@@ -1,12 +1,11 @@
 import { useContext, useEffect, useMemo, memo, useState } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
-import { sidebar_nav_type } from "../../../../../globals/types";
-import SearchBar from "../../../../../globals/SearchBar";
 import { TableComponent } from "../../../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/hr";
 import Loading from "../../../../../components/Loading";
 import { PRNavResolve } from "../Training/Training";
+import { constants } from "./leave_data";
 
 const header_data = [
   { id: 0, name: "Date" },
@@ -18,28 +17,23 @@ const header_data = [
   { id: 5, name: "EH" },
 ];
 
-// one time component here to configure naaviation
-type resolveProps = {
-  name: string;
-};
 
 const Leave = () => {
   const { set_show_topbar_actions, selectedItem, setSearchDatas } =
     useContext(DashboardContext);
-
   const [leave_data, set_leave_data] = useState<any>([]);
   const dispatch = useDispatch<any>();
   const { loading, data } = useSelector((state: any) => state.hr);
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
-  const url = "production_record_leave";
+  
 
   useEffect(() => {
-    dispatch(getData(url));
+    dispatch(getData(constants.url));
     set_show_topbar_actions({
       add: "hr/pr/leave/add",
       edit: "hr/pr/leave/edit",
-      delete: { selectedId: selectedItem, url: url },
-      url: url,
+      delete: { selectedId: selectedItem, url: constants.url},
+      url: constants.url,
     });
   }, [set_show_topbar_actions, dispatch, selectedItem]);
 

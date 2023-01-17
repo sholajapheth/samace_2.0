@@ -56,6 +56,31 @@ const Add = () => {
       type: "drop",
       optionList: ["session1", "session2", "session3", "session4", "session5"],
     },
+    {
+      name: "Employee Handbook",
+      type: "text",
+      placeholder: "Enter Score",
+    },
+    {
+      name: "Job Decription",
+      type: "drop",
+      optionList: ["Present", "Absent"],
+    },
+    {
+      name: "GMP",
+      type: "drop",
+      optionList: ["Present", "Absent"],
+    },
+    {
+      name: "GK",
+      type: "drop",
+      optionList: ["Present", "Absent"],
+    },
+    {
+      name: "EH",
+      type: "drop",
+      optionList: ["Present", "Absent"],
+    },
   ];
 
   return (
@@ -66,7 +91,18 @@ const Add = () => {
       ) : (
         <div className="w-full mt-[2em]  ">
           <FormContainer>
-            <InputComp name="Date" type="date" />
+            {formData.map((item, index) => {
+              return (
+                <InputComp
+                  key={index}
+                  name={item.name}
+                  type={item.type}
+                  optionList={item.optionList}
+                  placeholder={item.placeholder}
+                />
+              );
+            })}
+            {/* <InputComp name="Date" type="date" />
             <InputComp name="ID Number" type="number" placeholder="Enter ID" />
 
             <InputComp name="Surname" type="text" placeholder="Surname" />
@@ -109,7 +145,7 @@ const Add = () => {
               name="EH"
               type="drop"
               optionList={["Present", "Absent"]}
-            />
+            /> */}
 
             <div className="text-white flex md:gap-[3em] gap-[2em] mt-[4em]">
               <button

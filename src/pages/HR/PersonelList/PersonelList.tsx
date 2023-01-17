@@ -7,6 +7,7 @@ import { TableComponent } from "../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../store/slices/hr";
 import Loading from "../../../components/Loading";
+import { constants, formData } from "./personel_list_data";
 
 const header_data = [
   { id: 0, name: "ID" },
@@ -90,15 +91,15 @@ const PersonelList = () => {
     useContext(DashboardContext);
   const [personel_data, set_personel_data] = useState<any>([]);
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
-  const url = "humanResources_personnelList";
+
 
   useEffect(() => {
-    dispatch(getData(url));
+    dispatch(getData(constants.url));
     set_show_topbar_actions(() => ({
       add: "hr/pl/add",
       edit: "hr/pl/edit",
-      delete: { selectedId: selectedItem, url: url },
-      url: url,
+      delete: { selectedId: selectedItem, url: constants.url },
+      url: constants.url,
     }));
 
     console.log("search data", searchDatas);
@@ -108,7 +109,7 @@ const PersonelList = () => {
     set_personel_data(() => data);
     setSearchDatas({
       searchData: personel_data.docs,
-      header_data: header_data,
+      header_data: formData[0].data,
       set_body_data: setFillteredBodyData,
       default_data:
         fillteredBodyData.length !== 0 ? fillteredBodyData : personel_data.docs,
@@ -117,19 +118,13 @@ const PersonelList = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* <SearchBar
-        searchData={personel_data.docs}
-        header_data={header_data}
-        set_body_data={setFillteredBodyData}
-        default_data={fillteredBodyData.length !== 0 ? fillteredBodyData :personel_data.docs}
-      /> */}
       <PLNavResolve name="Personnel List " />
       <div className="">
         {loading ? (
           <Loading />
         ) : (
           <TableComponent
-            header_data={header_data}
+            header_data={formData[0].data}
             body_data={
               fillteredBodyData.length !== 0
                 ? fillteredBodyData
