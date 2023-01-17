@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
-import { camelize } from "../components/TableComponent/TableComponent";
 import { BiChevronDown } from "react-icons/bi";
 import { DashboardContext } from "../pages/Dashboard/Dashboard";
+import { camelize } from "../components/global_utils/helper_fuctions";
 
 type SearchBarProps = {
   searchData?: any;
@@ -69,12 +69,12 @@ const SearchBarDemo = () => {
     <div className=" w-full flex items-center">
       <div className="md:w-[80%] w-[90%] m-auto">
         <div className="m-auto rounded-md border border-[#282828] py-2 px-[1em] flex md:flex-row flex-col gap-2 justify-between w-full ">
-          <div className="flex gap-1 items-center bg-[#CDCDCD] text-[#282828] p-2 rounded-md md:w-[50%] w-full md:text-[14px] text-[12px]">
+          <div className="flex gap-1 items-center bg-[#CDCDCD] text-[#282828] p-2 rounded-md md:w-[50%] w-full md:text-[14px] text-[12px] border-pri">
             {wordEntered?.length === 0 && (
               <RiSearch2Line className="text-[20px]" />
             )}
             <input
-              className="w-full focus:border-none bg-transparent outline-none"
+              className="w-full focus:border-none bg-transparent border-0"
               type="search"
               placeholder="search"
               onChange={handleFilter}
@@ -83,12 +83,12 @@ const SearchBarDemo = () => {
           </div>
 
           <div className="flex gap-[2em]">
-            <div className="rounded-md p-2 px-[1em]  bg-[#CDCDCD]  text-pri w-full flex items-center">
+            <div className="rounded-md p-2 px-[1em]  bg-[#CDCDCD]  text-pri w-full ">
               <select
                 placeholder="Browse by"
                 onChange={handleSelectedData}
                 style={{ appearance: "none" }}
-                className="w-full focus:border-none bg-transparent outline-none"
+                className="w-full focus:border-none bg-transparent border-0"
               >
                 {header_data
                   ?.filter((item: any) => item.name !== "ID")
@@ -98,7 +98,6 @@ const SearchBarDemo = () => {
                     </option>
                   ))}
               </select>
-              <BiChevronDown className="text-[16px]" />
             </div>
             <button
               onClick={handleFilterMainData}

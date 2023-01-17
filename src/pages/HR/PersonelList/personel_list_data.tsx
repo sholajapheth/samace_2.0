@@ -12,21 +12,25 @@ export const formData = [
         name: "ID",
         type: "number",
         placeholder: "Enter ID",
+        required: true,
       },
       {
         name: "Start Date",
         type: "date",
         placeholder: "Enter Start Date",
+        required: true,
       },
       {
         name: "Surname",
         type: "text",
         placeholder: "Surname",
+        required: true,
       },
       {
         name: "First Name",
         type: "text",
         placeholder: "First Name",
+        required: true,
       },
       {
         name: "Other Name",
@@ -37,6 +41,7 @@ export const formData = [
         name: "Gender",
         type: "drop",
         optionList: ["male", "female"],
+        required: true,
       },
       {
         name: "DOB",
@@ -62,6 +67,7 @@ export const formData = [
         name: "Nationality",
         type: "drop",
         optionList: ["nigerian", "others"],
+        required: true,
       },
       {
         name: "Marital Status",
@@ -98,6 +104,7 @@ export const formData = [
         name: "Address",
         type: "text",
         placeholder: "Enter Address",
+        required: true,
       },
       {
         name: "City",
@@ -108,21 +115,25 @@ export const formData = [
         name: "State",
         type: "drop",
         optionList: states,
+        required: true,
       },
       {
         name: "Country",
         type: "drop",
         optionList: ["nigeria", "others"],
+        required: true,
       },
       {
         name: "Phone Number",
         type: "number",
         placeholder: "Enter Phone Number",
+        required: true,
       },
       {
         name: "Email",
         type: "email",
         placeholder: "Enter Email",
+        required: true,
       },
     ],
   },
@@ -130,42 +141,42 @@ export const formData = [
     section: "Next of Kin",
     data: [
       {
-        name: "Name",
+        name: "next of kin Name",
         type: "text",
         placeholder: "Enter Name",
       },
       {
-        name: "Relationship",
+        name: "next of kin Relationship",
         type: "drop",
         optionList: ["FATHER", "MOTHER", "BROTHER", "SISTER", "UNCLE", "AUNT"],
       },
       {
-        name: "Address",
+        name: "next of kin Address",
         type: "text",
         placeholder: "Enter Address",
       },
       {
-        name: "City",
+        name: "next of kin City",
         type: "text",
         placeholder: "Enter City",
       },
       {
-        name: "State",
+        name: "next of kin State",
         type: "drop",
         optionList: states,
       },
       {
-        name: "Country",
+        name: "next of kin Country",
         type: "drop",
         optionList: ["nigeria", "others"],
       },
       {
-        name: "Phone Number",
+        name: "next of kin Phone Number",
         type: "number",
         placeholder: "Enter Phone Number",
       },
       {
-        name: "Email",
+        name: "next of kin Email",
         type: "email",
         placeholder: "Enter Email",
       },

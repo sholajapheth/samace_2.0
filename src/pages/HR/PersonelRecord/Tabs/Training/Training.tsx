@@ -1,7 +1,6 @@
 import { useContext, useEffect, useMemo, memo, useState } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
 import { sidebar_nav_type } from "../../../../../globals/types";
-import SearchBar from "../../../../../globals/SearchBar";
 import { TableComponent } from "../../../../../components";
 // import mock_data from "../../MOCK_DATA.json";
 import disciplinary from "../../../assets/disciplinary.svg";

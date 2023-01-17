@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
 import { PRNavResolve } from "../Training/Training";
-import SearchBar from "../../../../../globals/SearchBar";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/hr";

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../Dashboard/Dashboard";
-import { camelize } from "../../components/TableComponent/TableComponent";
+import { camelize } from "../../components/global_utils/helper_fuctions";
 
 type inputType = {
   name: string;

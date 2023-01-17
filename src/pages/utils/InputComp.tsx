@@ -1,16 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "../Dashboard/Dashboard";
-import { camelize } from "../../components/TableComponent/TableComponent";
-
+import { camelize } from "../../components/global_utils/helper_fuctions";
 
 type inputType = {
   name: string;
   type: string;
   placeholder?: string;
   optionList?: string[];
+  required?: boolean;
 };
 
-const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
+const InputComp = ({
+  name,
+  type,
+  placeholder,
+  optionList,
+  required,
+}: inputType) => {
+  // form value is handled by the DashboardContext and the value is passed to the input component as props and the value is set in the context
+
   const { inputValue, setInputValue, editData, setEditData } =
     useContext(DashboardContext);
   const [value, setValue] = useState("");
@@ -36,9 +44,9 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
 
   return (
     <div className="flex md:flex-row flex-col gap-2   md:justify-between md:items-center w-full my-[2em] ">
-      <label className="text-white text-[16px] font-[700] ">{name} </label>
+      <label className="text-white text-[16px] font-[700] ">{name.toUpperCase()}</label>
 
-      { type === "drop" ? (
+      {type === "drop" ? (
         <select
           value={
             editData?.properties?.[camelize(name)]
@@ -46,18 +54,20 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
               : value
           }
           onChange={handleChanges}
-          className="bg-white rounded-md text-pri text-[16px] p-2 
+          className="bg-white rounded-md text-pri text-[16px]  
         focus:outline-none md:w-[18em] w-full"
           id={name}
+          required={required}
         >
           {optionList?.map((option, index) => (
             <option key={index} value={option}>
-              {option}
+              {option.toUpperCase()}
             </option>
           ))}
         </select>
       ) : type === "textarea" ? (
         <textarea
+          required={required}
           value={
             editData?.properties?.[camelize(name)]
               ? editData?.properties?.[camelize(name)]
@@ -70,6 +80,7 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
         />
       ) : type === "number" ? (
         <input
+          required={required}
           value={
             editData?.properties?.[camelize(name)]
               ? editData?.properties?.[camelize(name)]
@@ -84,6 +95,7 @@ const InputComp = ({ name, type, placeholder, optionList }: inputType) => {
         />
       ) : (
         <input
+          required={required}
           value={
             editData?.properties?.[camelize(name)]
               ? editData?.properties?.[camelize(name)]

@@ -4,10 +4,8 @@ import InputComp from "../../utils/InputComp";
 import { PLNavResolve } from "./PersonelList";
 import { useDispatch, useSelector } from "react-redux";
 import { addData } from "../../../store/slices/hr";
-// import { useNavigate, useNavigation } from "react-router-dom";
 import { currentUser } from "../../../globals/HelperFunctions";
-import Loading from "../../../components/Loading";
-import { Oval } from "react-loader-spinner";
+import Loading, { SmallLoading } from "../../../components/Loading";
 import { FormContainer } from "../../utils/FormContainer";
 import { formData } from "./personel_list_data";
 
@@ -38,10 +36,7 @@ const Add = () => {
       <div className="w-full mt-[2em]  ">
         {formData.map((item, index) => {
           return (
-            <FormContainer>
-              <p className="md:text-[24px] text-[16px] text-white font-[700]">
-                {item.section}
-              </p>
+            <FormContainer section_name={item.section}>
               {item.data.map((item, index) => {
                 return (
                   <InputComp
@@ -63,44 +58,14 @@ const Add = () => {
               onClick={(e) => handleSend(e, "humanResources_personnelList")}
               className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
             >
-              {loading ? (
-                <Oval
-                  height={40}
-                  width={40}
-                  color="#08193E"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                  ariaLabel="oval-loading"
-                  secondaryColor="#08193E"
-                  strokeWidth={2}
-                  strokeWidthSecondary={2}
-                />
-              ) : (
-                "Save"
-              )}
+              {loading ? <SmallLoading /> : "Save"}
             </button>
 
             <button
               onClick={(e) => handleSendNew(e, "humanResources_personnelList")}
               className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
             >
-              {loading ? (
-                <Oval
-                  height={40}
-                  width={40}
-                  color="#08193E"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                  ariaLabel="oval-loading"
-                  secondaryColor="#08193E"
-                  strokeWidth={2}
-                  strokeWidthSecondary={2}
-                />
-              ) : (
-                "Save & New"
-              )}
+              {loading ? <SmallLoading /> : "Save & New"}
             </button>
             <button
               onClick={handleCancel}

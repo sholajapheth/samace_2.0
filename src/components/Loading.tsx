@@ -21,3 +21,22 @@ const Loading = () => {
 };
 
 export default Loading;
+
+export const SmallLoading = () => {
+  return (
+    <div className="">
+      <Oval
+        height={20}
+        width={20}
+        color="#08193E"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="oval-loading"
+        secondaryColor="#08193E"
+        strokeWidth={2}
+        strokeWidthSecondary={2}
+      />{" "}
+    </div>
+  );
+};

@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
-import { camelize } from "../components/TableComponent/TableComponent";
 import { BiChevronDown } from "react-icons/bi";
 import { DashboardContext } from "../pages/Dashboard/Dashboard";
+import { camelize } from "../components/global_utils/helper_fuctions";
 
 type SearchBarProps = {
   searchData?: any;
@@ -22,11 +22,10 @@ const SearchBar = ({
   const [wordEntered, setWordEntered] = useState("");
   const { searchDatas } = useContext(DashboardContext);
 
-  const searchData_1:any = searchDatas?.searchData
-  const header_data_1:any = searchDatas?.header_data
-  const set_body_data_1:any = searchDatas?.set_body_data
-  const default_data_1:any = searchDatas?.default_data
-
+  const searchData_1: any = searchDatas?.searchData;
+  const header_data_1: any = searchDatas?.header_data;
+  const set_body_data_1: any = searchDatas?.set_body_data;
+  const default_data_1: any = searchDatas?.default_data;
 
   const handleSelectedData = (event: any) => {
     set_search((search) => (search = camelize(event.target.value)));
@@ -68,7 +67,7 @@ const SearchBar = ({
               <RiSearch2Line className="text-[20px]" />
             )}
             <input
-              className="w-full focus:border-none bg-transparent outline-none"
+              className="w-full ring-0 border-0 focus:border-none bg-transparent outline-0"
               type="search"
               placeholder="search"
               onChange={handleFilter}
@@ -82,7 +81,7 @@ const SearchBar = ({
                 placeholder="Browse by"
                 onChange={handleSelectedData}
                 style={{ appearance: "none" }}
-                className="w-full focus:border-none bg-transparent outline-none"
+                className="w-full focus:border-none bg-transparent outline-0 ring-0 border-0 outline-none"
               >
                 {header_data
                   ?.filter((item) => item.name !== "ID")
@@ -99,21 +98,13 @@ const SearchBar = ({
               className="rounded-md p-2 px-[2em] bg-pri flex gap-1 items-center text-[#CDCDCD] "
             >
               <span>
-                {/* {filteredData?.length > 0 && "Search"}
-                {wordEntered.length > 0 && "Filter"}
-                {wordEntered === "" && "Reset"} */}
-                {/* { filteredData.length === 0 && "Search"} */}
+              
                 Search
               </span>
             </button>
           </div>
         </div>
-        {/* <button
-          className="p-5 rounded-md bg-pri font-[700] text-white"
-          onClick={() => set_body_data(default_data)}
-        >
-          Reset
-        </button> */}
+    
         {filteredData?.length !== 0 && (
           <div className="shadow-md py-4 overflow-scroll scrollbar-hide  backdrop-blur-md  text-black lg:w-[33%] md:w-[50%] w-full h-[10em] absolute z-[550] mt-1">
             {filteredData?.map((item: any, index: number) => (
