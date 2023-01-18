@@ -14,25 +14,22 @@ export const personel_list_formData = [
         name: "ID",
         type: "number",
         placeholder: "Enter ID",
-        required: true,
+        maxLength: 10,
       },
       {
         name: "Start Date",
         type: "date",
         placeholder: "Enter Start Date",
-        required: true,
       },
       {
         name: "Surname",
         type: "text",
         placeholder: "Surname",
-        required: true,
       },
       {
         name: "First Name",
         type: "text",
         placeholder: "First Name",
-        required: true,
       },
       {
         name: "Other Name",
@@ -43,7 +40,6 @@ export const personel_list_formData = [
         name: "Gender",
         type: "drop",
         optionList: ["male", "female"],
-        required: true,
       },
       {
         name: "DOB",
@@ -69,7 +65,6 @@ export const personel_list_formData = [
         name: "Nationality",
         type: "drop",
         optionList: ["nigerian", "others"],
-        required: true,
       },
       {
         name: "Marital Status",
@@ -104,9 +99,8 @@ export const personel_list_formData = [
     data: [
       {
         name: "Address",
-        type: "text",
+        type: "textarea",
         placeholder: "Enter Address",
-        required: true,
       },
       {
         name: "City",
@@ -117,25 +111,22 @@ export const personel_list_formData = [
         name: "State",
         type: "drop",
         optionList: states,
-        required: true,
       },
       {
         name: "Country",
         type: "drop",
         optionList: ["nigeria", "others"],
-        required: true,
       },
       {
         name: "Phone Number",
         type: "number",
         placeholder: "Enter Phone Number",
-        required: true,
+        maxLength: 11,
       },
       {
         name: "Email",
         type: "email",
         placeholder: "Enter Email",
-        required: true,
       },
     ],
   },
@@ -146,6 +137,22 @@ export const personel_list_formData = [
         name: "next of kin Name",
         type: "text",
         placeholder: "Enter Name",
+      },
+      {
+        name: "next of kin gender ",
+        type: "drop",
+        optionList: ["male", "female"],
+      },
+      {
+        name: "next of kin Phone Number",
+        type: "phone",
+        placeholder: "Enter Phone Number",
+        maxLength: 11,
+      },
+      {
+        name: "next of kin Email",
+        type: "email",
+        placeholder: "Enter Email",
       },
       {
         name: "next of kin Relationship",
@@ -172,16 +179,6 @@ export const personel_list_formData = [
         type: "drop",
         optionList: ["nigeria", "others"],
       },
-      {
-        name: "next of kin Phone Number",
-        type: "number",
-        placeholder: "Enter Phone Number",
-      },
-      {
-        name: "next of kin Email",
-        type: "email",
-        placeholder: "Enter Email",
-      },
     ],
   },
 
@@ -189,14 +186,9 @@ export const personel_list_formData = [
     section: "Employment Information",
     data: [
       {
-        name: "Employment Status",
-        type: "drop",
-        optionList: ["permanent", "temporary", "internship", "student"],
-      },
-      {
         name: "Employment Type",
         type: "drop",
-        optionList: ["full time", "part time"],
+        optionList: ["permanent", "temporary/internship", "student it"],
       },
       {
         name: "Department",
@@ -227,7 +219,6 @@ export const personel_list_formData = [
         name: "Grade Level",
         type: "drop",
         optionList: [
-          "ENTRY LEVEL",
           "ASSISTANT",
           "SENIOR ASSISTANT",
           "OFFICER",
@@ -250,60 +241,31 @@ export const personel_list_formData = [
     section: "Bank Information",
     data: [
       {
+        name: "Account Number",
+        type: "number",
+        placeholder: "Enter Account Number",
+      },
+      {
         name: "Bank Name",
         type: "drop",
         optionList: [
           "ACCESS BANK",
-          "CITIBANK",
-          "DIAMOND BANK",
-          "ECOBANK",
-          "ENTERPRISE BANK",
-          "FIDELITY BANK",
           "FIRST BANK",
-          "FIRST CITY MONUMENT BANK",
-          "GUARANTY TRUST BANK",
-          "HERITAGE BANK",
-          "KEYSTONE BANK",
-          "MAINSTREET BANK",
-          "SKYE BANK",
-          "STANBIC IBTC BANK",
-          "STANDARD CHARTERED BANK",
-          "STERLING BANK",
-          "UNION BANK",
-          "UNITED BANK FOR AFRICA",
-          "UNITY BANK",
-          "WEMA BANK",
+          "FCMB",
+          "GTB",
+          "UBA",
           "ZENITH BANK",
         ],
       },
       {
         name: "PFA Name",
         type: "drop",
-        optionList: [
-          "AXA Mansard",
-          "Custodian and Allied",
-          "Leadway Assurance",
-          "NPF Pensions",
-          "Nigerian Police Pension Fund",
-          "ARM Pensions",
-          "Crusader Sterling Pensions",
-          "FCMB Pensions",
-        ],
+        optionList: ["ARM Pensions", "Crusader Sterling Pensions"],
       },
       {
-        name: "PFA Number",
+        name: "Pension ID no",
         type: "number",
-        placeholder: "Enter PFA Number",
-      },
-      {
-        name: "Account Name",
-        type: "text",
-        placeholder: "Enter Account Name",
-      },
-      {
-        name: "Account Number",
-        type: "number",
-        placeholder: "Enter Account Number",
+        placeholder: "Enter Pension id no",
       },
     ],
   },

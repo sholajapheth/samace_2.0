@@ -34,15 +34,13 @@ const hrSlice = createSlice({
       state.message = action.payload.response.data.message;
     },
     addSuccessType: (state, action) => {
-      state.message = action.payload.message;
       state.loading = false;
       window.history.back();
     },
     addNewSuccessType: (state, action) => {
-      state.message = action.payload.message;
+      alert(action.payload.message);
+      window.location.reload();
       state.loading = false;
-      console.log("actoin: ", action.payload);
-      // window.location.reload();
     },
   },
 });

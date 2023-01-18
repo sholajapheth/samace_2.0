@@ -7,7 +7,7 @@ type inputType = {
   type: string;
   placeholder?: string;
   optionList?: string[];
-  required?: boolean;
+  maxLength?: number;
 };
 
 const InputComp = ({
@@ -15,7 +15,7 @@ const InputComp = ({
   type,
   placeholder,
   optionList,
-  required,
+  maxLength,
 }: inputType) => {
   // form value is handled by the DashboardContext and the value is passed to the input component as props and the value is set in the context
 
@@ -32,8 +32,8 @@ const InputComp = ({
   }, []);
 
   const handleChanges = (e: any) => {
-    if (type === "number") {
-      if (e.target.value.length > 10) {
+    if (name === "phone" || name.toLowerCase() === "id" ) {
+      if (e.target.value.length > 11) {
         return;
       }
     }
@@ -44,7 +44,9 @@ const InputComp = ({
 
   return (
     <div className="flex md:flex-row flex-col gap-2   md:justify-between md:items-center w-full my-[2em] ">
-      <label className="text-white text-[16px] font-[700] ">{name.toUpperCase()}</label>
+      <label className="text-white text-[16px] font-[700] ">
+        {name.toUpperCase()}
+      </label>
 
       {type === "drop" ? (
         <select
@@ -57,7 +59,6 @@ const InputComp = ({
           className="bg-white rounded-md text-pri text-[16px]  
         focus:outline-none md:w-[18em] w-full"
           id={name}
-          required={required}
         >
           {optionList?.map((option, index) => (
             <option key={index} value={option}>
@@ -67,20 +68,18 @@ const InputComp = ({
         </select>
       ) : type === "textarea" ? (
         <textarea
-          required={required}
           value={
             editData?.properties?.[camelize(name)]
               ? editData?.properties?.[camelize(name)]
               : value
           }
           onChange={handleChanges}
-          placeholder={placeholder}
+          placeholder={placeholder?.toUpperCase()}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full h-[10em]"
         />
       ) : type === "number" ? (
         <input
-          required={required}
           value={
             editData?.properties?.[camelize(name)]
               ? editData?.properties?.[camelize(name)]
@@ -89,13 +88,12 @@ const InputComp = ({
           style={{ appearance: "none", WebkitAppearance: "none" }}
           type="number"
           onChange={handleChanges}
-          placeholder={placeholder}
+          placeholder={placeholder?.toUpperCase()}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full"
         />
       ) : (
         <input
-          required={required}
           value={
             editData?.properties?.[camelize(name)]
               ? editData?.properties?.[camelize(name)]
@@ -103,7 +101,7 @@ const InputComp = ({
           }
           onChange={handleChanges}
           type={type}
-          placeholder={placeholder}
+          placeholder={placeholder?.toUpperCase()}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full"
         />

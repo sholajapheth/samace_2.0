@@ -66,7 +66,7 @@ const PersonelList = () => {
 
   useEffect(() => {
     dispatch(getData(constants.url));
-    setSelectedItem("");
+    // setSelectedItem("");
   }, []);
 
   useEffect(() => {
