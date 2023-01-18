@@ -157,7 +157,18 @@ export const personel_list_formData = [
       {
         name: "next of kin Relationship",
         type: "drop",
-        optionList: ["FATHER", "MOTHER", "BROTHER", "SISTER", "UNCLE", "AUNT"],
+        optionList: [
+          "FATHER",
+          "MOTHER",
+          "BROTHER",
+          "SISTER",
+          "UNCLE",
+          "AUNT",
+          "HUSBAND",
+          "WIFE",
+          "CHILD",
+          "GUARDIAN",
+        ],
       },
       {
         name: "next of kin Address",
