@@ -4,7 +4,7 @@ export const constants = {
   url: "humanResources_personnelList",
 };
 
-export const formData = [
+export const personel_list_formData = [
   {
     section: "Personal Information",
     data: [
@@ -287,6 +287,11 @@ export const formData = [
           "Crusader Sterling Pensions",
           "FCMB Pensions",
         ],
+      },
+      {
+        name: "PFA Number",
+        type: "number",
+        placeholder: "Enter PFA Number",
       },
       {
         name: "Account Name",

@@ -7,47 +7,7 @@ import { TableComponent } from "../../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../store/slices/hr";
 import Loading from "../../../components/Loading";
-import { constants, formData } from "./personel_list_data";
-
-const header_data = [
-  { id: 0, name: "ID" },
-  { id: 9, name: "Start Date" },
-  { id: 1, name: "Surname" },
-  { id: 13, name: "First Name" },
-  { id: 14, name: "Other Name" },
-  { id: 15, name: "Gender" },
-  { id: 16, name: "DOB" },
-  { id: 17, name: "Place of Birth" },
-  { id: 7, name: "State of Origin " },
-  { id: 8, name: "LGA" },
-  { id: 18, name: "Nationality" },
-  { id: 5, name: "Marital Status" },
-  { id: 19, name: "Number of Children" },
-  { id: 6, name: "Religion" },
-  { id: 20, name: "Means of Identification" },
-
-  { id: 2, name: "Home Address" },
-  { id: 3, name: "Phone Number" },
-  { id: 4, name: "Email Address" },
-  { id: 22, name: "Next of Kin Name" },
-  { id: 23, name: "Relationship" },
-  { id: 21, name: "Next of Kin Gender" },
-  { id: 22, name: "Next of Kin Address" },
-  { id: 24, name: "Next of Kin Phone Number" },
-  { id: 25, name: "Next of Kin Email Address" },
-  { id: 10, name: "Type of Employment" },
-  { id: 11, name: "Department" },
-  { id: 12, name: "Job Role" },
-  { id: 26, name: "Grade Level" },
-  { id: 27, name: "Step" },
-  { id: 28, name: "Bank Name" },
-  { id: 29, name: "Account Number" },
-  { id: 30, name: "PFA Name" },
-  { id: 31, name: "Pension Number" },
-  { id: 32, name: "Top" },
-  { id: 33, name: "Bottom" },
-  { id: 34, name: "Shoe" },
-];
+import { constants, personel_list_formData } from "./personel_list_data";
 
 // one time component here to configure naaviation
 type resolveProps = {
@@ -92,6 +52,14 @@ const PersonelList = () => {
   const [personel_data, set_personel_data] = useState<any>([]);
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
 
+  const formSections = personel_list_formData.map((section) => section.data);
+  const fieldNameValues = formSections.flatMap((section) =>
+    section.map((field) => ({ name:field.name }))
+  );
+
+
+
+
 
   useEffect(() => {
     dispatch(getData(constants.url));
@@ -109,7 +77,7 @@ const PersonelList = () => {
     set_personel_data(() => data);
     setSearchDatas({
       searchData: personel_data.docs,
-      header_data: formData[0].data,
+      header_data: fieldNameValues,
       set_body_data: setFillteredBodyData,
       default_data:
         fillteredBodyData.length !== 0 ? fillteredBodyData : personel_data.docs,
@@ -124,7 +92,7 @@ const PersonelList = () => {
           <Loading />
         ) : (
           <TableComponent
-            header_data={formData[0].data}
+            header_data={fieldNameValues}
             body_data={
               fillteredBodyData.length !== 0
                 ? fillteredBodyData
