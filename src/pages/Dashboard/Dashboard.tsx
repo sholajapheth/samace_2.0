@@ -2,7 +2,29 @@ import { createContext, useState } from "react";
 import { Topbar, Sidebar, DisplayArea } from "../../components";
 import { DecisionModal } from "../../globals";
 
-console.log(window.location.pathname);
+export const reducer = (state: any, action: any) => {
+  switch (action.type) {
+    case "editData":
+      return { ...state, editData: action.payload };
+    case "topbar_value":
+      return { ...state, topbar_value: action.payload };
+    case "sidebar_nav_data":
+      return { ...state, sidebar_nav_data: action.payload };
+    case "show_decision_modal":
+      return { ...state, show_decision_modal: action.payload };
+    case "show_topbar_actions":
+      return { ...state, show_topbar_actions: action.payload };
+    case "inputValue":
+      return { ...state, inputValue: action.payload };
+    case "selectedItem":
+      return { ...state, selectedItem: action.payload };
+    case "searchDatas":
+      return { ...state, searchDatas: action.payload };
+    default:
+      return state;
+  }
+};
+
 
 export const DashboardContext = createContext<any>({});
 

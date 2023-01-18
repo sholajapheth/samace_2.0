@@ -1,4 +1,6 @@
 import { states } from "../../../assets/datas/data";
+import personel_list from "../assets/personel_list.svg";
+import personel_record from "../assets/personel_record.svg";
 
 export const constants = {
   url: "humanResources_personnelList",
@@ -320,4 +322,9 @@ export const personel_list_formData = [
       },
     ],
   },
+];
+
+export const sidebar_data: any = [
+  { id: 0, name: "Personel List", img: personel_list, link: "hr/pl" },
+  { id: 1, name: "Personel Record", img: personel_record, link: "hr/pr" },
 ];

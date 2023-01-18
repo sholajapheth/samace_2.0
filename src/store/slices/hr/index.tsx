@@ -5,7 +5,7 @@ import { AppDispatch } from "../../configureStore";
 const initialState = {
   data: {},
   loading: false,
-  status: "",
+  message: "",
 };
 
 const hrSlice = createSlice({
@@ -14,34 +14,32 @@ const hrSlice = createSlice({
   reducers: {
     dataRequested: (state) => {
       state.loading = true;
-      state.status = "";
+      state.message = "";
     },
 
     dataGotten: (state, action) => {
       state.data = action.payload.data;
       state.loading = false;
-
-      // console.log("state: ", state.data);
+      state.message = action.payload.message;
     },
     dataFectchFailed: (state, action) => {
       alert(action.payload.response.data.message);
       state.loading = false;
-      // state.status = action.payload.response.statmus;
-      console.log("actoin: ", action.payload);
+      state.message = action.payload.response.data.message;
     },
+
     deleteSuccessType: (state, action) => {
       state.loading = false;
       window.location.reload();
+      state.message = action.payload.response.data.message;
     },
     addSuccessType: (state, action) => {
-      alert(action.payload.message);
+      state.message = action.payload.message;
       state.loading = false;
-      console.log("actoin: ", action.payload);
       window.history.back();
-      // window.location.reload();
     },
     addNewSuccessType: (state, action) => {
-      alert(action.payload.message);
+      state.message = action.payload.message;
       state.loading = false;
       console.log("actoin: ", action.payload);
       // window.location.reload();
@@ -91,7 +89,7 @@ export const getSingleData =
   };
 
 export const addData =
-  (url: string, data?: any, type?:string, extraheaders?: any) =>
+  (url: string, data?: any, type?: string, extraheaders?: any) =>
   (dispatch: AppDispatch) => {
     dispatch(
       apiCallBegan({
