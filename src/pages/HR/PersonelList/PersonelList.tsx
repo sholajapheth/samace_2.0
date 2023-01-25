@@ -65,12 +65,16 @@ const PersonelList = () => {
   const notify = useCallback(() => toast(message), [message]);
 
   useEffect(() => {
+    if (message) {
+      notify();
+    }
+  }, [message]);
+
+  useEffect(() => {
     dispatch(getData(constants.url));
-    // setSelectedItem("");
   }, []);
 
   useEffect(() => {
-    notify();
     set_personel_data(data);
 
     set_topbar_value("Personnel List ");

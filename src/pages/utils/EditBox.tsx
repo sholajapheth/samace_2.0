@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DashboardContext } from "../Dashboard/Dashboard";
 import { currentUser } from "../../globals/HelperFunctions";
@@ -7,8 +7,12 @@ import Loading, { SmallLoading } from "../../components/Loading";
 import EditInput from "./EditInput";
 import { useNavigate } from "react-router-dom";
 import { getSingleData, updateData } from "../../store/slices/hr";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const EditBox = ({ loading, data, navResolve, endPoint, formData }: any) => {
+  const { message } = useSelector((state: any) => state.hr);
   const { set_show_decision_modal, inputValue, selectedItem } =
     useContext(DashboardContext);
   const dispatch = useDispatch<any>();
@@ -22,14 +26,17 @@ const EditBox = ({ loading, data, navResolve, endPoint, formData }: any) => {
 
   const handleSend = (e: any, url: string) => {
     e.preventDefault();
-    dispatch(
-      updateData(
-        url,
-        selectedItem[0],
-        inputValue,
-        JSON.parse(currentUser).token
-      )
-    );
+    console.log("inputValue: ", inputValue);
+    if (inputValue) {
+      dispatch(
+        updateData(
+          url,
+          selectedItem[0],
+          inputValue,
+          JSON.parse(currentUser).token
+        )
+      );
+    } else console.log("no input value");
   };
 
   useEffect(() => {
@@ -42,10 +49,19 @@ const EditBox = ({ loading, data, navResolve, endPoint, formData }: any) => {
 
   useEffect(() => {
     if (data) {
-      setEditData(() => data);
-      // console.log("edit: ", editData);
+      setEditData(() => data?.properties);
     }
   }, [data]);
+
+  const notify = useCallback(() => toast(message), [message]);
+
+  useEffect(() => {
+    if (message) {
+      notify();
+    }
+  }, [message]);
+
+
 
   return (
     <>
@@ -54,8 +70,10 @@ const EditBox = ({ loading, data, navResolve, endPoint, formData }: any) => {
       ) : (
         <div>
           <>{navResolve}</>
+          <ToastContainer />
+
           <div className="w-full mt-[2em]  ">
-            {formData.map((item:any, index:any) => {
+            {formData.map((item: any, index: any) => {
               return (
                 <FormContainer key={index} section_name={item.section}>
                   {item.data.map((item: any, index: any) => {

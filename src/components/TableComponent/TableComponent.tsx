@@ -10,7 +10,7 @@ const TableComponent = ({ header_data, body_data }: any) => {
   const addId = (id: any) => {
     if (selectedItem?.includes(id)) {
       return;
-    } else selectedItem.push(id);
+    } else selectedItem[0] = id;
     console.log("roew: ", selectedItem);
   };
 

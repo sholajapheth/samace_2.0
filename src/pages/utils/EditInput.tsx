@@ -10,28 +10,26 @@ type inputType = {
 };
 
 const EditInput = ({ name, type, placeholder, optionList }: inputType) => {
-  const { inputValue, editData, setEditData } = useContext(DashboardContext);
+  const { inputValue, editData, setEditData, setInputValue } =
+    useContext(DashboardContext);
   const [value, setValue] = useState("");
   let defaultValue = optionList ? optionList[0] : "";
 
   useEffect(() => {
-    inputValue[camelize(name)] = "";
-    inputValue[camelize(name)] = editData?.properties?.[camelize(name)];
-    // setValue(editData?.properties?.[camelize(name)]);
-    // console.log("edit f: ", editData?.properties?.name);
-  }, []);
+    setInputValue((previousState: any) => ({
+      ...previousState,
+      [camelize(name)]: editData?.[camelize(name)],
+    }));
+  }, [editData]);
 
   const handleChanges = (e: any) => {
     setValue(e.target.value);
-    setEditData({
-      ...editData,
-      properties: {
-        ...editData.properties,
-        [camelize(name)]: e.target.value,
-      },
-    });
+    setEditData((previousState: any) => ({
+      ...previousState,
+      [camelize(name)]: e.target.value,
+    }));
 
-    console.log("edit prop: ", editData);
+    console.log("edit prop: ", inputValue);
   };
 
   return (
@@ -41,8 +39,8 @@ const EditInput = ({ name, type, placeholder, optionList }: inputType) => {
       {type === "drop" ? (
         <select
           value={
-            editData?.properties?.[camelize(name)]
-              ? editData?.properties?.[camelize(name)]
+            editData?.[camelize(name)]
+              ? editData?.[camelize(name)]
               : defaultValue
           }
           onChange={handleChanges}
@@ -59,8 +57,8 @@ const EditInput = ({ name, type, placeholder, optionList }: inputType) => {
       ) : type === "textarea" ? (
         <textarea
           value={
-            editData?.properties?.[camelize(name)]
-              ? editData?.properties?.[camelize(name)]
+            editData?.[camelize(name)]
+              ? editData?.[camelize(name)]
               : value
           }
           onChange={handleChanges}
@@ -71,8 +69,8 @@ const EditInput = ({ name, type, placeholder, optionList }: inputType) => {
       ) : (
         <input
           value={
-            editData?.properties?.[camelize(name)]
-              ? editData?.properties?.[camelize(name)]
+            editData?.[camelize(name)]
+              ? editData?.[camelize(name)]
               : value
           }
           onChange={handleChanges}

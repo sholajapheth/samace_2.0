@@ -23,7 +23,7 @@ const hrSlice = createSlice({
       state.message = action.payload.message;
     },
     dataFectchFailed: (state, action) => {
-      alert(action.payload.response.data.message);
+      console.log(action.payload.response.data.message);
       state.loading = false;
       state.message = action.payload.response.data.message;
     },
@@ -38,7 +38,7 @@ const hrSlice = createSlice({
       window.history.back();
     },
     addNewSuccessType: (state, action) => {
-      alert(action.payload.message);
+      console.log(action.payload.message);
       window.location.reload();
       state.loading = false;
     },
@@ -56,7 +56,8 @@ export const {
 
 export const getData =
   (url: string, data?: any, extraheaders?: any) =>
-  (dispatch: AppDispatch, getState: any) => {
+  (dispatch: AppDispatch, getState: () => any) => {
+ 
     dispatch(
       apiCallBegan({
         onStart: dataRequested.type,
@@ -80,7 +81,6 @@ export const getSingleData =
         onError: dataFectchFailed.type,
         url: "data/" + url + "/" + id,
         method: "GET",
-        // data,
         extraheaders,
       })
     );
