@@ -10,9 +10,26 @@ import { getSingleData, updateData } from "../../store/slices/hr";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+interface EditBoxProps {
+  loading: boolean;
+  data: any;
+  navResolve: any;
+  endPoint: string;
+  formData: any;
+  message: string;
+  updateData: any;
+  getSingleData: any;
+}
 
-const EditBox = ({ loading, data, navResolve, endPoint, formData }: any) => {
-  const { message } = useSelector((state: any) => state.hr);
+const EditBox = ({
+  loading,
+  data,
+  navResolve,
+  endPoint,
+  formData,
+  message,
+  updateData,
+}: EditBoxProps) => {
   const { set_show_decision_modal, inputValue, selectedItem } =
     useContext(DashboardContext);
   const dispatch = useDispatch<any>();
@@ -43,7 +60,8 @@ const EditBox = ({ loading, data, navResolve, endPoint, formData }: any) => {
     if (selectedItem.length !== 0) {
       dispatch(getSingleData(endPoint, selectedItem[0]));
     } else {
-      navigate("/dashboard/hr/pl");
+      alert("Please select an item");
+      navigate(-1);
     }
   }, [set_show_topbar_actions, selectedItem, dispatch]);
 
@@ -60,8 +78,6 @@ const EditBox = ({ loading, data, navResolve, endPoint, formData }: any) => {
       notify();
     }
   }, [message]);
-
-
 
   return (
     <>

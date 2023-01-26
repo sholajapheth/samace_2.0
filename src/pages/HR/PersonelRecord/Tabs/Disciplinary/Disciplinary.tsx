@@ -1,73 +1,81 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
-import { PRNavResolve } from "../Training/Training";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/hr";
 import Loading from "../../../../../components/Loading";
-
-const header_data = [
-  { id: 0, name: "Date" },
-  { id: 1, name: "Name" },
-  { id: 2, name: "Violation" },
-  { id: 4, name: "Action" },
-
-];
+import { disciplinary_form_data, constants } from "./disciplinary_data";
+import { sidebar_data } from "../../general_data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Disciplinary = () => {
-  const [disciplinary_data, set_disciplinary_data] = useState<any>([]);
-  const { set_show_topbar_actions, selectedItem, setSearchDatas } =
-  useContext(DashboardContext);
-const dispatch = useDispatch<any>();
-const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
-const { loading, data } = useSelector((state: any) => state.hr);
-const url = "humanResources_personnelRecord_disciplinary"
+  const dispatch = useDispatch<any>();
+  const { loading, data, message } = useSelector((state: any) => state.hr);
+  const {
+    set_topbar_value,
+    set_sidebar_nav_data,
+    set_show_topbar_actions,
+    selectedItem,
+    setSearchDatas,
+  } = useContext(DashboardContext);
+  const [section_data, set_section_data] = useState<any>([]);
+  const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
+  const formSections = disciplinary_form_data.map((section) => section.data);
+  const fieldNameValues = formSections.flatMap((section) =>
+    section.map((field) => ({ name: field.name }))
+  );
 
-
+  const notify = useCallback(() => toast(message), [message]);
 
   useEffect(() => {
-    dispatch(getData(url));
+    if (message) {
+      notify();
+    }
+  }, [message]);
+
+  useEffect(() => {
+    dispatch(getData(constants.url));
+  }, []);
+
+  useEffect(() => {
+    set_section_data(data);
+    set_topbar_value(constants.name);
+    set_sidebar_nav_data(sidebar_data);
+    set_show_topbar_actions("");
+
     set_show_topbar_actions({
-      add: "hr/pr/disciplinary/add",
-      edit: "hr/pr/disciplinary/edit",
-      delete: {
-        selectedId: selectedItem,
-        url: url,
-      },
-      url: url
+      add: constants.add,
+      edit: constants.edit,
+      delete: { selectedId: selectedItem, url: constants.url },
+      url: constants.url,
     });
-  }, [set_show_topbar_actions, dispatch, selectedItem]);
 
-
-  useEffect(() => {
-    set_disciplinary_data(() => data);
-        setSearchDatas({
-      searchData: disciplinary_data.docs,
-      header_data: header_data,
+    setSearchDatas({
+      searchData: section_data.docs,
+      header_data: fieldNameValues,
       set_body_data: setFillteredBodyData,
       default_data:
-        fillteredBodyData.length !== 0 ? fillteredBodyData : disciplinary_data.docs,
+        fillteredBodyData.length !== 0 ? fillteredBodyData : section_data.docs,
     });
   }, [data]);
 
   return (
-    <div>
-      <PRNavResolve name="Disciplinary Record" />
-      
-    {loading ? (
+    <div className="">
+      {loading ? (
         <Loading />
       ) : (
-        <div className="">
+        <>
+          <ToastContainer />
           <TableComponent
-            header_data={header_data}
+            header_data={fieldNameValues}
             body_data={
               fillteredBodyData.length !== 0
                 ? fillteredBodyData
-                : disciplinary_data.docs
+                : section_data.docs
             }
-            setFillteredBodyData={setFillteredBodyData}
           />
-        </div>
+        </>
       )}
     </div>
   );

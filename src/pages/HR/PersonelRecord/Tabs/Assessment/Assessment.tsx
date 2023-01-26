@@ -1,74 +1,81 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
-import { PRNavResolve } from "../Training/Training";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/hr";
 import Loading from "../../../../../components/Loading";
-
-const header_data = [
-  { id: 0, name: "Date" },
-  { id: 1, name: "Name" },
-  { id: 2, name: "JD SOP" },
-  { id: 4, name: "GMP" },
-  { id: 3, name: "GK" },
-  { id: 5, name: "EH" },
-];
+import { assessment_form_data, constants } from "./assessment_data";
+import { sidebar_data } from "../../general_data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Assessment = () => {
-  const { set_show_topbar_actions, selectedItem, setSearchDatas } =
-    useContext(DashboardContext);
   const dispatch = useDispatch<any>();
-  const [assessment_data, set_assessment_data] = useState<any>([]);
+  const { loading, data, message } = useSelector((state: any) => state.hr);
+  const {
+    set_topbar_value,
+    set_sidebar_nav_data,
+    set_show_topbar_actions,
+    selectedItem,
+    setSearchDatas,
+  } = useContext(DashboardContext);
+  const [section_data, set_section_data] = useState<any>([]);
   const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
-  const { loading, data } = useSelector((state: any) => state.hr);
-  const url = "humanResources_personnelRecord_assessment";
+  const formSections = assessment_form_data.map((section) => section.data);
+  const fieldNameValues = formSections.flatMap((section) =>
+    section.map((field) => ({ name: field.name }))
+  );
+
+  const notify = useCallback(() => toast(message), [message]);
 
   useEffect(() => {
-    dispatch(getData(url));
+    if (message) {
+      notify();
+    }
+  }, [message]);
+
+  useEffect(() => {
+    dispatch(getData(constants.url));
+  }, []);
+
+  useEffect(() => {
+    set_section_data(data);
+    set_topbar_value(constants.name);
+    set_sidebar_nav_data(sidebar_data);
+    set_show_topbar_actions("");
 
     set_show_topbar_actions({
-      add: "hr/pr/assessment/add",
-      edit: "hr/pr/assessment/edit",
-      delete: {
-        selectedId: selectedItem,
-        url: url,
-      },
-      url: url,
+      add: constants.add,
+      edit: constants.edit,
+      delete: { selectedId: selectedItem, url: constants.url },
+      url: constants.url,
     });
-  }, [set_show_topbar_actions, dispatch, selectedItem]);
 
-  useEffect(() => {
-    set_assessment_data(() => data);
     setSearchDatas({
-      searchData: assessment_data.docs,
-      header_data: header_data,
+      searchData: section_data.docs,
+      header_data: fieldNameValues,
       set_body_data: setFillteredBodyData,
       default_data:
-        fillteredBodyData.length !== 0
-          ? fillteredBodyData
-          : assessment_data.docs,
+        fillteredBodyData.length !== 0 ? fillteredBodyData : section_data.docs,
     });
   }, [data]);
 
   return (
-    <div>
-      <PRNavResolve name="Assessment" />
-
+    <div className="">
       {loading ? (
         <Loading />
       ) : (
-        <div className="">
+        <>
+          <ToastContainer />
           <TableComponent
-            header_data={header_data}
+            header_data={fieldNameValues}
             body_data={
               fillteredBodyData.length !== 0
                 ? fillteredBodyData
-                : assessment_data.docs
+                : section_data.docs
             }
-            setFillteredBodyData={setFillteredBodyData}
           />
-        </div>
+        </>
       )}
     </div>
   );

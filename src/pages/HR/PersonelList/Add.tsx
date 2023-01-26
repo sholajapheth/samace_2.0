@@ -1,17 +1,27 @@
-import { PLNavResolve } from "./PersonelList";
 import { addData } from "../../../store/slices/hr";
-import { constants, personel_list_formData } from "./personel_list_data";
+import {
+  constants,
+  personel_list_formData,
+  sidebar_data,
+} from "./personel_list_data";
 import AddBox from "../../utils/AddBox";
 import { useSelector } from "react-redux";
+import { NavResolve } from "../../utils/NavResolve";
 
 const Add = () => {
-  let { loading } = useSelector((state: any) => state.hr);
+  let { loading, message } = useSelector((state: any) => state.hr);
 
   return (
     <AddBox
       loading={loading}
-      addData={addData}
-      navResolve={<PLNavResolve name="Add Personnel List (BioData)" />}
+      data={addData}
+      message={message}
+      navResolve={
+        <NavResolve
+          name="Add Personnel List (BioData)"
+          resolve_data={sidebar_data}
+        />
+      }
       endPoint={constants.url}
       formData={personel_list_formData}
     />

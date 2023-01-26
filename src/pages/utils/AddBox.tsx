@@ -1,14 +1,32 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DashboardContext } from "../Dashboard/Dashboard";
 import { currentUser } from "../../globals/HelperFunctions";
 import { FormContainer } from "./FormContainer";
 import { SmallLoading } from "../../components/Loading";
 import InputComp from "./InputComp";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const AddBox = ({ loading, addData, navResolve, endPoint, formData }: any) => {
+
+interface AddBoxProps {
+  loading: boolean;
+  data: any;
+  navResolve: any;
+  endPoint: string;
+  formData: any;
+  message: string;
+}
+
+const AddBox = ({
+  loading,
+  data,
+  navResolve,
+  endPoint,
+  formData,
+  message,
+}: AddBoxProps) => {
   const { set_show_decision_modal, inputValue } = useContext(DashboardContext);
-
   const dispatch = useDispatch<any>();
 
   const handleCancel = () => {
@@ -18,15 +36,26 @@ const AddBox = ({ loading, addData, navResolve, endPoint, formData }: any) => {
 
   const handleSend = (e: any, url: string) => {
     e.preventDefault();
-    dispatch(addData(url, inputValue, "nill", JSON.parse(currentUser).token));
+    dispatch(data(url, inputValue, "nill", JSON.parse(currentUser).token));
   };
   const handleSendNew = (e: any, url: string) => {
     e.preventDefault();
-    dispatch(addData(url, inputValue, "new", JSON.parse(currentUser).token));
+    dispatch(data(url, inputValue, "new", JSON.parse(currentUser).token));
   };
+
+    const notify = useCallback(() => toast(message), [message]);
+
+    useEffect(() => {
+      if (message) {
+        notify();
+      }
+    }, [message]);
+
+
   return (
     <div>
       <>{navResolve}</>
+          <ToastContainer />
       <div className="w-full mt-[2em]  ">
         {formData?.map((item: any, index: number) => {
           return (

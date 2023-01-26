@@ -1,9 +1,12 @@
 export const constants = {
-    url : "humanResources_personnelRecord_leave",
-}
+  name: "Leave", // This is the name of the tab
+  url: "humanResources_personnelRecord_leave", // This is the url of the tab
+  add: "hr/pr/leave/add", // This is the url for the add button
+  edit: "hr/pr/leave/edit", // This is the url for the edit button
+};
 
-
-export const leave_formData = [
+// This is the data for the form
+export const leave_form_data = [
   {
     section: "Leave Information",
     data: [

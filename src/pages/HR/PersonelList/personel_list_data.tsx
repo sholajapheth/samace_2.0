@@ -3,7 +3,10 @@ import personel_list from "../assets/personel_list.svg";
 import personel_record from "../assets/personel_record.svg";
 
 export const constants = {
+  name: "Personel List",
   url: "humanResources_personnelList",
+  add: "hr/pl/add",
+  edit: "hr/pl/edit",
 };
 
 export const personel_list_formData = [
