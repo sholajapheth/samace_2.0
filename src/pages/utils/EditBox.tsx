@@ -100,6 +100,8 @@ const EditBox = ({
                         type={item.type}
                         placeholder={item.placeholder}
                         optionList={item.optionList}
+                        dropType={item.dropType}
+                        section={item.section}
                       />
                     );
                   })}

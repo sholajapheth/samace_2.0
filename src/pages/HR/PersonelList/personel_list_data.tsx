@@ -50,25 +50,29 @@ export const personel_list_formData = [
         placeholder: "Enter DOB",
       },
       {
-        name: "Place of Birth",
-        type: "drop",
-        optionList: states,
+        name: "Nationality",
+        type: "specialDrop",
+        dropType: "country",
+        section: "Contact Information",
       },
       {
         name: "State of Origin",
-        type: "drop",
-        optionList: states,
+        type: "specialDrop",
+        dropType: "state",
+        section: "Contact Information",
       },
       {
         name: "LGA",
-        type: "text",
-        placeholder: "Enter LGA",
+        type: "specialDrop",
+        dropType: "city",
+        section: "Contact Information",
       },
       {
-        name: "Nationality",
-        type: "drop",
-        optionList: ["nigerian", "others"],
+        name: "Place of Birth",
+        type: "text",
+        placeholder: "Enter Place of Birth",
       },
+
       {
         name: "Marital Status",
         type: "drop",
@@ -101,25 +105,28 @@ export const personel_list_formData = [
     section: "Contact Information",
     data: [
       {
+        name: "Country",
+        type: "specialDrop",
+        dropType: "country",
+        // optionList: ["nigeria", "others"],
+      },
+      {
+        name: "State",
+        type: "specialDrop",
+        dropType: "state",
+        // optionList: states,
+      },
+      {
+        name: "City",
+        type: "specialDrop",
+        dropType: "city",
+      },
+      {
         name: "Address",
         type: "textarea",
         placeholder: "Enter Address",
       },
-      {
-        name: "City",
-        type: "text",
-        placeholder: "Enter City",
-      },
-      {
-        name: "State",
-        type: "drop",
-        optionList: states,
-      },
-      {
-        name: "Country",
-        type: "drop",
-        optionList: ["nigeria", "others"],
-      },
+
       {
         name: "Phone Number",
         type: "number",
@@ -186,7 +193,7 @@ export const personel_list_formData = [
       {
         name: "next of kin State",
         type: "drop",
-        optionList: states,
+        // optionList: states,
       },
       {
         name: "next of kin Country",

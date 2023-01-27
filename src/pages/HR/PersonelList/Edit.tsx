@@ -20,7 +20,7 @@ const Edit = () => {
       data={data}
       navResolve={
         <NavResolve
-          name="Add Personnel List (BioData)"
+          name="Edit Personnel List (BioData)"
           resolve_data={sidebar_data}
         />
       }

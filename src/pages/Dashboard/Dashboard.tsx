@@ -1,10 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import { Topbar, Sidebar, DisplayArea } from "../../components";
 import { DecisionModal } from "../../globals";
+import { countries } from "./countries";
+import { states } from "../../assets/datas/data";
 
 export const DashboardContext = createContext<any>({});
 
 const Dashboard = () => {
+  // this is the state for the states anddd cities select nput
+  const [selectedCountry, setSelectedCountry] = useState<any>("");
+  const [selectedState, setSelectedState] = useState<any>("");
+
+  const [selectedCountry_1, setSelectedCountry_1] = useState<any>("");
+  const [selectedState_1, setSelectedState_1] = useState<any>("");
+
   const [editData, setEditData] = useState<any>([]);
 
   const [topbar_value, set_topbar_value] = useState();
@@ -47,6 +56,14 @@ const Dashboard = () => {
     setSelectedItem,
     searchDatas,
     setSearchDatas,
+    selectedCountry,
+    setSelectedCountry,
+    selectedState,
+    setSelectedState,
+    selectedCountry_1,
+    setSelectedCountry_1,
+    selectedState_1,
+    setSelectedState_1,
   };
 
   return (

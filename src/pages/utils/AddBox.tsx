@@ -8,7 +8,6 @@ import InputComp from "./InputComp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 interface AddBoxProps {
   loading: boolean;
   data: any;
@@ -43,19 +42,18 @@ const AddBox = ({
     dispatch(data(url, inputValue, "new", JSON.parse(currentUser).token));
   };
 
-    const notify = useCallback(() => toast(message), [message]);
+  const notify = useCallback(() => toast(message), [message]);
 
-    useEffect(() => {
-      if (message) {
-        notify();
-      }
-    }, [message]);
-
+  useEffect(() => {
+    if (message) {
+      notify();
+    }
+  }, [message]);
 
   return (
     <div>
       <>{navResolve}</>
-          <ToastContainer />
+      <ToastContainer />
       <div className="w-full mt-[2em]  ">
         {formData?.map((item: any, index: number) => {
           return (
@@ -66,8 +64,10 @@ const AddBox = ({
                     key={index}
                     name={item.name}
                     type={item.type}
+                    dropType={item.dropType}
                     placeholder={item.placeholder}
                     optionList={item.optionList}
+                    section={item.section}
                   />
                 );
               })}
