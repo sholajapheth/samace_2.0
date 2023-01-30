@@ -1,8 +1,6 @@
 import { createContext, useReducer, useState } from "react";
 import { Topbar, Sidebar, DisplayArea } from "../../components";
 import { DecisionModal } from "../../globals";
-import { countries } from "./countries";
-import { states } from "../../assets/datas/data";
 
 export const DashboardContext = createContext<any>({});
 
@@ -13,6 +11,86 @@ const Dashboard = () => {
 
   const [selectedCountry_1, setSelectedCountry_1] = useState<any>("");
   const [selectedState_1, setSelectedState_1] = useState<any>("");
+
+  const initialState = {
+    contactInformation: {
+      selectedCountry: "",
+      selectedState: "",
+    },
+    nextOfKin: {
+      selectedCountry: "",
+      selectedState: "",
+    },
+    personalInformation: {
+      selectedCountry: "",
+      selectedState: "",
+    },
+  };
+
+  const reducer = (state: any, action: any) => {
+    switch (action.type) {
+      case "setSelectedCountry":
+        if (action.payload.name === "contactInformation") {
+          console.log("action.payload.country: ", action.payload.country);
+          return {
+            ...state,
+            contactInformation: {
+              ...state.contactInformation,
+              selectedCountry: action.payload.country,
+            },
+          };
+        }
+        if (action.payload.name === "nextOfKin") {
+          return {
+            ...state,
+            nextOfKin: {
+              ...state.nextOfKin,
+              selectedCountry: action.payload.country,
+            },
+          };
+        }
+        if (action.payload.name === "personalInformation")
+          return {
+            ...state,
+            personalInformation: {
+              ...state.personalInformation,
+              selectedCountry: action.payload.country,
+            },
+          };
+        break;
+      case "setSelectedState":
+        if (action.payload.name === "contactInformation")
+          return {
+            ...state,
+            contactInformation: {
+              ...state.contactInformation,
+              selectedState: action.payload.state,
+            },
+          };
+        if (action.payload.name === "nextOfKin")
+          return {
+            ...state,
+            nextOfKin: {
+              ...state.nextOfKin,
+              selectedState: action.payload.state,
+            },
+          };
+        if (action.payload.name === "personalInformation")
+          return {
+            ...state,
+            personalInformation: {
+              ...state.personalInformation,
+              selectedState: action.payload.state,
+            },
+          };
+
+        break;
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const [editData, setEditData] = useState<any>([]);
 
@@ -64,6 +142,8 @@ const Dashboard = () => {
     setSelectedCountry_1,
     selectedState_1,
     setSelectedState_1,
+    state,
+    dispatch,
   };
 
   return (
