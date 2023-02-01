@@ -78,7 +78,9 @@ const EditInput = ({
 
   return (
     <div className="flex md:flex-row flex-col gap-2   md:justify-between md:items-center w-full my-[2em] ">
-      <label className="text-white text-[16px] font-[700] ">{name}</label>
+      <label className="text-white text-[16px] font-[700] ">
+        {name.toUpperCase()}
+      </label>
 
       {type === "specialDrop" ? (
         <select
@@ -123,6 +125,8 @@ const EditInput = ({
         focus:outline-none md:w-[18em] w-full"
           id={name}
         >
+          <option value="">SELECT {name?.toLocaleUpperCase()}</option>
+
           {optionList?.map((option, index) => (
             <option key={index} value={option}>
               {option}

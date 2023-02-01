@@ -57,8 +57,6 @@ export const {
 export const getData =
   (url: string, data?: any, extraheaders?: any) =>
   (dispatch: AppDispatch, getState: () => any) => {
-    console.log(getState().hr.message);
-
     dispatch(
       apiCallBegan({
         onStart: dataRequested.type,

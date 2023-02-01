@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { loading, message, sidebar_data } from "../../general_data";
+import { loading, message, sidebar_data } from "../../../general_data";
 import { constants, pay_form_data } from "./pay_data";
 import { NavResolve } from "../../../../utils/NavResolve";
 import {

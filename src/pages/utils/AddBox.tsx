@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useCallback, useContext, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { DashboardContext } from "../Dashboard/Dashboard";
 import { currentUser } from "../../globals/HelperFunctions";
 import { FormContainer } from "./FormContainer";
@@ -54,7 +54,7 @@ const AddBox = ({
     <div>
       <>{navResolve}</>
       <ToastContainer />
-      <div className="w-full mt-[2em]  ">
+      <div className=" m-auto   mt-[2em] bg-pri lg:w-[65%] md:w-[80%] w-[90%] ">
         {formData?.map((item: any, index: number) => {
           return (
             <FormContainer key={index} section_name={item.section}>

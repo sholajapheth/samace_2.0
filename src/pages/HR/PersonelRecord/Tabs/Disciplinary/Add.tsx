@@ -1,5 +1,5 @@
 import AddBox from "../../../../utils/AddBox";
-import { loading, message, sidebar_data } from "../../general_data";
+import { loading, message, sidebar_data } from "../../../general_data";
 import { constants, disciplinary_form_data } from "./disciplinary_data";
 import { NavResolve } from "../../../../utils/NavResolve";
 import { addData } from "../../../../../store/slices/hr";

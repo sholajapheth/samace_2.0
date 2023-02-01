@@ -3,9 +3,8 @@ import PersonelRecord from "./PersonelRecord";
 import TrainingIndex from "./Tabs/Training/TrainingIndex";
 import AssessmentIndex from "./Tabs/Assessment/AssessmentIndex";
 import PayIndex from "./Tabs/Pay/PayIndex";
-import DisciplinaryIndex from './Tabs/Disciplinary/DisciplinaryIndex';
-import MedicalIndex from './Tabs/Medical/MedicalIndex';
-import Leave from "./Tabs/Leave/Leave";
+import DisciplinaryIndex from "./Tabs/Disciplinary/DisciplinaryIndex";
+import MedicalIndex from "./Tabs/Medical/MedicalIndex";
 import LeaveIndex from "./Tabs/Leave/LeaveIndex";
 
 const PRIndex = () => {

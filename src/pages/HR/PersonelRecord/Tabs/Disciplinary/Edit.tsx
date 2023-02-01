@@ -1,4 +1,4 @@
-import { loading, message, sidebar_data } from "../../general_data";
+import { loading, message, sidebar_data } from "../../../general_data";
 import { constants, disciplinary_form_data } from "./disciplinary_data";
 import { NavResolve } from "../../../../utils/NavResolve";
 import {
@@ -18,7 +18,7 @@ const Add = () => {
       getSingleData={getSingleData}
       navResolve={
         <NavResolve
-          name={`Add ${constants.name}`}
+          name={`Edit ${constants.name}`}
           resolve_data={sidebar_data}
         />
       }

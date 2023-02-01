@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/hr";
 import Loading from "../../../../../components/Loading";
 import { assessment_form_data, constants } from "./assessment_data";
-import { sidebar_data } from "../../general_data";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { sidebar_data } from "../../../general_data";
 
 const Assessment = () => {
   const dispatch = useDispatch<any>();

@@ -7,12 +7,13 @@ import diary from "./assets/diary.svg";
 import records from "./assets/records.svg";
 
 const ProductionNav = () => {
-  const { set_topbar_value, set_sidebar_nav_data } =
+  const { set_topbar_value, set_sidebar_nav_data, set_show_topbar_actions } =
     useContext(DashboardContext);
 
   useEffect(() => {
     set_sidebar_nav_data(main_nav);
     set_topbar_value("Maintenance Department");
+    set_show_topbar_actions("");
   }, [set_sidebar_nav_data, set_topbar_value]);
 
   return (

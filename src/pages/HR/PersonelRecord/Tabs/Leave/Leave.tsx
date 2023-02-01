@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/hr";
 import Loading from "../../../../../components/Loading";
 import { leave_form_data, constants } from "./leave_data";
-import { sidebar_data } from "../../general_data";
+import { sidebar_data } from "../../../general_data";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -38,7 +38,6 @@ const Leave = () => {
     dispatch(getData(constants.url));
   }, []);
 
- 
   useEffect(() => {
     set_section_data(data);
     set_topbar_value(constants.name);

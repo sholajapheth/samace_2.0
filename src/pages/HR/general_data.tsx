@@ -1,11 +1,10 @@
-import disciplinary from "../assets/disciplinary.svg";
-import medical from "../assets/medical.svg";
-import pay from "../assets/pay.svg";
-import leave from "../assets/leave.svg";
-import assessment from "../assets/assessment.svg";
-import training from "../assets/training.svg";
-import store from "../../../store/configureStore";
-
+import disciplinary from "./assets/disciplinary.svg";
+import medical from "./assets/medical.svg";
+import pay from "./assets/pay.svg";
+import leave from "./assets/leave.svg";
+import assessment from "./assets/assessment.svg";
+import training from "./assets/training.svg";
+import store from "../../store/configureStore";
 
 export let { loading, message } = store.getState().hr;
 

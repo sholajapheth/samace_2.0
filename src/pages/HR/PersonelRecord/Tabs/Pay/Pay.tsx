@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../../../../store/slices/hr";
 import Loading from "../../../../../components/Loading";
 import { pay_form_data, constants } from "./pay_data";
-import { sidebar_data } from "../../general_data";
+import { sidebar_data } from "../../../general_data";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

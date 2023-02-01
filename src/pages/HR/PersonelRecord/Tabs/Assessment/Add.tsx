@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import AddBox from "../../../../utils/AddBox";
-import { loading, message, sidebar_data } from "../../general_data";
+import { loading, message, sidebar_data } from "../../../general_data";
 import { constants, assessment_form_data } from "./assessment_data";
 import { NavResolve } from "../../../../utils/NavResolve";
 import { addData } from "../../../../../store/slices/hr";

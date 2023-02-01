@@ -1,45 +1,84 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
-import mock_data from "./MOCK_DATA.json";
-import SearchBar from "../../../../../globals/SearchBar";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
-import { ProductionNavResolve } from "../POR/POR";
-
-const header_data = [
-  { id: 0, name: "Production End date" },
-  { id: 1, name: "Product" },
-  { id: 2, name: "Batch Number" },
-  { id: 3, name: "Filling Equipement" },
-  { id: 4, name: "Filling Operator" },
-  { id: 5, name: "Packaging Supervisor" },
-  { id: 6, name: "Shift Supervisor" },
-  { id: 7, name: "Officer's Name" },
-  { id: 8, name: "Total Yeild" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { constants, dyr_form_data } from "./dyr_data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { getData } from "../../../../../store/slices/production";
+import { sidebar_data } from "../../../general_data";
+import Loading from "../../../../../components/Loading";
 
 const DYR = () => {
-  const [assessment_data, set_assessment_data] = useState<any>(mock_data);
+  const dispatch = useDispatch<any>();
+  const { loading, data, message } = useSelector(
+    (state: any) => state.production
+  );
+  const {
+    set_topbar_value,
+    set_sidebar_nav_data,
+    set_show_topbar_actions,
+    selectedItem,
+    setSearchDatas,
+  } = useContext(DashboardContext);
+  const [section_data, set_section_data] = useState<any>([]);
+  const [fillteredBodyData, setFillteredBodyData] = useState<any>([]);
+  const formSections = dyr_form_data.map((section) => section.data);
+  const fieldNameValues = formSections.flatMap((section) =>
+    section.map((field) => ({ name: field.name }))
+  );
 
-  const { set_show_topbar_actions } = useContext(DashboardContext);
+  const notify = useCallback(() => toast(message), [message]);
 
   useEffect(() => {
+    if (message) {
+      notify();
+    }
+  }, [message]);
+
+  useEffect(() => {
+    dispatch(getData(constants.url));
+  }, []);
+
+  useEffect(() => {
+    set_section_data(data);
+    set_topbar_value(constants.name);
+    set_sidebar_nav_data(sidebar_data);
+    set_show_topbar_actions("");
+
     set_show_topbar_actions({
-      add: "production/records/dyr/add",
-      edit: "production/records/dyr/edit",
+      add: constants.add,
+      edit: constants.edit,
+      delete: { selectedId: selectedItem, url: constants.url },
+      url: constants.url,
     });
-  }, [set_show_topbar_actions]);
+
+    setSearchDatas({
+      searchData: section_data.docs,
+      header_data: fieldNameValues,
+      set_body_data: setFillteredBodyData,
+      default_data:
+        fillteredBodyData.length !== 0 ? fillteredBodyData : section_data.docs,
+    });
+  }, [data]);
+
   return (
-    <div>
-      <ProductionNavResolve name="Daily Yeild Record" />
-      <SearchBar
-        searchData={mock_data}
-        header_data={header_data}
-        set_body_data={set_assessment_data}
-        default_data={mock_data}
-      />
-      <div className="">
-        <TableComponent header_data={header_data} body_data={assessment_data} />
-      </div>
+    <div className="">
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <ToastContainer />
+          <TableComponent
+            header_data={fieldNameValues}
+            body_data={
+              fillteredBodyData.length !== 0
+                ? fillteredBodyData
+                : section_data.docs
+            }
+          />
+        </>
+      )}
     </div>
   );
 };
