@@ -1,21 +1,20 @@
-import { loading, message, sidebar_data } from "../../../general_data";
+import { sidebar_data } from "../../../general_data";
 import { constants, disciplinary_form_data } from "./disciplinary_data";
 import { NavResolve } from "../../../../utils/NavResolve";
-import {
-  addData,
-  getSingleData,
-  updateData,
-} from "../../../../../store/slices/hr";
+import { getSingleData, updateData } from "../../../../../store/slices/hr";
 import EditBox from "../../../../utils/EditBox";
+import { useSelector } from "react-redux";
 
-const Add = () => {
+const Edit = () => {
+  const { data, loading, message } = useSelector((state: any) => state.hr);
+
   return (
     <EditBox
       loading={loading}
-      data={addData}
       message={message}
       updateData={updateData}
       getSingleData={getSingleData}
+      data={data}
       navResolve={
         <NavResolve
           name={`Edit ${constants.name}`}
@@ -28,4 +27,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default Edit;

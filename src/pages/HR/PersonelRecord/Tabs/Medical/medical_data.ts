@@ -30,7 +30,7 @@ export const medical_form_data = [
         placeholder: "Enter Height",
       },
       {
-        name: "Hepatitis B&C",
+        name: "Hepatitis BC",
         type: "text",
         placeholder: "Enter Hepatitis B&C",
       },

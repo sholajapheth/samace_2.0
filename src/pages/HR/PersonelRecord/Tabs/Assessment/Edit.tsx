@@ -1,23 +1,20 @@
 import { loading, message, sidebar_data } from "../../../general_data";
 import { constants, assessment_form_data } from "./assessment_data";
 import { NavResolve } from "../../../../utils/NavResolve";
-import {
-  addData,
-  getSingleData,
-  updateData,
-} from "../../../../../store/slices/hr";
+import { getSingleData, updateData } from "../../../../../store/slices/hr";
 import EditBox from "../../../../utils/EditBox";
 import { useSelector } from "react-redux";
 
 const Edit = () => {
+  const { data, loading, message } = useSelector((state: any) => state.hr);
 
   return (
     <EditBox
       loading={loading}
-      data={addData}
       message={message}
       updateData={updateData}
       getSingleData={getSingleData}
+      data={data}
       navResolve={
         <NavResolve
           name={`Edit ${constants.name}`}

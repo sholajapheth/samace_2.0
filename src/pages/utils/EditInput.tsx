@@ -47,13 +47,15 @@ const EditInput = ({
   }, [editData]);
 
   const handleChanges = (e: any) => {
+    if (name === "phone" || name.toLowerCase() === "id") {
+      if (e.target.value.length > 11) {
+        return;
+      }
+    }
     setValue(e.target.value);
-    setEditData((previousState: any) => ({
-      ...previousState,
-      [camelize(name)]: e.target.value,
-    }));
 
-    console.log("edit prop: ", inputValue);
+    setInputValue({ ...inputValue, [camelize(name)]: e.target.value });
+    console.log("edit prop: ", editData);
   };
 
   const handleSpecialDrop = (e: any) => {
@@ -142,6 +144,19 @@ const EditInput = ({
           placeholder={placeholder}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full h-[10em]"
+        />
+      ) : type === "date" ? (
+        <input
+          value={
+            editData?.[camelize(name)]
+              ? editData?.[camelize(name)]?.split("T")[0]
+              : value
+          }
+          onChange={handleChanges}
+          type={type}
+          placeholder={placeholder}
+          className="  bg-white rounded-md text-pri text-[16px] p-2 
+        focus:outline-none md:w-[18em] w-full"
         />
       ) : (
         <input

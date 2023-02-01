@@ -12,7 +12,7 @@ export const leave_form_data = [
     data: [
       {
         name: "Leave Type",
-        type: "select",
+        type: "drop",
         placeholder: "Select Leave Type",
         optionList: [
           "Annual Leave",
@@ -51,8 +51,7 @@ export const leave_form_data = [
     data: [
       {
         name: "Leave Approval Status",
-        type: "select",
-        placeholder: "Select Leave Approval Status",
+        type: "drop",
         optionList: ["Approved", "Declined"],
       },
       {
@@ -62,7 +61,7 @@ export const leave_form_data = [
       },
       {
         name: "Leave Approval Comment",
-        type: "text",
+        type: "textarea",
         placeholder: "Enter Leave Approval Comment",
       },
     ],
