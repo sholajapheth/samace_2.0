@@ -2,12 +2,12 @@ import { useState, useContext, useEffect, useCallback } from "react";
 import { DashboardContext } from "../../../../Dashboard/Dashboard";
 import TableComponent from "../../../../../components/TableComponent/TableComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { constants, dyr_form_data } from "./dyr_data";
+import { getData } from "../../../../../store/slices/production";
+import Loading from "../../../../../components/Loading";
+import { sidebar_data } from "../../../general_data";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getData } from "../../../../../store/slices/production";
-import { sidebar_data } from "../../../general_data";
-import Loading from "../../../../../components/Loading";
+import { constants, dyr_form_data } from "./dyr_data";
 
 const DYR = () => {
   const dispatch = useDispatch<any>();

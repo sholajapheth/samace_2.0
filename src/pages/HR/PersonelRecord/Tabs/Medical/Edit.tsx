@@ -17,7 +17,7 @@ const Edit = () => {
       data={data}
       navResolve={
         <NavResolve
-          name={`Add ${constants.name}`}
+          name={`Edit ${constants.name}`}
           resolve_data={sidebar_data}
         />
       }
