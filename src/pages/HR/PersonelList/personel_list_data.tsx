@@ -1,4 +1,3 @@
-import { states } from "../../../assets/datas/data";
 import personel_list from "../assets/personel_list.svg";
 import personel_record from "../assets/personel_record.svg";
 
@@ -79,7 +78,7 @@ export const personel_list_formData = [
         optionList: ["single", "married", "divorced", "widowed"],
       },
       {
-        name: "No. of Children",
+        name: "Number of Children",
         type: "number",
         placeholder: "Enter No. of Children",
       },

@@ -110,6 +110,8 @@ const InputComp = ({
         focus:outline-none md:w-[18em] w-full"
           id={name}
         >
+          <option value="">SELECT {name.toUpperCase()}</option>
+
           {optionList?.map((option, index) => (
             <option key={index} value={option}>
               {option.toUpperCase()}
