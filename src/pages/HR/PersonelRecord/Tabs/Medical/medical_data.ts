@@ -85,9 +85,9 @@ export const medical_form_data = [
         placeholder: "Enter Urinalysis",
       },
       {
-        name: "Chest X-ray",
+        name: "Chest Xray",
         type: "text",
-        placeholder: "Enter Chest X-ray",
+        placeholder: "Enter Chest Xray",
       },
       {
         name: "ENT",
