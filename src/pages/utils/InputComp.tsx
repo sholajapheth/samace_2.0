@@ -58,9 +58,7 @@ const InputComp = ({
 
   return (
     <div className="flex md:flex-row flex-col gap-2   md:justify-between md:items-center w-full my-[2em] ">
-      <label className="text-white text-[16px] font-[700] ">
-        {name.toUpperCase()}
-      </label>
+      <label className="text-white text-[16px] font-[700] ">{name}</label>
 
       {type === "specialDrop" ? (
         <select
@@ -70,18 +68,18 @@ const InputComp = ({
         focus:outline-none md:w-[18em] w-full"
           id={name}
         >
-          <option value="">SELECT {dropType?.toLocaleUpperCase()}</option>
+          <option value="">Select {dropType}</option>
           {dropType === "country"
             ? countries.map((country, index) => (
                 <option key={index} value={country.name}>
-                  {country.name.toUpperCase()}
+                  {country.name}
                 </option>
               ))
             : dropType === "state"
             ? state[camelize(section || "")]?.selectedCountry === "Nigeria"
               ? states.map((state, index) => (
                   <option key={index} value={state.name}>
-                    {state.name.toUpperCase()}
+                    {state.name}
                   </option>
                 ))
               : null
@@ -95,7 +93,7 @@ const InputComp = ({
                 .map((state, index) =>
                   state.lgas.map((lga, index) => (
                     <option key={index} value={lga}>
-                      {lga.toUpperCase()}
+                      {lga}
                     </option>
                   ))
                 )
@@ -110,11 +108,11 @@ const InputComp = ({
         focus:outline-none md:w-[18em] w-full"
           id={name}
         >
-          <option value="">SELECT {name.toUpperCase()}</option>
+          <option value="">Select {name}</option>
 
           {optionList?.map((option, index) => (
             <option key={index} value={option}>
-              {option.toUpperCase()}
+              {option}
             </option>
           ))}
         </select>
@@ -122,7 +120,7 @@ const InputComp = ({
         <textarea
           value={value}
           onChange={handleChanges}
-          placeholder={placeholder?.toUpperCase()}
+          placeholder={placeholder}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full h-[10em]"
         />
@@ -132,7 +130,7 @@ const InputComp = ({
           style={{ appearance: "none", WebkitAppearance: "none" }}
           type="number"
           onChange={handleChanges}
-          placeholder={placeholder?.toUpperCase()}
+          placeholder={placeholder}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full"
         />
@@ -141,7 +139,7 @@ const InputComp = ({
           value={value}
           onChange={handleChanges}
           type={type}
-          placeholder={placeholder?.toUpperCase()}
+          placeholder={placeholder}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full"
         />
