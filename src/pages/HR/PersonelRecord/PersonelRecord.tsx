@@ -33,7 +33,7 @@ const PersonelRecord = () => {
           img={disciplinary}
           link={"disciplinary"}
         />
-        <NavTablet name="Medcial" img={medical} link={"medical"} />
+        <NavTablet name="Medcial Record" img={medical} link={"medical"} />
         <NavTablet name="Leave" img={leave} link={"leave"} />
       </div>
     </div>
