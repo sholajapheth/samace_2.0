@@ -8,6 +8,7 @@ import { training_form_data, constants } from "./training_data";
 import { sidebar_data } from "../../../general_data";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { currentUser } from "../../../../../globals/HelperFunctions";
 
 const Training = () => {
   const dispatch = useDispatch<any>();
@@ -35,7 +36,7 @@ const Training = () => {
   }, [message]);
 
   useEffect(() => {
-    dispatch(getData(constants.url));
+    dispatch(getData(constants.url, JSON.parse(currentUser).token));
   }, []);
 
   useEffect(() => {

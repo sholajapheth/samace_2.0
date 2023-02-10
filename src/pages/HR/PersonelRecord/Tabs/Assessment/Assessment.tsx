@@ -8,6 +8,7 @@ import { assessment_form_data, constants } from "./assessment_data";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { sidebar_data } from "../../../general_data";
+import { currentUser } from "../../../../../globals/HelperFunctions";
 
 const Assessment = () => {
   const dispatch = useDispatch<any>();
@@ -35,7 +36,7 @@ const Assessment = () => {
   }, [message]);
 
   useEffect(() => {
-    dispatch(getData(constants.url));
+    dispatch(getData(constants.url, JSON.parse(currentUser).token));
   }, []);
 
   useEffect(() => {
