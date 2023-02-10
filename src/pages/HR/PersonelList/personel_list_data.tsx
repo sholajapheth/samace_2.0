@@ -154,7 +154,7 @@ export const personel_list_formData = [
         placeholder: "Enter Name",
       },
       {
-        name: "Next of Kin gender ",
+        name: "Next of Kin Gender ",
         type: "drop",
         optionList: ["male", "female"],
       },
