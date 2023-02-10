@@ -1,10 +1,18 @@
 import { detectDateFormat } from "../global_utils/helper_fuctions";
 
-export const TableData = (props: any) => {
+export const TableData = (props: any, hasNoProperties: any) => {
   if (detectDateFormat(props?.children) === "") {
     if (props?.children?.toString().length > 25) {
       return (
-        <td className="px-3 py-4 ">{props.children.substring(0, 25)}...</td>
+        <>
+          {hasNoProperties ? (
+            <td className="px-3 py-4 ">{props?.children}...</td>
+          ) : (
+            <td className="px-3 py-4 ">
+              {props?.children?.substring(0, 25)}...
+            </td>
+          )}
+        </>
       );
     } else {
       return <td className="px-3 py-4 ">{props.children}</td>;

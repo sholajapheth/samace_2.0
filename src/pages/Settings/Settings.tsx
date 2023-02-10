@@ -8,8 +8,8 @@ const Settings = () => {
     <div>
       <Routes>
         <Route path={"/"} element={<SettingsNav />} />
-        <Route path={"me/*"} element={<MEIndex />} />
-        <Route path={"pe/*"} element={<PEIndex />} />
+        {/* <Route path="add" element={<Add />} />
+        <Route path="edit" element={<Edit />} /> */}
       </Routes>
     </div>
   );

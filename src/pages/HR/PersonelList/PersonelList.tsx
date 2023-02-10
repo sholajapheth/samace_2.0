@@ -11,6 +11,7 @@ import {
 } from "./personel_list_data";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { currentUser } from "../../../globals/HelperFunctions";
 
 const PersonelList = () => {
   const dispatch = useDispatch<any>();
@@ -39,7 +40,7 @@ const PersonelList = () => {
   }, [message]);
 
   useEffect(() => {
-    dispatch(getData(constants.url));
+    dispatch(getData(constants.url, JSON.parse(currentUser).token));
   }, []);
 
   useEffect(() => {

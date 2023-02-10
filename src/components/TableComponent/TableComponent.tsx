@@ -3,7 +3,7 @@ import { DashboardContext } from "../../pages/Dashboard/Dashboard";
 import { camelize, detectDateFormat } from "../global_utils/helper_fuctions";
 import { TableData } from "./TableData";
 
-const TableComponent = ({ header_data, body_data }: any) => {
+const TableComponent = ({ header_data, body_data, hasNoProperties }: any) => {
   let { selectedItem, setSelectedItem, prevNext } =
     useContext(DashboardContext);
 
@@ -32,7 +32,7 @@ const TableComponent = ({ header_data, body_data }: any) => {
             <td></td>
             {header_data?.map((item: any, index: number) => (
               <TableData key={index} className="">
-                {item.name}
+                {item?.name}
               </TableData>
             ))}
           </tr>
@@ -64,9 +64,17 @@ const TableComponent = ({ header_data, body_data }: any) => {
                     </TableData>
                     {header_data?.map((item: any, index: number) => {
                       return (
-                        <TableData key={index} className="">
-                          {row?.properties[camelize(item.name)]}
-                        </TableData>
+                        <>
+                          {hasNoProperties ? (
+                            <TableData hasNoProperties key={index} className="">
+                              {row[camelize(item.name)]}
+                            </TableData>
+                          ) : (
+                            <TableData key={index} className="">
+                              {row.properties[camelize(item.name)]}
+                            </TableData>
+                          )}
+                        </>
                       );
                     })}
                   </tr>

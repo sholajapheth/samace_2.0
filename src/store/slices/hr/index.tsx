@@ -55,7 +55,7 @@ export const {
 } = hrSlice.actions;
 
 export const getData =
-  (url: string, data?: any, extraheaders?: any) =>
+  (url: string, extraheaders?: any, data?: any) =>
   (dispatch: AppDispatch, getState: () => any) => {
     dispatch(
       apiCallBegan({
@@ -63,6 +63,22 @@ export const getData =
         onSuccess: dataGotten.type,
         onError: dataFectchFailed.type,
         url: "data/" + url + "?page=1&limit=0",
+        method: "GET",
+        data,
+        extraheaders,
+      })
+    );
+  };
+
+export const fecthUsers =
+  (url: string, extraheaders?: any, data?: any) =>
+  (dispatch: AppDispatch, getState: () => any) => {
+    dispatch(
+      apiCallBegan({
+        onStart: dataRequested.type,
+        onSuccess: dataGotten.type,
+        onError: dataFectchFailed.type,
+        url: url,
         method: "GET",
         data,
         extraheaders,
