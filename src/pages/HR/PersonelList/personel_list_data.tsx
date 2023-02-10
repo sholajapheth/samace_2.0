@@ -149,28 +149,28 @@ export const personel_list_formData = [
     section: "Next of Kin",
     data: [
       {
-        name: "next of kin Name",
+        name: "Next of Kin Name",
         type: "text",
         placeholder: "Enter Name",
       },
       {
-        name: "next of kin gender ",
+        name: "Next of Kin gender ",
         type: "drop",
         optionList: ["male", "female"],
       },
       {
-        name: "next of kin Phone Number",
+        name: "Next of Kin Phone Number",
         type: "phone",
         placeholder: "Enter Phone Number",
         maxLength: 11,
       },
       {
-        name: "next of kin Email",
+        name: "Next of Kin Email",
         type: "email",
         placeholder: "Enter Email",
       },
       {
-        name: "next of kin Relationship",
+        name: "Next of Kin Relationship",
         type: "drop",
         optionList: [
           "FATHER",
