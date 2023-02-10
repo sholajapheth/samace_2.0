@@ -51,13 +51,21 @@ export const medical_form_data = [
       },
       {
         name: "Blood Group",
-        type: "text",
+        type: "drop",
         placeholder: "Enter Blood Group",
+        optionList: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
       },
       {
         name: "Genotype",
-        type: "text",
+        type: "drop",
         placeholder: "Enter Genotype",
+        optionList: ["AA", "AS", "SS"],
+      },
+      {
+        name: "Visuals",
+        type: "drop",
+        placeholder: "Enter Visuals",
+        optionList: ["Clear", "Short Sighted", "Long Sighted", "Others"],
       },
       {
         name: "Blood Pressure",
@@ -95,19 +103,15 @@ export const medical_form_data = [
         placeholder: "Enter ENT",
       },
       {
-        name: "Allergies",
-        type: "text",
-        placeholder: "Enter Allergies",
+        name: "Penicillin Allergy",
+        type: "drop ",
+        placeholder: "Enter Penicillin Allergy",
+        optionList: ["Yes", "No"],
       },
       {
         name: "Sick Leave",
         type: "text",
         placeholder: "Enter Sick Leave",
-      },
-      {
-        name: "Eye",
-        type: "text",
-        placeholder: "Enter Eye",
       },
     ],
   },
