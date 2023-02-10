@@ -12,10 +12,7 @@ const Add = () => {
       data={addData}
       message={message}
       navResolve={
-        <NavResolve
-          name="Add Personnel List (BioData)"
-          resolve_data={sidebar_data}
-        />
+        <NavResolve name="Add Training" resolve_data={sidebar_data} />
       }
       endPoint={constants.url}
       formData={training_form_data}

@@ -20,10 +20,7 @@ const Edit = () => {
       getSingleData={getSingleData}
       data={data}
       navResolve={
-        <NavResolve
-          name="Edit Personnel List (BioData)"
-          resolve_data={sidebar_data}
-        />
+        <NavResolve name="Edit Training" resolve_data={sidebar_data} />
       }
       endPoint={constants.url}
       formData={training_form_data}
