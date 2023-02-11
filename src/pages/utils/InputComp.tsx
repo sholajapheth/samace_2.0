@@ -34,7 +34,7 @@ const InputComp = ({
   const [value, setValue] = useState("");
 
   const handleChanges = (e: any) => {
-    if (name === "phone" || name.toLowerCase() === "id") {
+    if (type === "phone" || type === "number" || name.toLowerCase() === "id") {
       if (e.target.value.length > 11) {
         return;
       }
