@@ -116,24 +116,6 @@ export const personel_list_formData = [
         name: "Email Address",
         type: "email",
       },
-      {
-        name: "Country",
-        type: "specialDrop",
-        dropType: "country",
-        section: "Contact Information",
-      },
-      {
-        name: "State",
-        type: "specialDrop",
-        dropType: "state",
-        section: "Contact Information",
-      },
-      {
-        name: "City",
-        type: "specialDrop",
-        dropType: "city",
-        section: "Contact Information",
-      },
 
       {
         name: "Next of Kin Name",
@@ -183,7 +165,7 @@ export const personel_list_formData = [
     section: "Job Information",
     data: [
       {
-        name: "Employment Type",
+        name: "Type of Employment",
         type: "drop",
         optionList: ["Permanent", "Temporary/Internship", "Student IT"],
       },

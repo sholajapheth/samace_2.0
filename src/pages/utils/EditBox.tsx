@@ -6,7 +6,7 @@ import { FormContainer } from "./FormContainer";
 import Loading, { SmallLoading } from "../../components/Loading";
 import EditInput from "./EditInput";
 import { useNavigate } from "react-router-dom";
-import { getSingleData, updateData } from "../../store/slices/hr";
+import { updateData } from "../../store/slices/hr";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -29,6 +29,7 @@ const EditBox = ({
   formData,
   message,
   updateData,
+  getSingleData,
 }: EditBoxProps) => {
   const { set_show_decision_modal, inputValue, selectedItem } =
     useContext(DashboardContext);

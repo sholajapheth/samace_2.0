@@ -23,7 +23,11 @@ const InputComp = ({
 }: inputType) => {
   // form value is handled by the DashboardContext and the value is passed to the input component as props and the value is set in the context
 
-  const placeholderValue = type === "text" || "textarea" ? `Enter ${name}` : "";
+  const placeholderValue = placeholder
+    ? placeholder
+    : type === "text" || "textarea"
+    ? `Enter ${name}`
+    : placeholder;
 
   const { inputValue, setInputValue, state, dispatch } =
     useContext(DashboardContext);
@@ -110,7 +114,9 @@ const InputComp = ({
         focus:outline-none md:w-[18em] w-full"
           id={name}
         >
-          <option value="">Select {name}</option>
+          <option value="">
+            {placeholder ? placeholder : `Select ${name}`}
+          </option>
 
           {optionList?.map((option, index) => (
             <option key={index} value={option}>

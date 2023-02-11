@@ -6,19 +6,24 @@ import { addData } from "../../../../../store/slices/hr";
 
 const Add = () => {
   return (
-    <AddBox
-      loading={loading}
-      data={addData}
-      message={message}
-      navResolve={
-        <NavResolve
-          name={`Add ${constants.name}`}
-          resolve_data={sidebar_data}
-        />
-      }
-      endPoint={constants.url}
-      formData={disciplinary_form_data}
-    />
+    <>
+      <p className="text-pri font-bold text-[18px] mt-[1.5em] ml-[4px]">
+        Add {constants.name}
+      </p>
+      <AddBox
+        loading={loading}
+        data={addData}
+        message={message}
+        navResolve={
+          <NavResolve
+            name={`${constants.name} Form`}
+            resolve_data={sidebar_data}
+          />
+        }
+        endPoint={constants.url}
+        formData={disciplinary_form_data}
+      />
+    </>
   );
 };
 

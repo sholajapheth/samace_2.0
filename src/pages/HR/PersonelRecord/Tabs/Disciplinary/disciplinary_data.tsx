@@ -1,5 +1,5 @@
 export const constants = {
-  name: "Disciplinary", // This is the name of the tab
+  name: "Disciplinary Record", // This is the name of the tab
   url: "humanResources_personnelRecord_assessment", // This is the url of the tab
   add: "hr/pr/disciplinary/add", // This is the url for the add button
   edit: "hr/pr/disciplinary/edit", // This is the url for the edit button
@@ -16,19 +16,47 @@ export const disciplinary_form_data = [
         placeholder: "Enter Date",
       },
       {
-        name: "Name",
-        type: "text",
-        placeholder: "Enter Name",
+        name: "ID Number",
+        type: "number",
+      },
+
+      {
+        name: "Offence",
+        type: "drop",
+        optionList: [
+          "Lateness to Work",
+          "Absence from Work",
+          "Theft",
+          "Disorderliness",
+          "Unsactisfactory Work Performance",
+          "Refusal to Adhere to Rules and Processes",
+          "Possession of Illegal Items",
+          "Sexual Harrasment",
+          "Innappropriate/Unauthorized use of Company property",
+          "Negligence",
+          "Others",
+        ],
       },
       {
-        name: "Violation",
-        type: "drop",
-        optionList: ["Theft", "Fraud", "Bribery"],
+        name: "If Others",
+        placeholder: "Please Describe",
+        type: "textarea",
       },
       {
-        name: "Action",
+        name: "Disciplinary Action",
         type: "drop",
-        optionList: ["Dismissal", "Suspension", "Warning"],
+        optionList: [
+          "Written Warning",
+          "Salary Deduction",
+          "Suspension",
+          "Demotion",
+          "Termination",
+          "Dismissal",
+        ],
+      },
+      {
+        name: "Comment",
+        type: "textarea",
       },
     ],
   },

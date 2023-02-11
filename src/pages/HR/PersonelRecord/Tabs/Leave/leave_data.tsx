@@ -8,61 +8,45 @@ export const constants = {
 // This is the data for the form
 export const leave_form_data = [
   {
-    section: "Leave Information",
+    // section: "Leave Information",
     data: [
       {
-        name: "Leave Type",
+        name: "Date",
+        type: "date",
+      },
+      {
+        name: "ID Number",
+        type: "number",
+      },
+      {
+        name: "Type of leave",
         type: "drop",
-        placeholder: "Select Leave Type",
         optionList: [
           "Annual Leave",
+          "Shift Swap",
+          "Parental Leave",
           "Sick Leave",
-          "Maternity Leave",
-          "Paternity Leave",
           "Study Leave",
           "Compassionate Leave",
-          "Other Leave",
         ],
       },
       {
-        name: "Leave Start Date",
+        name: "Comments",
+        type: "textarea",
+      },
+      {
+        name: "Start Date",
         type: "date",
         placeholder: "Select Leave Start Date",
       },
       {
-        name: "Leave End Date",
+        name: "End Date",
         type: "date",
         placeholder: "Select Leave End Date",
       },
       {
-        name: "Leave Duration",
+        name: "Number of days",
         type: "text",
-        placeholder: "Enter Leave Duration",
-      },
-      {
-        name: "Leave Reason",
-        type: "text",
-        placeholder: "Enter Leave Reason",
-      },
-    ],
-  },
-  {
-    section: "Leave Approval",
-    data: [
-      {
-        name: "Leave Approval Status",
-        type: "drop",
-        optionList: ["Approved", "Declined"],
-      },
-      {
-        name: "Leave Approval Date",
-        type: "date",
-        placeholder: "Select Leave Approval Date",
-      },
-      {
-        name: "Leave Approval Comment",
-        type: "textarea",
-        placeholder: "Enter Leave Approval Comment",
       },
     ],
   },

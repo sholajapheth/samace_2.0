@@ -1,5 +1,5 @@
 export const constants = {
-  name: "Assessment", // This is the name of the tab
+  name: "Assessment Record", // This is the name of the tab
   add: "hr/pr/assessment/add", // This is the url for the add button
   edit: "hr/pr/assessment/edit", // This is the url for the edit button
   url: "humanResources_personnelRecord_assessment", // This is the url for the api end point
@@ -8,7 +8,7 @@ export const constants = {
 // This is the data for the form
 export const assessment_form_data = [
   {
-    section: "Assessment",
+    // section: "Assessment",
 
     data: [
       {
@@ -21,56 +21,46 @@ export const assessment_form_data = [
         type: "number",
         placeholder: "Enter ID",
       },
-      {
-        name: "Surname",
-        type: "text",
-        placeholder: "Surname",
-      },
-      {
-        name: "First Name",
-        type: "text",
-        placeholder: "First Name",
-      },
-      {
-        name: "Other Name",
-        type: "text",
-        placeholder: "Other Name",
-      },
+
       {
         name: "Session",
         type: "drop",
-        optionList: [
-          "session1",
-          "session2",
-          "session3",
-          "session4",
-          "session5",
-        ],
+        optionList: ["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"],
       },
       {
         name: "Employee Handbook",
-        type: "text",
+        type: "number",
         placeholder: "Enter Score",
       },
       {
-        name: "Job Decription",
-        type: "drop",
-        optionList: ["Present", "Absent"],
+        name: "Job Description",
+        type: "number",
+        placeholder: "Enter Score",
       },
       {
-        name: "GMP",
-        type: "drop",
-        optionList: ["Present", "Absent"],
+        name: "Good Manufacturing Practice",
+        type: "number",
+        placeholder: "Enter Score",
       },
       {
-        name: "GK",
-        type: "drop",
-        optionList: ["Present", "Absent"],
+        name: "General Knowledge",
+        type: "number",
+        placeholder: "Enter Score",
       },
       {
-        name: "EH",
-        type: "drop",
-        optionList: ["Present", "Absent"],
+        name: "Punctuality",
+        type: "number",
+        placeholder: "Enter Score",
+      },
+      {
+        name: "Disciplinary",
+        type: "number",
+        placeholder: "Enter Score",
+      },
+      {
+        name: "Supervisor Review",
+        type: "number",
+        placeholder: "Enter Score",
       },
     ],
   },

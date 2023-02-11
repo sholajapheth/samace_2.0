@@ -27,23 +27,31 @@ const EditInput = ({
     setEditData,
     setInputValue,
     selectedCountry,
-    setSelectedCountry,
     selectedState,
-    setSelectedState,
-    state,
     dispatch,
   } = useContext(DashboardContext);
   let defaultValue = optionList ? optionList[0] : "";
 
   const [value, setValue] = useState(
-    editData?.[camelize(name)] ? editData?.[camelize(name)] : defaultValue
+    inputValue?.[camelize(name)] || defaultValue || ""
   );
 
   useEffect(() => {
-    setInputValue((previousState: any) => ({
-      ...previousState,
-      [camelize(name)]: editData?.[camelize(name)],
-    }));
+    if (editData) {
+      setValue(editData?.[camelize(name)]);
+      setInputValue((previousState: any) => ({
+        ...previousState,
+        [camelize(name)]: editData?.[camelize(name)],
+      }));
+    }
+
+    // for (const [key, value] of Object.entries(editData)) {
+    //   if (key === camelize(name)) {
+    //     setValue(value);
+    //   }
+    // }
+
+    // console.log("Edit data: ", inputValue);
   }, [editData]);
 
   const handleChanges = (e: any) => {
@@ -55,7 +63,7 @@ const EditInput = ({
     setValue(e.target.value);
 
     setInputValue({ ...inputValue, [camelize(name)]: e.target.value });
-    console.log("edit prop: ", editData);
+    console.log("edit prop: ", inputValue);
   };
 
   const handleSpecialDrop = (e: any) => {
@@ -135,9 +143,7 @@ const EditInput = ({
         </select>
       ) : type === "textarea" ? (
         <textarea
-          value={
-            editData?.[camelize(name)] ? editData?.[camelize(name)] : value
-          }
+          value={value}
           onChange={handleChanges}
           placeholder={placeholder}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
@@ -145,11 +151,7 @@ const EditInput = ({
         />
       ) : type === "date" ? (
         <input
-          value={
-            editData?.[camelize(name)]
-              ? editData?.[camelize(name)]?.split("T")[0]
-              : value
-          }
+          value={value}
           onChange={handleChanges}
           type={type}
           placeholder={placeholder}
@@ -158,9 +160,7 @@ const EditInput = ({
         />
       ) : (
         <input
-          value={
-            editData?.[camelize(name)] ? editData?.[camelize(name)] : value
-          }
+          value={value}
           onChange={handleChanges}
           type={type}
           placeholder={placeholder}

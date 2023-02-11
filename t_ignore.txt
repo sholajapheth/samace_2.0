@@ -185,3 +185,17 @@
             optionList={["XS", "S", "M", "L", "XL", "XXL", "XXXL"]}
           />
         </FormContainer>
+
+
+  // useEffect(() => {
+  //   if (data.properties) {
+  //     for (const [key, value] of Object.entries(data?.properties)) {
+  //       if (key === null) continue;
+  //       setInputValue((prev: any) => ({
+  //         ...prev,
+  //         [key]: value,
+  //       }));
+  //       console.log(inputValue);
+  //     }
+  //   }
+  // }, [data]);
