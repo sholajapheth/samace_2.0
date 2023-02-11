@@ -5,7 +5,7 @@ import PRIndex from "./PersonelRecord/PRIndex";
 
 const HR = () => {
   return (
-    <div className="">
+    <div className="pb-[2rem]">
       <Routes>
         <Route path={"/"} element={<HRNav />} />
         <Route path={"pl/*"} element={<PersonelListIndex />} />
