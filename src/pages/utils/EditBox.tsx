@@ -58,7 +58,9 @@ const EditBox = ({
 
   useEffect(() => {
     if (selectedItem.length !== 0) {
-      dispatch(getSingleData(endPoint, selectedItem[0]));
+      dispatch(
+        getSingleData(endPoint, selectedItem[0], JSON.parse(currentUser).token)
+      );
     } else {
       alert("Please select an item");
       navigate(-1);

@@ -19,8 +19,8 @@ const HRNav = () => {
     <div className="w-full  flex flex-col gap-[6em] px-[4em]">
       <span className="text-hm text-pri font-[700]">Select Task</span>
       <div className="flex gap-[5em] m-auto">
-        <NavTablet name="Personel List" img={personel_list} link={"pl"} />
-        <NavTablet name="Personel Record" img={personel_record} link={"pr"} />
+        <NavTablet name="Personnel List" img={personel_list} link={"pl"} />
+        <NavTablet name="Personnel Record" img={personel_record} link={"pr"} />
       </div>
     </div>
   );

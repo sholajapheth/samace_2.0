@@ -7,7 +7,7 @@ export const sidebar_data: any = [
 ];
 
 export const constants = {
-  name: "Personel List",
+  name: "Personnel List",
   url: "humanResources_personnelList",
   add: "hr/pl/add",
   edit: "hr/pl/edit",

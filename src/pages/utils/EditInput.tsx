@@ -80,9 +80,7 @@ const EditInput = ({
 
   return (
     <div className="flex md:flex-row flex-col gap-2   md:justify-between md:items-center w-full my-[2em] ">
-      <label className="text-white text-[16px] font-[700] ">
-        {name.toUpperCase()}
-      </label>
+      <label className="text-white text-[16px] font-[700] ">{name}</label>
 
       {type === "specialDrop" ? (
         <select
@@ -96,14 +94,14 @@ const EditInput = ({
           {dropType === "country"
             ? countries.map((country, index) => (
                 <option key={index} value={country.name}>
-                  {country.name.toUpperCase()}
+                  {country.name}
                 </option>
               ))
             : dropType === "state"
             ? selectedCountry === "Nigeria"
               ? states.map((state, index) => (
                   <option key={index} value={state.name}>
-                    {state.name.toUpperCase()}
+                    {state.name}
                   </option>
                 ))
               : null
@@ -113,7 +111,7 @@ const EditInput = ({
                 .map((state, index) =>
                   state.lgas.map((lga, index) => (
                     <option key={index} value={lga}>
-                      {lga.toUpperCase()}
+                      {lga}
                     </option>
                   ))
                 )

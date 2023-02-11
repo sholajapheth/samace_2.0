@@ -1,6 +1,6 @@
-import {sidebar_nav_type } from "../../globals/types"
+import { sidebar_nav_type } from "../../globals/types";
 import { hr, qa, qc, maintenance, production } from "../../assets/svgs";
-import personel_list from "../assets/personel_list.svg"
+import personel_list from "../assets/personel_list.svg";
 import personel_record from "../assets/personel_record.svg";
 import dmrr from "../assets/dmrr.svg";
 import pu from "../assets/pu.svg";
@@ -10,23 +10,25 @@ import ict from "../assets/ict.svg";
 import facility from "../assets/facility.svg";
 import me from "../assets/me.svg";
 
-
-
-
-export const main_nav:sidebar_nav_type = [
+export const main_nav: sidebar_nav_type = [
   { id: 0, name: "Human Resources", img: hr, link: "/dashboard/hr" },
   { id: 1, name: "Quality Assurance", img: qa, link: "/dashboard/qa" },
-  { id: 2,  name: "Quality Control", img: qc, link: "/dashboard/qc" },
-  { id: 3,  name: "Maintenance", img: maintenance, link: "/dashboard/maintenance" },
-  { id: 4,  name: "Production", img: production, link: "/dashboard/production" },
+  { id: 2, name: "Quality Control", img: qc, link: "/dashboard/qc" },
+  {
+    id: 3,
+    name: "Maintenance",
+    img: maintenance,
+    link: "/dashboard/maintenance",
+  },
+  { id: 4, name: "Production", img: production, link: "/dashboard/production" },
 ];
 
 export const hr_nav: sidebar_nav_type = [
-  {id: 0, name: "Personel List", img: personel_list, link: "hr/pl" },
-  { id: 1,  name: "Personel Record", img: personel_record, link: "hr/pr" },
+  { id: 0, name: "Personnel List", img: personel_list, link: "hr/pl" },
+  { id: 1, name: "Personnel Record", img: personel_record, link: "hr/pr" },
 ];
 
-// Mechanical and electricl 
+// Mechanical and electricl
 export const me_nav: sidebar_nav_type = [
   {
     id: 0,
