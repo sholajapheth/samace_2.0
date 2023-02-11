@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import AddBox from "../../../../utils/AddBox";
 import { loading, message, sidebar_data } from "../../../general_data";
 import { constants, medical_form_data } from "./medical_data";

@@ -23,6 +23,8 @@ const InputComp = ({
 }: inputType) => {
   // form value is handled by the DashboardContext and the value is passed to the input component as props and the value is set in the context
 
+  const placeholderValue = type === "text" || "textarea" ? `Enter ${name}` : "";
+
   const { inputValue, setInputValue, state, dispatch } =
     useContext(DashboardContext);
   const [value, setValue] = useState("");
@@ -120,7 +122,7 @@ const InputComp = ({
         <textarea
           value={value}
           onChange={handleChanges}
-          placeholder={placeholder}
+          placeholder={placeholderValue}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full h-[10em]"
         />
@@ -130,7 +132,7 @@ const InputComp = ({
           style={{ appearance: "none", WebkitAppearance: "none" }}
           type="number"
           onChange={handleChanges}
-          placeholder={placeholder}
+          placeholder={placeholderValue}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full"
         />
@@ -139,7 +141,7 @@ const InputComp = ({
           value={value}
           onChange={handleChanges}
           type={type}
-          placeholder={placeholder}
+          placeholder={placeholderValue}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
         focus:outline-none md:w-[18em] w-full"
         />

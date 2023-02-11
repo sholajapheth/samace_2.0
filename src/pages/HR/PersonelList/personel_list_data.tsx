@@ -18,40 +18,39 @@ export const personel_list_formData = [
     section: "Personal Information",
     data: [
       {
-        name: "ID",
+        name: "ID Number",
         type: "number",
-        placeholder: "Enter ID",
         maxLength: 10,
       },
       {
         name: "Start Date",
         type: "date",
-        placeholder: "Enter Start Date",
       },
       {
         name: "Surname",
         type: "text",
-        placeholder: "Surname",
       },
       {
         name: "First Name",
         type: "text",
-        placeholder: "First Name",
       },
       {
         name: "Other Name",
         type: "text",
-        placeholder: "Other Name",
       },
       {
         name: "Gender",
         type: "drop",
-        optionList: ["male", "female"],
+        optionList: ["Male", "Female"],
       },
       {
-        name: "DOB",
+        name: "Date of Birth",
         type: "date",
-        placeholder: "Enter DOB",
+      },
+      {
+        name: "Place of Birth",
+        type: "text",
+        placeholder: "Enter Place of Birth",
       },
       {
         name: "Nationality",
@@ -71,16 +70,11 @@ export const personel_list_formData = [
         dropType: "city",
         section: "Personal Information",
       },
-      {
-        name: "Place of Birth",
-        type: "text",
-        placeholder: "Enter Place of Birth",
-      },
 
       {
         name: "Marital Status",
         type: "drop",
-        optionList: ["single", "married", "divorced", "widowed"],
+        optionList: ["Single", "Married", "Divorced", "Widowed"],
       },
       {
         name: "Number of Children",
@@ -90,21 +84,22 @@ export const personel_list_formData = [
       {
         name: "Religion",
         type: "drop",
-        optionList: ["christianity", "islam", "others"],
+        optionList: ["Christianity", "Islam", "Others"],
       },
       {
         name: "Means of Identification",
         type: "drop",
         optionList: [
-          "voters card",
-          "drivers license",
-          "international passport",
-          "national id",
-          "others",
+          "Voters Card",
+          "Drivers License",
+          "International Passport",
+          "National ID",
+          "Others",
         ],
       },
     ],
   },
+
   {
     section: "Contact Information",
     data: [
@@ -127,27 +122,19 @@ export const personel_list_formData = [
         section: "Contact Information",
       },
       {
-        name: "Address",
+        name: "Home Address",
         type: "textarea",
-        placeholder: "Enter Address",
       },
 
       {
         name: "Phone Number",
         type: "number",
-        placeholder: "Enter Phone Number",
         maxLength: 11,
       },
       {
-        name: "Email",
+        name: "Email Address",
         type: "email",
-        placeholder: "Enter Email",
       },
-    ],
-  },
-  {
-    section: "Next of Kin",
-    data: [
       {
         name: "Next of Kin Name",
         type: "text",
@@ -156,7 +143,7 @@ export const personel_list_formData = [
       {
         name: "Next of Kin Gender ",
         type: "drop",
-        optionList: ["male", "female"],
+        optionList: ["Male", "Female"],
       },
       {
         name: "Next of Kin Phone Number",
@@ -212,7 +199,7 @@ export const personel_list_formData = [
   },
 
   {
-    section: "Employment Information",
+    section: "Job Information",
     data: [
       {
         name: "Employment Type",
@@ -267,7 +254,7 @@ export const personel_list_formData = [
     ],
   },
   {
-    section: "Bank Information",
+    section: "Account Information",
     data: [
       {
         name: "Account Number",

@@ -58,6 +58,9 @@ const AddBox = ({
         {formData?.map((item: any, index: number) => {
           return (
             <FormContainer key={index} section_name={item.section}>
+              <p className="text-white text-[24px] font-bold mt-[2em]">
+                {item.section}
+              </p>
               {item.data.map((item: any, index: number) => {
                 return (
                   <InputComp
