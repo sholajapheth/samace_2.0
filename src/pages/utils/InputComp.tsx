@@ -42,6 +42,7 @@ const InputComp = ({
     setValue(e.target.value);
 
     setInputValue({ ...inputValue, [camelize(name)]: e.target.value });
+    console.log("input value: ", e.target.value);
   };
 
   const handleSpecialDrop = (e: any) => {

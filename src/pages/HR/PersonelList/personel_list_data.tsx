@@ -109,7 +109,7 @@ export const personel_list_formData = [
       },
       {
         name: "Phone Number",
-        type: "number",
+        type: "phone",
         maxLength: 11,
       },
       {

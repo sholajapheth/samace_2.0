@@ -54,7 +54,7 @@ const AddBox = ({
     <div>
       <>{navResolve}</>
       <ToastContainer />
-      <div className=" m-auto py-[3em]   mt-[2em] bg-pri lg:w-[65%] md:w-[80%] w-[90%] ">
+      <div className=" m-auto py-[3em]   my-[2em] bg-pri lg:w-[65%] md:w-[80%] w-[90%] ">
         {formData?.map((item: any, index: number) => {
           return (
             <FormContainer key={index} section_name={item.section}>
