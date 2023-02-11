@@ -1,6 +1,6 @@
 export const constants = {
   name: "Add Admin",
-  url: "admin/users",
+  url: "users",
   add: "hr/pl/add",
   edit: "hr/pl/edit",
 };

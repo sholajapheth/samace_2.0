@@ -29,6 +29,7 @@ const EditInput = ({
     selectedCountry,
     selectedState,
     dispatch,
+    state,
   } = useContext(DashboardContext);
   let defaultValue = optionList ? optionList[0] : "";
 
@@ -108,7 +109,7 @@ const EditInput = ({
         focus:outline-none md:w-[18em] w-full"
           id={name}
         >
-          <option value="">SELECT {dropType?.toLocaleUpperCase()}</option>
+          <option value="">Select {dropType}</option>
           {dropType === "country"
             ? countries.map((country, index) => (
                 <option key={index} value={country.name}>
@@ -116,7 +117,7 @@ const EditInput = ({
                 </option>
               ))
             : dropType === "state"
-            ? selectedCountry === "Nigeria"
+            ? state[camelize(section || "")]?.selectedCountry === "Nigeria"
               ? states.map((state, index) => (
                   <option key={index} value={state.name}>
                     {state.name}
@@ -125,7 +126,11 @@ const EditInput = ({
               : null
             : dropType === "city"
             ? states
-                .filter((state) => state.name === selectedState)
+                .filter(
+                  (state_) =>
+                    state_.name ===
+                    state[camelize(section || "")]?.selectedState
+                )
                 .map((state, index) =>
                   state.lgas.map((lga, index) => (
                     <option key={index} value={lga}>
