@@ -120,11 +120,12 @@ const InputComp = ({
         </select>
       ) : type === "textarea" ? (
         <textarea
+          rows={4}
           value={value}
           onChange={handleChanges}
           placeholder={placeholderValue}
           className="  bg-white rounded-md text-pri text-[16px] p-2 
-        focus:outline-none md:w-[18em] w-full h-[10em]"
+        focus:outline-none md:w-[18em] w-full"
         />
       ) : type === "number" ? (
         <input
