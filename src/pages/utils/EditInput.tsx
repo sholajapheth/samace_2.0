@@ -40,12 +40,11 @@ const EditInput = ({
   useEffect(() => {
     if (editData) {
       if (type === "date") {
-        setValue(
-          editData?.[camelize(name)]?.split("T")[0] ||
-            editData?.[camelize(name)]
-        );
+        console.log("date");
+        setValue(editData?.[camelize(name)]?.split("T")[0]);
+      } else {
+        setValue(editData?.[camelize(name)]?.toString());
       }
-      setValue(editData?.[camelize(name)]?.toString());
 
       setInputValue((previousState: any) => ({
         ...previousState,
