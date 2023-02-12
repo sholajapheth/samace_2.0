@@ -39,17 +39,37 @@ const EditInput = ({
 
   useEffect(() => {
     if (editData) {
-      if (type === "date") {
-        setValue(
-          editData?.[camelize(name)]?.split("T")[0] ||
-            editData?.[camelize(name)]
-        );
-      } else if (type === "number" || type === "phone") {
-        setValue(editData?.[camelize(name)]?.toString());
+      if (type === "specialDrop") {
+        if (dropType === "country") {
+          dispatch({
+            type: "setSelectedCountry",
+            payload: {
+              name: camelize(section || ""),
+              country: editData?.[camelize(name)],
+            },
+          });
+        }
+        if (dropType === "state") {
+          dispatch({
+            type: "setSelectedState",
+            payload: {
+              name: camelize(section || ""),
+              state: editData?.[camelize(name)],
+            },
+          });
+        }
       } else {
-        setValue(editData?.[camelize(name)]);
+        if (type === "date") {
+          setValue(
+            editData?.[camelize(name)]?.split("T")[0] ||
+              editData?.[camelize(name)]
+          );
+        } else if (type === "number" || type === "phone") {
+          setValue(editData?.[camelize(name)]?.toString());
+        } else {
+          setValue(editData?.[camelize(name)]);
+        }
       }
-
       setInputValue((previousState: any) => ({
         ...previousState,
         [camelize(name)]: editData?.[camelize(name)],
@@ -148,7 +168,7 @@ const EditInput = ({
         focus:outline-none md:w-[18em] w-full"
           id={name}
         >
-          <option value="">SELECT {name?.toLocaleUpperCase()}</option>
+          <option value="">Select {name}</option>
 
           {optionList?.map((option, index) => (
             <option key={index} value={option}>

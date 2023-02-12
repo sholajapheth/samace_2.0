@@ -6,7 +6,6 @@ import { FormContainer } from "./FormContainer";
 import Loading, { SmallLoading } from "../../components/Loading";
 import EditInput from "./EditInput";
 import { useNavigate } from "react-router-dom";
-import { updateData } from "../../store/slices/hr";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -84,55 +83,53 @@ const EditBox = ({
 
   return (
     <>
-      {/* {loading ? (
+      {loading ? (
         <Loading />
       ) : (
-     
-      )} */}
+        <div>
+          <>{navResolve}</>
+          <ToastContainer />
 
-      <div>
-        <>{navResolve}</>
-        <ToastContainer />
+          <div className="  m-auto py-[2em]  mt-[2em] bg-pri lg:w-[65%] md:w-[80%] w-[90%]">
+            {formData.map((item: any, index: any) => {
+              return (
+                <FormContainer key={index} section_name={item.section}>
+                  {item.data.map((item: any, index: any) => {
+                    return (
+                      <EditInput
+                        key={index}
+                        name={item.name}
+                        type={item.type}
+                        placeholder={item.placeholder}
+                        optionList={item.optionList}
+                        dropType={item.dropType}
+                        section={item.section}
+                      />
+                    );
+                  })}
+                </FormContainer>
+              );
+            })}
 
-        <div className="  m-auto py-[2em]  mt-[2em] bg-pri lg:w-[65%] md:w-[80%] w-[90%]">
-          {formData.map((item: any, index: any) => {
-            return (
-              <FormContainer key={index} section_name={item.section}>
-                {item.data.map((item: any, index: any) => {
-                  return (
-                    <EditInput
-                      key={index}
-                      name={item.name}
-                      type={item.type}
-                      placeholder={item.placeholder}
-                      optionList={item.optionList}
-                      dropType={item.dropType}
-                      section={item.section}
-                    />
-                  );
-                })}
-              </FormContainer>
-            );
-          })}
-
-          <FormContainer>
-            <div className="text-white flex md:gap-[3em] gap-[2em] ">
-              <button
-                onClick={(e) => handleSend(e, "humanResources_personnelList")}
-                className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
-              >
-                {loading ? <SmallLoading /> : "Save"}
-              </button>
-              <button
-                onClick={handleCancel}
-                className="rounded-md bg-[#FF5552] font-[700]  py-[1em] w-full"
-              >
-                Cancel
-              </button>
-            </div>
-          </FormContainer>
+            <FormContainer>
+              <div className="text-white flex md:gap-[3em] gap-[2em] ">
+                <button
+                  onClick={(e) => handleSend(e, "humanResources_personnelList")}
+                  className="rounded-md bg-[#2F5597] font-[700]  py-[1em] w-full"
+                >
+                  {loading ? <SmallLoading /> : "Save"}
+                </button>
+                <button
+                  onClick={handleCancel}
+                  className="rounded-md bg-[#FF5552] font-[700]  py-[1em] w-full"
+                >
+                  Cancel
+                </button>
+              </div>
+            </FormContainer>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
