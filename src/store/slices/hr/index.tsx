@@ -118,6 +118,23 @@ export const addData =
     );
   };
 
+export const addAdmin =
+  (url: string, data?: any, type?: string, extraheaders?: any) =>
+  (dispatch: AppDispatch) => {
+    dispatch(
+      apiCallBegan({
+        onStart: dataRequested.type,
+        onSuccess:
+          type === "new" ? addNewSuccessType.type : addSuccessType.type,
+        onError: dataFectchFailed.type,
+        url: "users/add-admin",
+        method: "POST",
+        data,
+        extraheaders,
+      })
+    );
+  };
+
 export const updateData =
   (url: string, id: string, data: any, extraheaders?: any) =>
   (dispatch: AppDispatch) => {

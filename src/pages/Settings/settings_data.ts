@@ -1,31 +1,29 @@
 export const constants = {
   name: "Add Admin",
-  url: "users",
-  add: "hr/pl/add",
+  url: "/users",
+  add: "settings/add",
   edit: "hr/pl/edit",
 };
 
 export const settings_data = [
   {
-    section: "Add Admin",
+    // section: "Add Admin",
     data: [
-      {
-        name: "Date",
-        type: "date",
-        value: "2020-01-01",
-        key: "date_added",
-        required: true,
-      },
+      // {
+      //   name: "Date",
+      //   type: "date",
+      //   value: "2020-01-01",
+      //   key: "date_added",
+      //   required: true,
+      // },
       {
         name: "First name",
         type: "text",
-        placeholder: "Enter Username",
         maxLength: 10,
       },
       {
         name: "Last name",
         type: "text",
-        placeholder: "Enter Username",
         maxLength: 10,
       },
       {
@@ -36,25 +34,19 @@ export const settings_data = [
       },
       {
         name: "Department",
-        type: "select",
+        type: "drop",
         placeholder: "Select Department",
-        options: [
+        optionList: [
           "HR",
           "Production",
           "Maintenance",
           "Quality Control",
-          "Sales",
-          "Marketing",
-          "Finance",
-          "IT",
-          "Admin",
-          "Other",
+          "Quality Assurance",
         ],
       },
       {
         name: "Email",
         type: "email",
-        placeholder: "Enter Recovery Email",
       },
     ],
   },
