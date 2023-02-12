@@ -22,11 +22,6 @@ const SearchBar = ({
   const [wordEntered, setWordEntered] = useState("");
   const { searchDatas } = useContext(DashboardContext);
 
-  const searchData_1: any = searchDatas?.searchData;
-  const header_data_1: any = searchDatas?.header_data;
-  const set_body_data_1: any = searchDatas?.set_body_data;
-  const default_data_1: any = searchDatas?.default_data;
-
   const handleSelectedData = (event: any) => {
     set_search((search) => (search = camelize(event.target.value)));
     set_body_data(default_data);
@@ -97,14 +92,11 @@ const SearchBar = ({
               onClick={handleFilterMainData}
               className="rounded-md p-2 px-[2em] bg-pri flex gap-1 items-center text-[#CDCDCD] "
             >
-              <span>
-              
-                Search
-              </span>
+              <span>Search</span>
             </button>
           </div>
         </div>
-    
+
         {filteredData?.length !== 0 && (
           <div className="shadow-md py-4 overflow-scroll scrollbar-hide  backdrop-blur-md  text-black lg:w-[33%] md:w-[50%] w-full h-[10em] absolute z-[550] mt-1">
             {filteredData?.map((item: any, index: number) => (

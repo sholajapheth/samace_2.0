@@ -30,13 +30,11 @@ const SearchBarDemo = () => {
       set_body_data: searchDatas?.set_body_data,
       default_data: searchDatas?.default_data,
     }));
-
   }, []);
-
 
   const handleSelectedData = (event: any) => {
     set_search((search) => (search = camelize(event.target.value)));
-    set_body_data(default_data);
+    // set_body_data(default_data);
     setWordEntered("");
   };
 
@@ -103,22 +101,11 @@ const SearchBarDemo = () => {
               onClick={handleFilterMainData}
               className="rounded-md p-2 px-[2em] bg-pri flex gap-1 items-center text-[#CDCDCD] "
             >
-              <span>
-                {/* {filteredData?.length > 0 && "Search"}
-                {wordEntered.length > 0 && "Filter"}
-                {wordEntered === "" && "Reset"} */}
-                {/* { filteredData.length === 0 && "Search"} */}
-                Search
-              </span>
+              <span>Search</span>
             </button>
           </div>
         </div>
-        {/* <button
-          className="p-5 rounded-md bg-pri font-[700] text-white"
-          onClick={() => set_body_data(default_data)}
-        >
-          Reset
-        </button> */}
+
         {filteredData?.length !== 0 && (
           <div className="shadow-md py-4 overflow-scroll scrollbar-hide  backdrop-blur-md  text-black lg:w-[33%] md:w-[50%] w-full h-[10em] absolute z-[550] mt-1">
             {filteredData?.map((item: any, index: number) => (
