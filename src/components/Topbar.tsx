@@ -38,10 +38,11 @@ const Topbar = () => {
 
           <div className="text-pri md:text-lg text-lm font-[700] ">
             <span className="md:hidden inline absolute top-2 right-2">
-              humanresource@sam-ace.com
+              humanresources@sam-ace.com
             </span>
             <span className="md:inline hidden ">
-              {location.pathname.includes("hr") && " humanresource@sam-ace.com"}
+              {location.pathname.includes("hr") &&
+                " humanresources@sam-ace.com"}
               {location.pathname.includes("qc") &&
                 " qualitycontrol@sam-ace.com"}
               {location.pathname.includes("qa") &&

@@ -11,7 +11,7 @@ const HRNav = () => {
 
   useEffect(() => {
     set_sidebar_nav_data(main_nav);
-    set_topbar_value("Human Resource Department");
+    set_topbar_value("Human Resources Department");
     set_show_topbar_actions("");
   }, [set_sidebar_nav_data, set_topbar_value]);
 
