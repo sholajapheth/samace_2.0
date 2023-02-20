@@ -34,7 +34,8 @@ const EditBox = ({
     useContext(DashboardContext);
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
-  const { set_show_topbar_actions, setEditData } = useContext(DashboardContext);
+  const { set_show_topbar_actions, editData, setEditData } =
+    useContext(DashboardContext);
 
   const handleCancel = () => {
     window.scrollTo(0, 0);
@@ -58,6 +59,7 @@ const EditBox = ({
 
   useEffect(() => {
     if (selectedItem.length !== 0) {
+      setEditData();
       dispatch(
         getSingleData(endPoint, selectedItem[0], JSON.parse(currentUser).token)
       );
@@ -68,8 +70,11 @@ const EditBox = ({
   }, [set_show_topbar_actions, selectedItem, dispatch]);
 
   useEffect(() => {
+    setEditData();
+
     if (data) {
       setEditData(() => data?.properties);
+      console.log("data: ", editData);
     }
   }, [data]);
 

@@ -15,6 +15,7 @@ const hrSlice = createSlice({
     dataRequested: (state) => {
       state.loading = true;
       state.message = "";
+      state.data = {};
     },
 
     dataGotten: (state, action) => {
