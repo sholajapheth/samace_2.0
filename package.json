@@ -21,12 +21,14 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
     "typescript": "^4.8.4",
+    "serve": "*",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "serve": "serve -s build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
