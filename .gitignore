@@ -27,3 +27,4 @@ yarn-error.log*
 .todo.txt
 .t_ignore.txt
 package-lock.json
+yarn.lock
