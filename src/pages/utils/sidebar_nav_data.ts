@@ -24,8 +24,8 @@ export const main_nav: sidebar_nav_type = [
 ];
 
 export const hr_nav: sidebar_nav_type = [
-  { id: 0, name: "Personnel List", img: personel_list, link: "hr/pl" },
-  { id: 1, name: "Personnel Record", img: personel_record, link: "hr/pr" },
+  { id: 0, name: "Personel List", img: personel_list, link: "hr/pl" },
+  { id: 1, name: "Personel Record", img: personel_record, link: "hr/pr" },
 ];
 
 // Mechanical and electricl

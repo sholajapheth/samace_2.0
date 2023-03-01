@@ -1,9 +1,10 @@
 export type sidebar_nav_type = Array<{
-  id: number
+  id: number;
   name: string;
-  img: string;
+  img?: string;
   link: string;
-}>
+  icon?: any;
+}>;
 
 export type top_action_button = {
   name: string;
